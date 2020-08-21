@@ -27,7 +27,7 @@ enum RandomIdType {
  *
  * @interface Member
  */
-interface Member  {
+export interface Member  {
 name: string,
 email:string,
 phone:any,
@@ -41,7 +41,7 @@ isAdmin?:string
  *
  * @interface Transaction
  */
-interface Transaction {
+export interface Transaction {
     transactionId:string,
     buyerName:string,
     address:string,
@@ -54,7 +54,7 @@ interface Transaction {
  *
  * @interface Product
  */
-interface Product {
+export interface Product {
     product_id:string,
     product_main_image_src:string
     name:string,
@@ -67,7 +67,7 @@ interface Product {
  *
  * @interface Video
  */
-interface Video {
+export interface Video {
     video_id:string,
     video_title:string,
     video_src:string,

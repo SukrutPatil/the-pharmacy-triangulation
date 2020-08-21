@@ -1,3 +1,4 @@
+import { ModuleType,Member,Product,Transaction,Video } from './../model/model.service';
 import { Injectable } from '@nestjs/common';
 import {Pool} from 'pg'
 @Injectable()
@@ -8,5 +9,13 @@ export class DatabaseService {
     database:'pharmadb',
     password: 'toor'
 })
+ /*** INSERT QUERIES */
 
+
+ /*** UPDATE QUERIES */
+
+ /*** DELETE QUERIES */
+
+ /*** SELECT QUERIES */
 }
+
