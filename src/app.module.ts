@@ -4,13 +4,14 @@ import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
 import { ModelService } from './model/model.service';
 import { SecurityService } from './security/security.service';
-import { LoginController } from './login/login.controller';
+
+import { MemberController } from './member/member.controller';
 
 
 
 @Module({
   imports: [],
-  controllers: [AppController, LoginController],
+  controllers: [AppController,  MemberController],
   providers: [AppService, DatabaseService, ModelService, SecurityService],
 })
 export class AppModule {}

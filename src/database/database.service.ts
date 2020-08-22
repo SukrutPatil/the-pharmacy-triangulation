@@ -1,6 +1,6 @@
 import { ModuleType } from './../model/model.service';
 import { Injectable } from '@nestjs/common';
-import { Pool } from 'pg';
+import { Pool,QueryResult } from 'pg';
 enum EntryType {
   PRODUCT,
   VIDEO,
@@ -16,8 +16,9 @@ interface TableDefinitionInterface {
   columnNames: Array<string>;
 }
 interface DBReturnInterface {
-  status: QueryStatus;
-  resultObject?: Array<any>;
+  status: QueryStatus,
+  resultObject?: QueryResult<any>,
+  error?:any
 }
 const MEMBER_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'MemberLedger',
@@ -71,7 +72,7 @@ export class DatabaseService {
     database: 'pharmadb',
     password: 'toor',
   });
-  /*** INSERT QUERIES */
+  /*** INSERT QUERY */
   public add = async<T>(etype: EntryType, obj: T): Promise<DBReturnInterface> => {
     let insertQuery: string;
     const values:Array<any> = Object.keys(obj).map(key=>obj[key])
@@ -94,8 +95,17 @@ export class DatabaseService {
         insertQuery = this.generateInsertQuerySkeleton(VIDEO_TABLE_DEFINITION);
         break;
     }
-    return new Promise((resolve,reject)=>{
-        this.pool.query(insertQuery,)
+    return new Promise((resolve)=>{
+      let objectToResolve:DBReturnInterface;
+      objectToResolve.status = QueryStatus.SUCCESSFULL
+        this.pool.query(insertQuery,values,(err,result)=>{
+          if (err) {
+            objectToResolve.error = err;
+            objectToResolve.status = QueryStatus.FAILED
+          }
+          else objectToResolve.resultObject = result
+          resolve(objectToResolve)
+        })
     })
     
   };

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as crypticKeyGenerator from 'crypto-random-string'
+import { SecurityService } from 'src/security/security.service';
 /**
  *Module Types
  *
@@ -83,16 +84,17 @@ export interface Video {
  * @class ModelService
  */
 @Injectable()
-
 export class ModelService {
+    constructor(private securityService:SecurityService) {}
     /**
      *GENERATES MEMBER OBJECT
      *
      * @memberof ModelService
      */
-    public createMemberObject = (name:string,email:string,phone:number,password:string,membershipType:Array<string>,isAdmin?:string):Member=>{
-       isAdmin = (isAdmin)?'YES':'NO'                           // For Database Integrity (Not Required Though)
-        return {
+    public createMemberObject = (name:string,email:string,phone:number,pwd:string,membershipType:Array<string>,isAdmin?:string):Member=>{
+       isAdmin = (isAdmin)?'YES':'NO'                          // For Database Integrity (Not Required Though)
+       const password = this.securityService.secureData(`${name}${email}`,pwd)
+       return {
             name,email,phone,password,membershipType,isAdmin
         }
     }
