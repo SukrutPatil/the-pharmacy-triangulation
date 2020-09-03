@@ -99,8 +99,9 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
 /**
  *The Database Core Connector
  *
- * Note: This class only returns the result object. The classes using this object must implement further actions on it.
- *Check out DBReturnInterface above
+ * Note: This class only returns the result object. The classes using this object must implement further actions on it. 
+ * This implementation must be implemented in controllers.
+ * Check out DBReturnInterface above
  * @export
  * @class DatabaseService
  */
@@ -113,6 +114,11 @@ export class DatabaseService {
     password: 'toor',
   });
   /*** INSERT QUERY */
+  /**
+   *Generically accepts objects defined in Model Service Class
+   *
+   * @memberof DatabaseService
+   */
   public add = async <T>(
     etype: EntryType,
     obj: T,
