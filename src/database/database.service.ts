@@ -1,11 +1,14 @@
 import { ModuleType } from './../model/model.service';
 import { Injectable } from '@nestjs/common';
-import { Pool,QueryResult } from 'pg';
+import { Pool, QueryResult } from 'pg';
+import { async } from 'rxjs';
 enum EntryType {
   PRODUCT,
-  VIDEO,
+  MODULE,
   TRANSACTION,
   MEMBER,
+  SESSION,
+  DRUG,
 }
 enum QueryStatus {
   FAILED,
@@ -16,54 +19,91 @@ interface TableDefinitionInterface {
   columnNames: Array<string>;
 }
 interface DBReturnInterface {
-  status: QueryStatus,
-  resultObject?: QueryResult<any>,
-  error?:any
+  status: QueryStatus;
+  resultObject?: QueryResult<any>;
+  error?: any;
 }
 const MEMBER_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'MemberLedger',
-  columnNames: [
-    'MemberName',
-    'MemberEmail',
-    'MemberPhone',
-    'MemberPassword',
-    'MembershipType',
-    'IsAdmin',
-  ],
+  columnNames: ['email', 'membership', 'name', 'password', 'phone', 'admin'],
 };
 const TRANSACTION_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'TransactionLedger',
   columnNames: [
-    'TransactionId',
-    'BuyerName',
-    'BuyerAddress',
-    'BuyerPhone',
-    'BuyerEmail',
-    'ProductId',
+    'transactionId',
+    'buyerName',
+    'address',
+    'phone',
+    'email',
+    'productId',
   ],
 };
 const PRODUCT_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'ProductLedger',
   columnNames: [
-    'ProductId',
-    'Product_Main_Image_Src',
-    'ProductName',
-    'ProductPrice',
-    'ProductInfo',
-    'ItemsInStock',
+    'productId',
+    'name',
+    'price',
+    'info',
+    'numberOfItemsInStock',
+    'productThumbnailImgSrc',
+    'productCategory',
   ],
 };
-const VIDEO_TABLE_DEFINITION: TableDefinitionInterface = {
+const MODULE_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'VideoLedger',
   columnNames: [
-    'VideoId',
-    'VideoTitle',
-    'VideoSrc',
-    'VideoInfo',
-    'VideoModule',
-    'VideoJSONSrc',
+    'moduleId',
+    'moduleDesc',
+    'moduleCategory',
+    'modulePrice',
+    'moduleArticleTitle',
+    'moduleArticleBody',
+    'moduleThumbnailSrc',
+    'moduleVideoSrc',
   ],
 };
+const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'DrugLedger',
+  columnNames: [
+    'brandName',
+    'brandCode',
+    'strnth',
+    'qty',
+    'packing',
+    'sku',
+    'manufacturer',
+    'marketedby',
+    'batchno',
+    'hsncode',
+    'mfgdate',
+    'expdate',
+    'mrp',
+    'purchaseprice',
+    'rate',
+    'sgst',
+    'cgst',
+    'costvar',
+  ],
+};
+const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'SessionLedger',
+  columnNames: [
+    'name',
+    'email',
+    'phone',
+    'category',
+    'counsellingDate',
+    'sessionId',
+  ],};
+/**
+ *The Database Core Connector
+ *
+ * Note: This class only returns the result object. The classes using this object must implement further actions on it.
+ *Check out DBReturnInterface above
+ * @export
+ * @class DatabaseService
+ */
 @Injectable()
 export class DatabaseService {
   pool = new Pool({
@@ -73,10 +113,13 @@ export class DatabaseService {
     password: 'toor',
   });
   /*** INSERT QUERY */
-  public add = async<T>(etype: EntryType, obj: T): Promise<DBReturnInterface> => {
+  public add = async <T>(
+    etype: EntryType,
+    obj: T,
+  ): Promise<DBReturnInterface> => {
     let insertQuery: string;
-    const values:Array<any> = Object.keys(obj).map(key=>obj[key])
-    
+    const values: Array<any> = Object.keys(obj).map(key => obj[key]);
+
     switch (etype) {
       case EntryType.MEMBER:
         insertQuery = this.generateInsertQuerySkeleton(MEMBER_TABLE_DEFINITION);
@@ -91,23 +134,29 @@ export class DatabaseService {
           TRANSACTION_TABLE_DEFINITION,
         );
         break;
-      case EntryType.VIDEO:
-        insertQuery = this.generateInsertQuerySkeleton(VIDEO_TABLE_DEFINITION);
+      case EntryType.MODULE:
+        insertQuery = this.generateInsertQuerySkeleton(MODULE_TABLE_DEFINITION);
+        break;
+      case EntryType.SESSION:
+        insertQuery = this.generateInsertQuerySkeleton(
+          SESSION_TABLE_DEFINITION,
+        );
+        break;
+      case EntryType.DRUG:
+        insertQuery = this.generateInsertQuerySkeleton(DRUG_TABLE_DEFINITION);
         break;
     }
-    return new Promise((resolve)=>{
-      let objectToResolve:DBReturnInterface;
-      objectToResolve.status = QueryStatus.SUCCESSFULL
-        this.pool.query(insertQuery,values,(err,result)=>{
-          if (err) {
-            objectToResolve.error = err;
-            objectToResolve.status = QueryStatus.FAILED
-          }
-          else objectToResolve.resultObject = result
-          resolve(objectToResolve)
-        })
-    })
-    
+    return new Promise(resolve => {
+      let objectToResolve: DBReturnInterface;
+      objectToResolve.status = QueryStatus.SUCCESSFULL;
+      this.pool.query(insertQuery, values, (err, result) => {
+        if (err) {
+          objectToResolve.error = err;
+          objectToResolve.status = QueryStatus.FAILED;
+        } else objectToResolve.resultObject = result;
+        resolve(objectToResolve);
+      });
+    });
   };
 
   /*** UPDATE QUERIES */
@@ -115,7 +164,43 @@ export class DatabaseService {
   /*** DELETE QUERIES */
 
   /*** SELECT QUERIES */
-
+  public retrieve = async (
+    etype: EntryType,
+    optionalWhereClause = '',
+  ): Promise<DBReturnInterface> => {
+    let tblname: string;
+    switch (etype) {
+      case EntryType.DRUG:
+        tblname = DRUG_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.MEMBER:
+        tblname = MEMBER_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.MODULE:
+        tblname = MODULE_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.PRODUCT:
+        tblname = PRODUCT_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.SESSION:
+        tblname = SESSION_TABLE_DEFINITION.tableName;
+      case EntryType.TRANSACTION:
+        tblname = TRANSACTION_TABLE_DEFINITION.tableName;
+        break;
+    }
+    return new Promise(resolve => {
+      let objectToResolve: DBReturnInterface;
+      objectToResolve.status = QueryStatus.SUCCESSFULL;
+      this.pool.query(`select * from ${tblname} ${optionalWhereClause}`,(err,result)=>{
+        if (err) {
+          objectToResolve.error = err;
+          objectToResolve.status = QueryStatus.FAILED;
+        } else objectToResolve.resultObject = result;
+        resolve(objectToResolve);
+      });
+    });
+  };
+  /*** Skeletons */
   private generateInsertQuerySkeleton = (
     tableDefinition: TableDefinitionInterface,
   ): string => {
