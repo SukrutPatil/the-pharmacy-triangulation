@@ -10,4 +10,5 @@ export class AppController {
   getHello():any{
     return {welcomeMessage:this.appService.getHello()};
   }
+  
 }
