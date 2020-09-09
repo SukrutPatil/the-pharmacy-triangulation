@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+section{
+    height: 100vh;
+    background: url(../assets/Background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow-y: hidden;
+    
+    h1{
+        color: white;
+        text-align: center;
+        font-weight: 800;
+        font-size: 100px;
+        padding-top: 50px;
+
+    }
+    .buyingContainer{
+        margin-top: -50px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 60%;
+        width: 40%;
+        padding: 20xp;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        .field{
+            display: flex;
+            padding: 5px;
+            margin-bottom: 10px;
+
+            p{
+                flex: 1;
+            }
+            input{
+                padding-top:3px;
+                flex: 3;
+                background: #D9ECDD;
+                border-radius: 10px;
+                border: none;
+                font-size: 16px;
+                outline: none;
+                padding-left:10px ;
+            }
+        }
+        .btnsDiv{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            select{
+           
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                outline: none;
+                color: #054A29;
+                background: white;
+                box-shadow: 5px 10px 18px #888888;
+            }
+        }
+        .logInbtn{
+            display: block;
+            margin: auto;
+            padding-top: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            color: #054A29;
+            background: white;
+            box-shadow: 5px 10px 18px #888888;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    }
+    .pageShift{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 25px;
+        height: 163px;
+        width: 300px;
+        color: white;
+        background: #054A29;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        
+        p{
+            font-size: 20px;
+        }
+        button{
+            display: flex;
+            width: 70%;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            background: white;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            p{
+                font-size: 18px;
+                padding-top: 18px;
+                padding-left: 5px;
+                padding-right:5px ;
+                color: #054A29;;
+            }
+            img{
+                height: 30px;
+            }
+            
+        }
+        button:hover{
+           
+            transform: scale(1.1);
+        }
+    }
+}
+@import 'nav';
