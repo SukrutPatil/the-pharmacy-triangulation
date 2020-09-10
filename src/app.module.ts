@@ -6,11 +6,12 @@ import { ModelService } from './model/model.service';
 import { SecurityService } from './security/security.service';
 
 import { MemberController } from './member/member.controller';
+import { AuthModule } from './auth/auth.module';
 
 
 
 @Module({
-  imports: [],
+  imports: [AuthModule],
   controllers: [AppController,  MemberController],
   providers: [AppService, DatabaseService, ModelService, SecurityService],
 })
