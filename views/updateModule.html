@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/NewProduct.css">
+    <link rel="stylesheet" href="../public/css/NewModule.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Document</title>
-    
 </head>
 <body>
     <div class="nav-container">
@@ -50,7 +49,7 @@
         </nav>
     </div>
     <section>
-        <h1>Add New Product</h1>
+        <h1>Edit Module</h1>
         <div class="main">
             <form action="">
                 <div class="column1">
@@ -66,20 +65,6 @@
                         <p>Price</p>
                         <input type="text">
                     </div>
-                    <div class="field-th">
-                        <p>Upload Thumbnail</p>
-                        <div id="drop-area">                      
-                            <input type="file" id="fileElem" max-size="2000" multiple accept="image/*" onchange="handleFiles(this.files)">
-                            <div id="gallery"></div>
-                            <div class="pbb">
-                                <progress id="progress-bar" max=100 value=0></progress>
-                                <label class="button" for="fileElem">Select some files</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="save" type="submit">Save</button>
-                </div>
-                <div class="column2">
                     <div class="field">
                         <p>Catagory</p>
                         <select name="cars" id="cars">
@@ -88,14 +73,21 @@
                             <option value="Career counseling">Career counseling</option>
                           </select>
                     </div>
-                    <div class="field">
-                        <p>Total In Stalk</p>
-                        <input type="number">
+                    <div class="field-th">
+                        <p>Upload Thumbnail</p>
+                        <div id="drop-area">                      
+                            <input type="file" max-size="2000" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <div id="gallery"></div>
+                            <div class="pbb">
+                                <progress id="progress-bar" max=100 value=0></progress>
+                                <label class="button" for="fileElem">Select some files</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="field-th">
-                        <p>Upload Images</p>
+                        <p>Upload Videos</p>
                         <div id="drop-area-img">                      
-                            <input type="file" id="fileElem-img" max-size="2000" multiple accept="image/*" onchange="handleFilesImg(this.files)">
+                            <input type="file" id="fileElem-img" max-size="10000" accept="video/*" onchange="handleFilesImg(this.files)">
                             <div id="gallery-img"></div>
                             <div class="pbb">
                                 <progress id="progress-bar-img" max=100 value=0></progress>
@@ -103,9 +95,19 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <button class="save" type="submit">Save</button>
+                    <button class="delete" type="submit">Delete</button>
                 </div>
-                
+                <div class="column2">
+                    <div class="field">
+                        <p>Article Title</p>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <p>Article</p>
+                        <textarea rows="70" cols="50" name="comment" form="usrform"></textarea>
+                    </div>
+                </div>
             </form>
         </div>
     </section>

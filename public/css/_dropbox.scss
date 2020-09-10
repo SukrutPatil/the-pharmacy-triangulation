@@ -1,9 +1,8 @@
 #drop-area {
-    border: 2px dashed #ccc;
+    border: 2px solid #ccc;
     border-radius: 20px;
     width: 80%;
     font-family: sans-serif;
-    margin-top: 50px;
     padding: 20px;
   }
   #drop-area.highlight {
@@ -24,17 +23,69 @@
     margin-right: 10px;
     vertical-align: middle;
   }
+  .pbb{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      #progress-bar{
+          margin: 20px;
+      }
+      #progress-bar-img{
+        margin: 20px;
+    }
+      .button {
+        display: inline-block;
+        padding: 10px;
+        background: #ccc;
+        cursor: pointer;
+        border-radius: 5px;
+        font-family: 'Roboto', sans-serif;
+        border: 1px solid #ccc;
+      }
+      .button:hover {
+        background: #ddd;
+      }
+  }
+  
+  #fileElem {
+    display: none;
+  }
+
+  #drop-area-img {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    width: 80%;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  #drop-area-img.highlight {
+    border-color: purple;
+  }
+  p {
+    margin-top: 0;
+  }
+  #gallery-img {
+    margin-top: 10px;
+  }
+  #gallery-img img {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
   .button {
     display: inline-block;
     padding: 10px;
     background: #ccc;
     cursor: pointer;
     border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
     border: 1px solid #ccc;
   }
   .button:hover {
     background: #ddd;
   }
-  #fileElem {
+  #fileElem-img {
     display: none;
   }

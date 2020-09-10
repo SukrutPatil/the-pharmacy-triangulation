@@ -73,7 +73,29 @@
                             <option value="Career counseling">Career counseling</option>
                           </select>
                     </div>
-                    
+                    <div class="field-th">
+                        <p>Upload Thumbnail</p>
+                        <div id="drop-area">                      
+                            <input type="file" max-size="2000" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <div id="gallery"></div>
+                            <div class="pbb">
+                                <progress id="progress-bar" max=100 value=0></progress>
+                                <label class="button" for="fileElem">Select some files</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-th">
+                        <p>Upload Videos</p>
+                        <div id="drop-area-img">                      
+                            <input type="file" id="fileElem-img" max-size="10000" accept="video/*" onchange="handleFilesImg(this.files)">
+                            <div id="gallery-img"></div>
+                            <div class="pbb">
+                                <progress id="progress-bar-img" max=100 value=0></progress>
+                                <label class="button" for="fileElem-img">Select some files</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="save" type="submit">Save</button>
                 </div>
                 <div class="column2">
                     <div class="field">
@@ -88,5 +110,6 @@
             </form>
         </div>
     </section>
+    <script src="../public/js/dropbox.js"></script>
 </body>
 </html>

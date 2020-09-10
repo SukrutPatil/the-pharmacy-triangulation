@@ -40,6 +40,10 @@ section .table table tr {
   text-align: center;
 }
 
+section .table table tr a {
+  text-decoration: none;
+}
+
 section .table table tr img {
   height: 50px;
 }

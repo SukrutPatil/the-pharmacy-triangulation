@@ -34,8 +34,35 @@ section{
                     font-family: 'Roboto', sans-serif;
                 }
             }
-            
-
+            .field-th{
+                margin-top: 20px;
+            }
+            .save{
+                background: #14213D;
+                padding-left: 55px;
+                padding-right: 55px;
+                padding-top: 5px;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                margin-left: 15%;
+                margin-right:5%;
+                margin-top: 30px;
+                margin-top: 30px;
+                cursor: pointer;
+    
+            }
+            .delete{
+                background: #8B0000;
+                padding-left: 55px;
+                padding-right: 55px;
+                padding-top: 5px;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+    
+            }
         }
         .column2{
             padding: 10px;
@@ -60,7 +87,9 @@ section{
                     font-family: 'Roboto', sans-serif;
                 }
             }
+           
         }
     }
 }
-@import 'adminNav'
+@import 'adminNav';
+@import 'dropbox'
