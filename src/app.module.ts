@@ -3,16 +3,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
 import { ModelService } from './model/model.service';
-import { SecurityService } from './security/security.service';
 
-import { MemberController } from './member/member.controller';
+
+
 import { AuthModule } from './auth/auth.module';
+import { SecurityModule } from './security/security.module';
+import { ProductModule } from './product/product.module';
+import { AdminModule } from './admin/admin.module';
+import { CounselingModule } from './counseling/counseling.module';
 
 
 
 @Module({
-  imports: [AuthModule],
-  controllers: [AppController,  MemberController],
-  providers: [AppService, DatabaseService, ModelService, SecurityService],
+  imports: [AuthModule, SecurityModule, ProductModule, AdminModule, CounselingModule],
+  controllers: [AppController],
+  providers: [AppService, DatabaseService, ModelService],
 })
 export class AppModule {}
