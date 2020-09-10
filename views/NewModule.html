@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/NewModule.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="logo">
+
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <div class="dropdown">
+                        <button class="dropbtn">Modules</button>
+                        <div class="dropdown-content">
+                        <a href="AllModules.html">All Modules</a>
+                        <a href="NewModule.html">New Module</a>
+                       
+                        </div>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Products</button>
+                        <div class="dropdown-content">
+                        <a href="AllProducts.html">All Products</a>
+                        <a href="NewProduct.html">New Products</a>
+                      
+                        </div>
+                      </div>
+                      <div class="dropdown">
+                        <button class="dropbtn">Sessions</button>
+                        <div class="dropdown-content">
+                        <a href="AllSessions.html">All Sessions</a>
+                        </div>
+                      </div>
+                      <div class="logoutBtn">
+                            <a href="">
+                                <img src="../public/assets/logOut.png" alt="" style="height: 30px; margin: 5px;">
+                            </a>
+                      </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <h1>Add New Module</h1>
+        <div class="main">
+            <form action="">
+                <div class="column1">
+                    <div class="field">
+                        <p>Name</p>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <p>Description</p>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <p>Price</p>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <p>Catagory</p>
+                        <select name="cars" id="cars">
+                            <option value="Medication counseling">Medication counseling</option>
+                            <option value="Entrepreneurship counseling">Entrepreneurship counseling</option>
+                            <option value="Career counseling">Career counseling</option>
+                          </select>
+                    </div>
+                    
+                </div>
+                <div class="column2">
+                    <div class="field">
+                        <p>Article Title</p>
+                        <input type="text">
+                    </div>
+                    <div class="field">
+                        <p>Article</p>
+                        <textarea rows="70" cols="50" name="comment" form="usrform"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,211 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Baloo Tammudu 2', cursive;
+}
+
+section {
+  padding: 50px;
+}
+
+section form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  font-family: 'Roboto', sans-serif;
+}
+
+section form .column1 {
+  height: 100vh;
+  padding: 10px;
+}
+
+section form .column1 .field {
+  width: 100%;
+  padding: 5px;
+}
+
+section form .column1 .field input {
+  width: 80%;
+  border-radius: 10px;
+  border: solid black 2px;
+  outline: none;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+section form .column1 .field select {
+  border-radius: 10px;
+  border: solid black 2px;
+  outline: none;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+section form .column2 {
+  padding-top: 105px;
+}
+
+section form .column2 .field {
+  width: 80%;
+  padding: 5px;
+}
+
+section form .column2 .field input {
+  width: 80%;
+  border-radius: 10px;
+  border: solid black 2px;
+  outline: none;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+section form .column2 .field textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: solid black 2px;
+  outline: none;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container {
+  width: 100%;
+  height: 8vh;
+  background: #14213D;
+}
+
+.nav-container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  padding: 5px;
+}
+
+.nav-container nav .logo {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.nav-container nav .nav-links {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+}
+
+.nav-container nav .nav-links ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.nav-container nav .nav-links ul .dropbtn {
+  background: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.nav-container nav .nav-links ul .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-container nav .nav-links ul .dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.nav-container nav .nav-links ul .dropdown-content a {
+  color: black;
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-container nav .nav-links ul .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.nav-container nav .nav-links ul .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-container nav .nav-links ul .logoutBtn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+#drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 80%;
+  font-family: sans-serif;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+#drop-area.highlight {
+  border-color: purple;
+}
+
+p {
+  margin-top: 0;
+}
+
+.my-form {
+  margin-bottom: 10px;
+}
+
+#gallery {
+  margin-top: 10px;
+}
+
+#gallery img {
+  width: 150px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button:hover {
+  background: #ddd;
+}
+
+#fileElem {
+  display: none;
+}
+/*# sourceMappingURL=NewProduct.css.map */
