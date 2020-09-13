@@ -13,6 +13,7 @@
     margin: auto;
     background: #054A29;
     z-index: 10;
+  
     
 
     nav{
@@ -80,7 +81,7 @@
 }
 
 
-@media screen and(max-width:1160px){
+@media screen and(max-width:1312px){
     *{
         margin: 0;
         padding: 0;
@@ -97,7 +98,7 @@
         margin: auto;
         background: #054A29;
         z-index: 10;
-
+        
         nav{
 
             .nav-links{
@@ -109,7 +110,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                border-radius: 20px;
                 width: 50%;
                 transform: translateX(100%);
                 transition: transform 0.5s ease-in;

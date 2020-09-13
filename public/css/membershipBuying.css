@@ -256,7 +256,7 @@ section .pageShift button:hover {
   transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 1312px) {
   * {
     margin: 0;
     padding: 0;
@@ -290,7 +290,6 @@ section .pageShift button:hover {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    border-radius: 20px;
     width: 50%;
     -webkit-transform: translateX(100%);
             transform: translateX(100%);

@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+@media screen and(max-width:1600px) and(min-width:801px){
+    section{
+        padding-top:8vh;
+        padding-top:8vh;
+        overflow-x: hidden;
+        font-family: 'Baloo Tammudu 2', cursive;
+        height: 100vh;
+        background: url(../assets/Background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+
+        .heading{
+            padding-top: 200px;
+            padding-left:50px;
+            color: white;
+            flex: 1;
+            h1{
+                font-size: 200px;
+                line-height: 50px;
+                
+            }
+            .btns{
+                margin-top: 100px;
+                display: flex;
+                width: max-content;
+
+                button{
+                    display: flex;
+                    background: white;
+                    color: #054A29;
+                    justify-content: center;
+                    align-items: center;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    margin-right: 50px;
+                    border: none;
+                    border-radius: 10px;
+                    p{
+                        padding-top:15px ;
+                        font-size: 20px;
+                    }
+                    img{
+                        height: 35px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+        .info{
+            margin: 20px;
+            position: relative;
+            flex: 1;
+            
+
+        h1{
+            position: absolute;
+            text-align: right;
+            bottom: 180px;
+            right: 0;
+            font-size: 40px;
+        }
+        p{
+            position: absolute;
+            text-align: right;
+            bottom: 20px;
+            width: 80%;
+            right: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size:19px;
+        }
+        }
+    }
+}
+@media screen and(max-width:800px){
+    section{
+        padding-top:8vh;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        overflow-x: hidden;
+        font-family: 'Baloo Tammudu 2', cursive;
+        height: 100%;
+        background: url(../assets/phoneBg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+        .heading{
+            margin-top: 100px;
+            color: white;
+            h1{
+                font-size: 100px;
+                line-height: 20px;
+            }
+            .btns{
+                width: 100%;
+                display: flex;
+                
+    
+                button{
+                    width: max-content;
+                    display: flex;
+                    padding: 5px ;
+                    background: white;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+                    margin-top: 40px;
+                    margin-right: 50px;
+                    p{
+                        font-size: 14px;
+                        color: #054A29;
+                        padding-top: 5px;
+                    }
+                    img{
+                        margin-left: 10px;
+                        width: 30px;
+                    }
+                }
+            }
+        }
+        .info{
+            margin-top: 15x;
+            p{
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                width: 95%;
+                line-height: 20px;
+                text-align: justify;
+            }
+        }
+    }
+}
+
+@media (min-width: 1600px){
+    section{
+        max-width: 1400px;
+        margin: auto;
+        padding-top:8vh;
+        padding-top:8vh;
+        overflow-x: hidden;
+        font-family: 'Baloo Tammudu 2', cursive;
+        height: 100%;
+        background: url(../assets/Background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+
+        .heading{
+            padding-top: 200px;
+            padding-left:50px;
+            color: white;
+            flex: 1;
+            h1{
+                font-size: 200px;
+                line-height: 50px;
+                
+            }
+            .btns{
+                margin-top: 50px;
+                display: flex;
+                width: max-content;
+
+                button{
+                    display: flex;
+                    background: white;
+                    color: #054A29;
+                    justify-content: center;
+                    align-items: center;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    margin-right: 50px;
+                    border: none;
+                    border-radius: 10px;
+                    p{
+                        padding-top:15px ;
+                        font-size: 20px;
+                    }
+                    img{
+                        height: 35px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+        .info{
+            margin: 20px;
+            position: relative;
+            flex: 1;
+            
+
+        h1{
+            position: absolute;
+            text-align: right;
+            bottom: 180px;
+            right: 0;
+            font-size: 40px;
+        }
+        p{
+            position: absolute;
+            text-align: right;
+            bottom: 20px;
+            width: 80%;
+            right: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size:19px;
+        }
+        }
+    }
+}
+@import 'nav';
+@import 'companyInfo';
+@import 'productsHome';
+@import 'knowledgeCenter';
+@import 'footer';
+

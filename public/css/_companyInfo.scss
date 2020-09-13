@@ -1,0 +1,143 @@
+@media screen and(max-width:1600px) and(min-width:801px){
+    .companyInfo{
+        background: white;
+        padding: 2vh;
+        height: 100%;
+        width: 100%;
+        padding-bottom: 100px;
+        .column1{
+            padding-top: 50px;
+
+            h1{
+                color:#054A29;
+                font-size: 100px;
+                line-height: 100px;
+            }
+            p{
+                width: 80%;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+            }
+            button{
+                background: #054A29;
+                padding: 10px;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                margin-top: 50px;
+                margin-bottom: 20px;
+                transition: all 0.3s ease-in;
+                cursor: pointer;
+            }
+            button:hover{
+                transform: scale(1.1);
+                box-shadow: 5px 5px 5px gray ;
+            }
+        }
+        .column2{
+            padding-top: 150px;
+            p{
+                width: 80%;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+            }
+        }
+    }
+
+}
+@media screen and(max-width:800px){
+    .companyInfo{
+        background: white;
+        padding: 2vh;
+        height: 100%;
+        width: 100%;
+        .column1{
+            padding-top: 20px;
+            h1{
+                color:#054A29;
+                font-size: 70px;
+                line-height: 70px;   
+            }
+            p{
+                text-align: justify;
+            }
+            button{
+                background: #054A29;
+                padding: 10px;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                transition: all 0.3s ease-in;
+            }
+            video{
+                margin-top: 5px;
+                border: 2px black solid;   
+            }
+
+           
+        }
+        .column2{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+@media (min-width: 1600px){
+    .companyInfo{
+        max-width: 1400px;
+        margin: auto;
+        background: white;
+        padding: 2vh;
+        height: 100%;
+        width: 100%;
+
+        .column1{
+            padding-top: 50px;
+
+            h1{
+                color:#054A29;
+                font-size: 100px;
+                line-height: 100px;
+            }
+            p{
+                width: 80%;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+            }
+            button{
+                background: #054A29;
+                padding: 10px;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                margin-top: 50px;
+                margin-bottom: 20px;
+                transition: all 0.3s ease-in;
+                cursor: pointer;
+            }
+            button:hover{
+                transform: scale(1.1);
+                box-shadow: 5px 5px 5px gray ;
+            }
+        }
+        .column2{
+            padding-top: 150px;
+            p{
+                width: 80%;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-align: justify;
+            }
+        }
+    }
+
+}

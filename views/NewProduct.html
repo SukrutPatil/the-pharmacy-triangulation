@@ -19,6 +19,14 @@
             <div class="nav-links">
                 <ul>
                     <div class="dropdown">
+                        <button class="dropbtn">Articles</button>
+                        <div class="dropdown-content">
+                            <a href="MyArticles.html">My Articles</a>
+                            <a href="NewArticle.html">Write New Article</a>
+                       
+                        </div>
+                      </div>
+                    <div class="dropdown">
                         <button class="dropbtn">Modules</button>
                         <div class="dropdown-content">
                         <a href="AllModules.html">All Modules</a>
@@ -59,11 +67,11 @@
                         <input type="text">
                     </div>
                     <div class="field">
-                        <p>Description</p>
+                        <p>Price</p>
                         <input type="text">
                     </div>
                     <div class="field">
-                        <p>Price</p>
+                        <p>Discounted Amount</p>
                         <input type="text">
                     </div>
                     <div class="field-th">
@@ -81,29 +89,25 @@
                 </div>
                 <div class="column2">
                     <div class="field">
-                        <p>Catagory</p>
-                        <select name="cars" id="cars">
-                            <option value="Medication counseling">Medication counseling</option>
-                            <option value="Entrepreneurship counseling">Entrepreneurship counseling</option>
-                            <option value="Career counseling">Career counseling</option>
-                          </select>
+                        <p>Manufactured By</p>
+                        <input type="number">
+                    </div>
+                    <div class="field">
+                        <p>Batch Number.</p>
+                        <input type="number">
+                    </div>
+                    <div class="field">
+                        <p>HSN Code</p>
+                        <input type="number">
+                    </div>
+                    <div class="field">
+                        <p>Expiry Date</p>
+                        <input type="number">
                     </div>
                     <div class="field">
                         <p>Total In Stalk</p>
                         <input type="number">
-                    </div>
-                    <div class="field-th">
-                        <p>Upload Images</p>
-                        <div id="drop-area-img">                      
-                            <input type="file" id="fileElem-img" max-size="2000" multiple accept="image/*" onchange="handleFilesImg(this.files)">
-                            <div id="gallery-img"></div>
-                            <div class="pbb">
-                                <progress id="progress-bar-img" max=100 value=0></progress>
-                                <label class="button" for="fileElem-img">Select some files</label>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    </div>        
                 </div>
                 
             </form>

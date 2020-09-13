@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media screen and(max-width:1600px){
+    .heading{
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{
+            
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+    }
+    .inputFields{
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        p{
+            margin-right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
+            line-height: 25px;
+        }
+        input{
+            font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    width: 55%;
+                    text-align: justify;
+                    background: #D9ECDD;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    padding-left: 20px;   
+        }
+    }
+    .products{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        padding-left:180px;
+        padding-top:100px;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .card{
+            border: 1px solid grey;
+            height: fit-content;   
+            width: 250px;     
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 100px;
+            transition: all 0.3s ease-out;
+            img{
+                height:80%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .name-price{
+                height: 20%;
+                display: flex;
+                justify-content: space-around;
+                padding: 20px;
+                p{
+                    font-family: 'Roboto', sans-serif;
+                    font-size:19px;
+                    font-weight: bolder;
+                }
+                .price{
+                    color: green;
+                    font-size: 14px;
+                    padding-top: 5px;
+                }
+               
+            }
+        }
+        .card:hover{
+            box-shadow: 10px 10px 10px grey;
+            transform: scale(0.9);
+        }
+
+    }
+}
+@media screen and(max-width:800px){
+    .inputFields{
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        p{
+            margin-right: 20px;
+            font-size: 16px;
+            padding-top: 10px;
+            line-height: 25px;
+        }
+        input{
+            font-family: 'Roboto', sans-serif;
+                    font-size: 12px;
+                    width: 95%;
+                    text-align: justify;
+                    background: #D9ECDD;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    padding-left: 20px;   
+        }
+    }
+    .products{
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        padding-left: 70px;
+        padding-top:60px;
+        overflow-x: hidden;
+    }
+}
+@media screen and(min-width:1600px){
+    .heading{
+        margin: auto;
+        min-width: 1400px;
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{
+            
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+    }
+    .inputFields{
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        p{
+            margin-right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
+            line-height: 25px;
+        }
+        input{
+            font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    width: 55%;
+                    text-align: justify;
+                    background: #D9ECDD;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    padding-left: 20px;   
+        }
+    }
+    .products{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        padding-left:180px;
+        padding-top:100px;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .card{
+            border: 1px solid grey;
+            height: fit-content;   
+            width: 250px;     
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 100px;
+            transition: all 0.3s ease-out;
+            img{
+                height:80%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .name-price{
+                height: 20%;
+                display: flex;
+                justify-content: space-around;
+                padding: 20px;
+                p{
+                    font-family: 'Roboto', sans-serif;
+                    font-size:19px;
+                    font-weight: bolder;
+                }
+                .price{
+                    color: green;
+                    font-size: 14px;
+                    padding-top: 5px;
+                }
+               
+            }
+        }
+        .card:hover{
+            box-shadow: 10px 10px 10px grey;
+            transform: scale(0.9);
+        }
+
+    }
+}
+@import 'nav';
+@import 'footer';
