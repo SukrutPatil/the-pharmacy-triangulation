@@ -7,8 +7,8 @@ export class AppController {
 
   @Get()
   @Render('Homepage.ejs')
-  getHello():any{
-    return {};
+  getHomePage():any{
+    return {loggedInUser:""};
   }
   
 }
