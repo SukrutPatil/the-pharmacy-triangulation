@@ -4,4 +4,5 @@ export abstract class JSGAuth {
     abstract postLoginInformation():any;
     abstract postSignupInformation():any;
     abstract signoutAction():any;
+    
 }
