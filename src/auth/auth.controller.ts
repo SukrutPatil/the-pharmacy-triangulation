@@ -1,9 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import {JSGAuth} from './JSGAuth';
 @Controller('auth')
 export class AuthController extends JSGAuth{
-    getLoginPage() {
-        throw new Error("Method not implemented.");
+    @Get('login')
+    getLoginPage():any {
+        return {};
     }
     getSignupPage() {
         throw new Error("Method not implemented.");
@@ -17,6 +18,8 @@ export class AuthController extends JSGAuth{
     signoutAction() {
         throw new Error("Method not implemented.");
     }
-
+    /****
+     * 1. 
+     */
 
 }
