@@ -1,9 +1,9 @@
+
 import { Injectable } from '@nestjs/common';
 import * as crypticKeyGenerator from 'crypto-random-string'
-import { SecurityService } from 'src/security/security.service';
+import { SecurityService } from '../security/security.service';
 /**
- *Module Types
- *
+ * Module Types
  * @export
  * @enum {number}
  */
