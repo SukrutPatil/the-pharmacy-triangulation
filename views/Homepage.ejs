@@ -38,10 +38,18 @@
                 corrupti, consectetur assumenda dicta.</p>
             <div class="btns">
                 <button><p>Be a member</p></button>
+                <%if(!loggedInUser) { %>
+                <!-- If User Is Not Logged In -->
                 <button>
                     <p>Log In</p>
                     <img src="../public/assets/frontArrow.png" alt="">
                 </button>
+                <% } else {%>
+
+                <!-- If User Is Logged In -->
+                
+                <% } %>
+
             </div>  
         </div>
         <div class="info">

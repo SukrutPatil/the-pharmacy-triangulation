@@ -6,9 +6,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  @Render('index.pug')
+  @Render('Homepage.ejs')
   getHello():any{
-    return {welcomeMessage:this.appService.getHello()};
+    return {};
   }
   
 }
