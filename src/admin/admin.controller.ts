@@ -1,14 +1,17 @@
 import { SessionExecutorService } from './../session-executor/session-executor.service';
-import { Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import { Controller, Get, Post, Redirect, Render, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly se: SessionExecutorService) {}
+  constructor(private readonly se: SessionExecutorService) { }
+  @Get('')
+  redirectToLogin(@Res() res: Response): any { res.redirect(502, "admin/login") };
+
   @Get('login')
   @Render('AdminLogin.ejs')
   getAdminLogin(): any {
-    return {userNotFoundError:"No"};
+    return { userNotFoundError: "No" };
   }
   @Post('adminLoginAction')
   adminLoginAction(@Req() req: Request, @Res() res: Response): any {
@@ -31,7 +34,7 @@ export class AdminController {
         res.render('NewProduct', {});
       },
       () => {
-        res.status(301).redirect('login');
+        this.redirectToLogin(res);
       },
     );
   }
