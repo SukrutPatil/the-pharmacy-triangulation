@@ -8,7 +8,7 @@ export class AdminController {
   @Get('login')
   @Render('AdminLogin.ejs')
   getAdminLogin(): any {
-    return {};
+    return {userNotFoundError:"No"};
   }
   @Post('adminLoginAction')
   adminLoginAction(@Req() req: Request, @Res() res: Response): any {
