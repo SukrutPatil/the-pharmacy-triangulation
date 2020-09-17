@@ -1,5 +1,13 @@
 import { SessionExecutorService } from './../session-executor/session-executor.service';
-import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Redirect,
+  Render,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Controller('admin')
@@ -153,7 +161,7 @@ export class AdminController {
    */
 
   @Get('delete/:id')
-  deleteItem(@Body() prodID: string): any {}
+  deleteItem(@Req() req: Request, @Res() res: Response): any {}
   /**
    * Based on id the item to be deleted can be
    * easily distingus.
