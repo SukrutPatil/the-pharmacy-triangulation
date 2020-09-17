@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../public/css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="nav-container">
-        <nav>
-            <div class="logo"><img src="" alt=""> <h1>LOGO</h1></div>
-            <ul class="nav-links">
-                <li><a href="#home">Medication counseling</a></li>
-                <li><a href="#writings">Entrepreneurship counseling</a></li>
-                <li><a href="#aboutme">Career counseling</a></li>
-                <li><a href="#designs">Diet counseling</a></li> 
-                <li><a href="#arts">Products</a></li>
-                <li><a href="#arts">About Us</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo">
+          <img src="" alt="" />
+          <h1>LOGO</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Medication counseling</a></li>
+          <li><a href="#writings">Entrepreneurship counseling</a></li>
+          <li><a href="#aboutme">Career counseling</a></li>
+          <li><a href="#designs">Diet counseling</a></li>
+          <li><a href="#arts">Products</a></li>
+          <li><a href="#arts">About Us</a></li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
     </div>
     <section>
-        <h1>Log In</h1>
-        <div class="loginContainer">
-            <form action="POST">
-                <div class="emailField">
-                    <p>Email</p>
-                    <input type="text">
-                </div>
-                <div class="passwordField">
-                    <p>Password</p>
-                    <input type="password">
-                </div>
-                <button type="submit">Log In</button>
-            </form>
-            <a class="forgot" href="">Forgot Password?</a>
-            <div class="adminLogin">
-                <a href="adminLogIn.html">
-                    <img src="../public/assets/clientBtn.png" alt="">
-                </a>
-            </div>
+      <h1>Log In</h1>
+      <div class="loginContainer">
+        <form action="auth/login" method="POST">
+          <div class="emailField">
+            <p>Email</p>
+            <input type="text" />
+          </div>
+          <div class="passwordField">
+            <p>Password</p>
+            <input type="password" />
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+        <a class="forgot" href="">Forgot Password?</a>
+        <div class="adminLogin">
+          <a href="adminLogIn.html">
+            <img src="../public/assets/clientBtn.png" alt="" />
+          </a>
         </div>
-        <div class="pageShift">
-            <p>Not a Member ?</p>
-            <button><p>Get Membership</p> <img src="../public/assets/frontArrow.png" alt=""></button>
-        </div> 
+      </div>
+      <div class="pageShift">
+        <p>Not a Member ?</p>
+        <button>
+          <p>Get Membership</p>
+          <img src="../public/assets/frontArrow.png" alt="" />
+        </button>
+      </div>
     </section>
-   
 
     <script src="../public/js/nav.js"></script>
-</body>
+  </body>
 </html>

@@ -1,118 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/NewProduct.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/css/NewProduct.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
-    
-</head>
-<body>
+  </head>
+  <body>
     <div class="nav-container">
-        <nav>
-            <div class="logo">
-
+      <nav>
+        <div class="logo"></div>
+        <div class="nav-links">
+          <ul>
+            <div class="dropdown">
+              <button class="dropbtn">Articles</button>
+              <div class="dropdown-content">
+                <a href="MyArticles.html">My Articles</a>
+                <a href="NewArticle.html">Write New Article</a>
+              </div>
             </div>
-            <div class="nav-links">
-                <ul>
-                    <div class="dropdown">
-                        <button class="dropbtn">Articles</button>
-                        <div class="dropdown-content">
-                            <a href="MyArticles.html">My Articles</a>
-                            <a href="NewArticle.html">Write New Article</a>
-                       
-                        </div>
-                      </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Modules</button>
-                        <div class="dropdown-content">
-                        <a href="AllModules.html">All Modules</a>
-                        <a href="NewModule.html">New Module</a>
-                       
-                        </div>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Products</button>
-                        <div class="dropdown-content">
-                        <a href="AllProducts.html">All Products</a>
-                        <a href="NewProduct.html">New Products</a>
-                      
-                        </div>
-                      </div>
-                      <div class="dropdown">
-                        <button class="dropbtn">Sessions</button>
-                        <div class="dropdown-content">
-                        <a href="AllSessions.html">All Sessions</a>
-                        </div>
-                      </div>
-                      <div class="logoutBtn">
-                            <a href="">
-                                <img src="../public/assets/logOut.png" alt="" style="height: 30px; margin: 5px;">
-                            </a>
-                      </div>
-                </ul>
+            <div class="dropdown">
+              <button class="dropbtn">Modules</button>
+              <div class="dropdown-content">
+                <a href="AllModules.html">All Modules</a>
+                <a href="NewModule.html">New Module</a>
+              </div>
             </div>
-        </nav>
+            <div class="dropdown">
+              <button class="dropbtn">Products</button>
+              <div class="dropdown-content">
+                <a href="AllProducts.html">All Products</a>
+                <a href="NewProduct.html">New Products</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">Sessions</button>
+              <div class="dropdown-content">
+                <a href="AllSessions.html">All Sessions</a>
+              </div>
+            </div>
+            <div class="logoutBtn">
+              <a href="">
+                <img
+                  src="../public/assets/logOut.png"
+                  alt=""
+                  style="height: 30px; margin: 5px;"
+                />
+              </a>
+            </div>
+          </ul>
+        </div>
+      </nav>
     </div>
     <section>
-        <h1>Add New Product</h1>
-        <div class="main">
-            <form action="">
-                <div class="column1">
-                    <div class="field">
-                        <p>Name</p>
-                        <input type="text">
-                    </div>
-                    <div class="field">
-                        <p>Price</p>
-                        <input type="text">
-                    </div>
-                    <div class="field">
-                        <p>Discounted Amount</p>
-                        <input type="text">
-                    </div>
-                    <div class="field-th">
-                        <p>Upload Thumbnail</p>
-                        <div id="drop-area">                      
-                            <input type="file" id="fileElem" max-size="2000" multiple accept="image/*" onchange="handleFiles(this.files)">
-                            <div id="gallery"></div>
-                            <div class="pbb">
-                                <progress id="progress-bar" max=100 value=0></progress>
-                                <label class="button" for="fileElem">Select some files</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="save" type="submit">Save</button>
+      <h1>Add New Product</h1>
+      <div class="main">
+        <form action="admin/newProduct" method="POST">
+          <div class="column1">
+            <div class="field">
+              <p>Name</p>
+              <input type="text" />
+            </div>
+            <div class="field">
+              <p>Price</p>
+              <input type="text" />
+            </div>
+            <div class="field">
+              <p>Discounted Amount</p>
+              <input type="text" />
+            </div>
+            <div class="field-th">
+              <p>Upload Thumbnail</p>
+              <div id="drop-area">
+                <input
+                  type="file"
+                  id="fileElem"
+                  max-size="2000"
+                  multiple
+                  accept="image/*"
+                  onchange="handleFiles(this.files)"
+                />
+                <div id="gallery"></div>
+                <div class="pbb">
+                  <progress id="progress-bar" max="100" value="0"></progress>
+                  <label class="button" for="fileElem">Select some files</label>
                 </div>
-                <div class="column2">
-                    <div class="field">
-                        <p>Manufactured By</p>
-                        <input type="number">
-                    </div>
-                    <div class="field">
-                        <p>Batch Number.</p>
-                        <input type="number">
-                    </div>
-                    <div class="field">
-                        <p>HSN Code</p>
-                        <input type="number">
-                    </div>
-                    <div class="field">
-                        <p>Expiry Date</p>
-                        <input type="number">
-                    </div>
-                    <div class="field">
-                        <p>Total In Stalk</p>
-                        <input type="number">
-                    </div>        
-                </div>
-                
-            </form>
-        </div>
+              </div>
+            </div>
+            <button class="save" type="submit">Save</button>
+          </div>
+          <div class="column2">
+            <div class="field">
+              <p>Manufactured By</p>
+              <input type="number" />
+            </div>
+            <div class="field">
+              <p>Batch Number.</p>
+              <input type="number" />
+            </div>
+            <div class="field">
+              <p>HSN Code</p>
+              <input type="number" />
+            </div>
+            <div class="field">
+              <p>Expiry Date</p>
+              <input type="number" />
+            </div>
+            <div class="field">
+              <p>Total In Stalk</p>
+              <input type="number" />
+            </div>
+          </div>
+        </form>
+      </div>
     </section>
     <script src="../public/js/dropbox.js"></script>
-</body>
+  </body>
 </html>
