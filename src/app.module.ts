@@ -5,8 +5,7 @@ import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
 import { ModelService } from './model/model.service';
 
-
-// Services 
+// Services
 import { AuthModule } from './auth/auth.module';
 import { SecurityModule } from './security/security.module';
 
@@ -14,12 +13,15 @@ import { AdminModule } from './admin/admin.module';
 import { ModelModule } from './model/model.module';
 import { SessionExecutorModule } from './session-executor/session-executor.module';
 
-
-
-
 @Module({
-  imports: [AuthModule, SecurityModule,  AdminModule, ModelModule, SessionExecutorModule],
+  imports: [
+    AuthModule,
+    SecurityModule,
+    AdminModule,
+    ModelModule,
+    SessionExecutorModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, DatabaseService, ModelService,SecurityService],
+  providers: [AppService, DatabaseService, ModelService, SecurityService],
 })
 export class AppModule {}
