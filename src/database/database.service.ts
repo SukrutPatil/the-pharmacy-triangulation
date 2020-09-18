@@ -1,8 +1,8 @@
-import { ModuleType } from './../model/model.service';
+
 import { Injectable } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-import { async } from 'rxjs';
-enum EntryType {
+
+export enum EntryType {
   PRODUCT,
   MODULE,
   TRANSACTION,
@@ -10,7 +10,7 @@ enum EntryType {
   SESSION,
   DRUG,
 }
-enum QueryStatus {
+export enum QueryStatus {
   FAILED,
   SUCCESSFULL,
 }
@@ -95,7 +95,8 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
     'category',
     'counsellingDate',
     'sessionId',
-  ],};
+  ],
+};
 /**
  *The Database Core Connector
  *
@@ -197,7 +198,7 @@ export class DatabaseService {
     return new Promise(resolve => {
       let objectToResolve: DBReturnInterface;
       objectToResolve.status = QueryStatus.SUCCESSFULL;
-      this.pool.query(`select * from ${tblname} ${optionalWhereClause}`,(err,result)=>{
+      this.pool.query(`select * from ${tblname} ${optionalWhereClause}`, (err, result) => {
         if (err) {
           objectToResolve.error = err;
           objectToResolve.status = QueryStatus.FAILED;
@@ -210,9 +211,12 @@ export class DatabaseService {
   private generateInsertQuerySkeleton = (
     tableDefinition: TableDefinitionInterface,
   ): string => {
-    const theQuery = `insert into ${
-      tableDefinition.tableName
-    }(${tableDefinition.columnNames.toString()}) VALUES ?`;
+    const theQuery = `insert into ${tableDefinition.tableName
+      }(${tableDefinition.columnNames.toString()}) VALUES ?`;
     return theQuery;
   };
+
+  getEntryType = () => {
+    return EntryType;
+  }
 }

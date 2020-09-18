@@ -6,45 +6,15 @@ import { Request, Response } from 'express';
 // '' Will work for home page if User hasn't login yet
 // if user logined, then it user/... routing will work
 export class UserController {
-  constructor(private readonly se: SessionExecutorService) {}
+  constructor(private readonly se: SessionExecutorService) { }
 
-  @Get('login')
-  @Render('Login.ejs')
-  getUserLogin(): any {
-    return { userNotFoundError: 'No' };
-  }
-
-  @Post('userLoginAction')
-  adminLoginAction(@Req() req: Request, @Res() res: Response): any {
-    const { userEmail, userPassword } = req.body;
-    throw 'expects further implementation';
-    /****
-     * Check if the user exists as admin in database
-     * Add information to the req.session object
-     * req.session.loggedInUser = username
-     * If yes, render AllModules.ejs
-     * If no, render AdminLogin with {userNotFound:'Yes'}
-     *  */
-  }
-
-  @Get('membership')
-  getMemebership(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('MembershipBuying', {});
-      },
-      () => {
-        res.status(301).redirect('login');
-      },
-    );
-  }
-
-  @Post('membershipBuying')
-  buyMembership(@Req() req: Request, @Res() res: Response): any {
-    const { name, email, phNo, password, ctype } = req.body;
-    throw 'expects further implementation';
+  @Get(['', 'AllModules'])
+  getAllModules(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(req, res, () => {
+      res.render('AllModules', {}, (err: Error, html: String) => { if (err) res.status(501).redirect('../'); else res.send(html) })
+    }, () => {
+      res.status(307).redirect('../auth/login');
+    });
   }
 
   @Get('MedicationCounseling')
@@ -138,6 +108,3 @@ export class UserController {
     );
   }
 
-  @Get('aboutUs')
-  aboutUs() {}
-}
