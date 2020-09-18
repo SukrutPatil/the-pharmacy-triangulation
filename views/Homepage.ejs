@@ -15,7 +15,7 @@
         <nav>
             <div class="logo"><img src="" alt=""> <h1>LOGO</h1></div>
             <ul class="nav-links">
-                <li><a href="#home">Medication counseling</a></li>
+                <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
                 <li><a href="#writings">Entrepreneurship counseling</a></li>
                 <li><a href="#aboutme">Career counseling</a></li>
                 <li><a href="#designs">Diet counseling</a></li> 
@@ -40,10 +40,12 @@
                 <button><p>Be a member</p></button>
                 <%if(!loggedInUser) { %>
                 <!-- If User Is Not Logged In -->
-                <button>
-                    <p>Log In</p>
-                    <img src="../public/assets/frontArrow.png" alt="">
-                </button>
+                <a href="/user/login">
+                    <button>
+                        <p>Log In</p>
+                        <img src="../public/assets/frontArrow.png" alt="">
+                    </button>
+                </a>
                 <% } else {%>
 
                 <!-- If User Is Logged In -->

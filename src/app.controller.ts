@@ -7,8 +7,13 @@ export class AppController {
 
   @Get()
   @Render('Homepage.ejs')
-  getHomePage():any{
-    return {loggedInUser:""};
+  getHomePage(): any {
+    return { loggedInUser: '' };
   }
-  
+
+  @Get('aboutUs')
+  @Render('AboutUs.ejs')
+  getAboutUSPage(): any {
+    return {};
+  }
 }

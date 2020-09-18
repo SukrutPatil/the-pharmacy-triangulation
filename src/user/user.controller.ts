@@ -56,7 +56,7 @@ export class UserController {
         res.render('Medication', {});
       },
       () => {
-        res.status(301).redirect('login');
+        res.status(301).redirect('../auth/login');
       },
     );
   }
@@ -79,7 +79,7 @@ export class UserController {
         res.render('Entrepreneurship', {});
       },
       () => {
-        res.status(301).redirect('login');
+        res.status(301).redirect('../auth/login');
       },
     );
   }
@@ -99,7 +99,7 @@ export class UserController {
         res.render('Career', {});
       },
       () => {
-        res.status(301).redirect('login');
+        res.status(301).redirect('../auth/login');
       },
     );
   }
@@ -119,7 +119,7 @@ export class UserController {
         res.render('Diet', {});
       },
       () => {
-        res.status(301).redirect('login');
+        res.status(301).redirect('../auth/login');
       },
     );
   }
@@ -133,11 +133,8 @@ export class UserController {
         res.render('ProductSelling', {});
       },
       () => {
-        res.status(301).redirect('login');
+        res.status(301).redirect('../auth/login');
       },
     );
   }
-
-  @Get('aboutUs')
-  aboutUs() {}
 }
