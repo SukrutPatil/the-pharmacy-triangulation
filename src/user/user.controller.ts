@@ -2,7 +2,7 @@ import { Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
 import { SessionExecutorService } from 'src/session-executor/session-executor.service';
 import { Request, Response } from 'express';
 
-@Controller('user' || '')
+@Controller('user')
 // '' Will work for home page if User hasn't login yet
 // if user logined, then it user/... routing will work
 export class UserController {

@@ -12,6 +12,7 @@ import { SecurityModule } from './security/security.module';
 import { AdminModule } from './admin/admin.module';
 import { ModelModule } from './model/model.module';
 import { SessionExecutorModule } from './session-executor/session-executor.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SessionExecutorModule } from './session-executor/session-executor.modul
     AdminModule,
     ModelModule,
     SessionExecutorModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService, ModelService, SecurityService],
