@@ -61,8 +61,10 @@ export class AuthController {
   postSignupInformation() {
     throw new Error('Method not implemented.');
   }
-  signoutAction() {
-    throw new Error('Method not implemented.');
+  @Get('signout')
+  signoutAction(@Req() req:Request, @Res() res:Response) {
+    delete req.session.loggedInUser;
+    res.redirect('./login');
   }
 
 }
