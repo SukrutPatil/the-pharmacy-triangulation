@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick-theme.css" />
 </head>
+
 <body>
     <div class="nav-container">
         <nav>
-            <div class="logo"><img src="" alt=""> <h1>LOGO</h1></div>
+            <div class="logo"><img src="" alt="">
+                <h1>LOGO</h1>
+            </div>
             <ul class="nav-links">
                 <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
                 <li><a href="#writings">Entrepreneurship counseling</a></li>
                 <li><a href="#aboutme">Career counseling</a></li>
-                <li><a href="#designs">Diet counseling</a></li> 
+                <li><a href="#designs">Diet counseling</a></li>
                 <li><a href="#arts">Products</a></li>
                 <li><a href="#arts">Articles</a></li>
             </ul>
@@ -33,14 +37,16 @@
         <div class="heading">
             <h1>ATMx</h1>
             <h2>Health Care</h2>
-            <p class="companymoto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Veniam magni reiciendis cum sunt doloremque deleniti facilis 
+            <p class="companymoto">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Veniam magni reiciendis cum sunt doloremque deleniti facilis
                 corrupti, consectetur assumenda dicta.</p>
             <div class="btns">
-                <button><p>Be a member</p></button>
+                <button>
+                    <p>Be a member</p>
+                </button>
                 <%if(!loggedInUser) { %>
                 <!-- If User Is Not Logged In -->
-                <a href="/user/login">
+                <a href="/auth/login">
                     <button>
                         <p>Log In</p>
                         <img src="../public/assets/frontArrow.png" alt="">
@@ -49,52 +55,52 @@
                 <% } else {%>
 
                 <!-- If User Is Logged In -->
-                
+
                 <% } %>
 
-            </div>  
+            </div>
         </div>
         <div class="info">
             <h1>What is being a Member?</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Voluptatem inventore mollitia, officia magnam, porro omnis 
-                maiores dignissimos aliquam nobis optio laudantium, voluptate 
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptatem inventore mollitia, officia magnam, porro omnis
+                maiores dignissimos aliquam nobis optio laudantium, voluptate
                 animi velit adipisci. Earum amet sint voluptates necessitatibus?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Voluptatem inventore mollitia, officia magnam, porro omnis 
-                maiores dignissimos aliquam nobis optio laudantium, voluptate 
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptatem inventore mollitia, officia magnam, porro omnis
+                maiores dignissimos aliquam nobis optio laudantium, voluptate
                 animi velit adipisci. Earum amet sint voluptates necessitatibus?
             </p>
-        </div>    
+        </div>
     </section>
     <section class="companyInfo">
         <div class="column1">
             <h1>What we do?</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus a necessitatibus hic magnam totam, itaque consequuntur
-                pariatur laudantium, atque tempora autem, ab aut vel nihil est at 
+                pariatur laudantium, atque tempora autem, ab aut vel nihil est at
                 voluptatem mollitia ipsam.
                 Possimus a necessitatibus hic magnam totam, itaque consequuntur
-                pariatur laudantium, atque tempora autem, ab aut vel nihil est at 
+                pariatur laudantium, atque tempora autem, ab aut vel nihil est at
                 voluptatem mollitia ipsam.
             </p>
             <button>Book A Session Now...</button>
             <br>
             <video width="350" height="240" controls>
                 <source src="../public/assets/demo.mp4" type="video/mp4">
-              </video>
-            
+            </video>
+
         </div>
         <div class="column2">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus a necessitatibus hic magnam totam, itaque consequuntur
-                pariatur laudantium, atque tempora autem, ab aut vel nihil est at 
+                pariatur laudantium, atque tempora autem, ab aut vel nihil est at
                 voluptatem mollitia ipsam.
             </p>
             <img src="../public/assets/doctorImg.png" alt="">
         </div>
     </section>
-   <section class="products">
+    <section class="products">
         <h1>Products</h1>
         <h2>Popular among the buyers</h2>
         <div class="pro-crousel">
@@ -153,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-              
+
             </div>
         </div>
         <div class="allProducts" style="background: white;
@@ -164,22 +170,22 @@
         padding-right: 15px;
         font-size: 20px;
         margin:40px auto; border-radius: 10px;">All Products</div>
-   </section>
-   <section class="knowledgeCenter">
-       <h1>Knowledge Center</h1>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-           Vero iure officia earum, omnis hic delectus corporis! Dolor omnis 
-           quibusdam distinctio quis labore voluptates autem aut vitae officiis 
-           debitis, suscipit beatae.</p>
+    </section>
+    <section class="knowledgeCenter">
+        <h1>Knowledge Center</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Vero iure officia earum, omnis hic delectus corporis! Dolor omnis
+            quibusdam distinctio quis labore voluptates autem aut vitae officiis
+            debitis, suscipit beatae.</p>
         <div class="allcards">
             <div class="card">
                 <img src="../public/assets/vagies.png" alt="">
                 <div class="desc">
                     <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
                     </a>
                 </div>
             </div>
@@ -187,10 +193,10 @@
                 <img src="../public/assets/vagies.png" alt="">
                 <div class="desc">
                     <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
                     </a>
                 </div>
             </div>
@@ -198,32 +204,10 @@
                 <img src="../public/assets/vagies.png" alt="">
                 <div class="desc">
                     <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
                     </a>
                 </div>
             </div>
@@ -231,94 +215,117 @@
                 <img src="../public/assets/vagies.png" alt="">
                 <div class="desc">
                     <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
                     </a>
                 </div>
             </div>
-   </section>
-   <section class="footer">
-       <div class="address">
-           <h1>Address</h1>
-           <p>Pushp Vihar, Sector 3 MB Road, New Delhi 110017</p>
-       </div>
-       <div class="contact">
-           <h1>Contacts</h1>
-           <p>Mobile: +91 9416508383</p>
-           <a href="">Email : abc@gmail.com</a>
-       </div>
-       <div class="services">
-           <h1>Services</h1>
-           <ul>
-               <li><a href="">Medication counseling</a></li>
+            <div class="card">
+                <img src="../public/assets/vagies.png" alt="">
+                <div class="desc">
+                    <a href="">
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../public/assets/vagies.png" alt="">
+                <div class="desc">
+                    <a href="">
+                        <p class="mName">Module Name</p>
+                        <p class="price">Rs. 500</p>
+                        <p class="catagory">Medication</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                    </a>
+                </div>
+            </div>
+    </section>
+    <section class="footer">
+        <div class="address">
+            <h1>Address</h1>
+            <p>Pushp Vihar, Sector 3 MB Road, New Delhi 110017</p>
+        </div>
+        <div class="contact">
+            <h1>Contacts</h1>
+            <p>Mobile: +91 9416508383</p>
+            <a href="">Email : abc@gmail.com</a>
+        </div>
+        <div class="services">
+            <h1>Services</h1>
+            <ul>
+                <li><a href="">Medication counseling</a></li>
                 <li><a href="">Entrepreneurship counseling</a></li>
                 <li><a href="">Career counseling</a></li>
                 <li><a href="">Diet counseling</a></li>
                 <li><a href="">Medical Products</a></li>
-                
-           </ul>
-         
-       </div>
-       <div class="workhours">
-           <h1>Work hours</h1>
-           <p>Mon-Sat : 9:00 AM To 6:00 PM</p>
-           <p>Sun : 10:00 AM To 2:00 PM</p>
-       </div>
-       <div class="socials">
-           <h1>Socials</h1>
-           <div class="facebook">
-               <img src="../public/assets/icons8-facebook-50.png" alt="">
-               <a href="">Facebook</a>
-           </div>
-           <div class="twitter">
-               <img src="../public/assets/icons8-twitter-50.png" alt="">
-               <a href="">Twitter</a>
-           </div>
-           <div class="youtube">
-               <img src="../public/assets/icons8-play-button-50.png" alt="">
-               <a href="">YouTube</a>
-           </div>
-       </div>
-       <div class="credits">
-           Made in India | Designed and Developed in By Sukrut, Jaskirat & Sumit
-       </div>
-   </section>
+
+            </ul>
+
+        </div>
+        <div class="workhours">
+            <h1>Work hours</h1>
+            <p>Mon-Sat : 9:00 AM To 6:00 PM</p>
+            <p>Sun : 10:00 AM To 2:00 PM</p>
+        </div>
+        <div class="socials">
+            <h1>Socials</h1>
+            <div class="facebook">
+                <img src="../public/assets/icons8-facebook-50.png" alt="">
+                <a href="">Facebook</a>
+            </div>
+            <div class="twitter">
+                <img src="../public/assets/icons8-twitter-50.png" alt="">
+                <a href="">Twitter</a>
+            </div>
+            <div class="youtube">
+                <img src="../public/assets/icons8-play-button-50.png" alt="">
+                <a href="">YouTube</a>
+            </div>
+        </div>
+        <div class="credits">
+            Made in India | Designed and Developed in By Sukrut, Jaskirat & Sumit
+        </div>
+    </section>
     <script src="../public/js/nav.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../public/css/slick/slick.min.js"></script>
 
-    <script>   
-        $(document).ready(function(){
-        $('.your-class').slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 5000,
-            responsive: [
-                {
-                breakpoint: 1025,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: false
-                }
-                },
-                {
-                breakpoint: 800,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-                },
+    <script>
+        $(document).ready(function () {
+            $('.your-class').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                responsive: [
+                    {
+                        breakpoint: 1025,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: false
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: false
+                        }
+                    },
                 ]
             });
         });
-   </script>
+    </script>
 </body>
+
 </html>

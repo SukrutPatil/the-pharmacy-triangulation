@@ -106,14 +106,21 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
  * @export
  * @class DatabaseService
  */
+let self:any;
 @Injectable()
 export class DatabaseService {
   pool = new Pool({
     user: 'postgres',
-    host: 'database.server.com',
+    host: 'localhost',
+    port: 1226,
     database: 'pharmadb',
     password: 'toor',
   });
+   self = this
+  
+
+
+
   /*** INSERT QUERY */
   /**
    *Generically accepts objects defined in Model Service Class
@@ -156,6 +163,7 @@ export class DatabaseService {
     return new Promise(resolve => {
       let objectToResolve: DBReturnInterface;
       objectToResolve.status = QueryStatus.SUCCESSFULL;
+      
       this.pool.query(insertQuery, values, (err, result) => {
         if (err) {
           objectToResolve.error = err;
@@ -175,6 +183,8 @@ export class DatabaseService {
     etype: EntryType,
     optionalWhereClause = '',
   ): Promise<DBReturnInterface> => {
+
+
     let tblname: string;
     switch (etype) {
       case EntryType.DRUG:
@@ -196,13 +206,22 @@ export class DatabaseService {
         break;
     }
     return new Promise(resolve => {
-      let objectToResolve: DBReturnInterface;
-      objectToResolve.status = QueryStatus.SUCCESSFULL;
-      this.pool.query(`select * from ${tblname} ${optionalWhereClause}`, (err, result) => {
+      let objectToResolve: DBReturnInterface = { status: QueryStatus.SUCCESSFULL };
+      const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
+      console.log(theQuery);
+      this.pool.connect((err,client)=>{
+        if (err) console.log(err);
+        client.query
+      });
+      this.pool.query(theQuery, (err, result) => {
         if (err) {
+          console.log("Query Callback Error");
           objectToResolve.error = err;
           objectToResolve.status = QueryStatus.FAILED;
-        } else objectToResolve.resultObject = result;
+        } else {
+          console.log("Query Callback no Error");
+          objectToResolve.resultObject = result;
+        }
         resolve(objectToResolve);
       });
     });

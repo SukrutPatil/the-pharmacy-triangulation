@@ -20,10 +20,13 @@ export class AuthController {
   @Post('login')
   async postLoginInformation(@Req() req: Request, @Res() res: Response): Promise<any> {
     const { email, password } = req.body;
-    const theResultSet = await this.DBService.retrieve(EntryType.MEMBER, `where email = ${email} AND password = ${password}`);
+    const theResultSet = await this.DBService.retrieve(EntryType.MEMBER, `where email = '${email}'`);
     if (theResultSet.status == QueryStatus.FAILED) {
+      console.log('Here');
+      console.log(theResultSet.error)
       // It means there has been an SQLException
       res.status(501).redirect("../");
+    
     }
     else {
       //Check out the result object
@@ -31,11 +34,13 @@ export class AuthController {
       // The ResultObject is basically array(row) of objects(values)
       // If no rows are found, it means user not exists
       if (theResultObject.rowCount == 0) {
+        console.log("Zero")
         // Render the login page again,but with additional info warning
         res.render('Login', { userNotFound: true }, (err: Error, html: String) => { if (err) res.status(501).send('../'); else res.send(html); })
       }
       //If there is only one row, it means the user has been found
       else if (theResultObject.rowCount == 1) {
+        console.log("One")
         // First write the session object
         req.session.loggedInUser = theResultObject.rows[0].name; // The Name of User
         //Redirect to all modules page
@@ -43,6 +48,7 @@ export class AuthController {
       }
       // If there are more than one row 
       else {
+        console.log("More than one")
         // Client has nothing to do with this, this is a data-redundancy issue
         // So we will just log this issue to the server log
         console.log(`Multiple Rows Captured At Database on entering email = ${email} and password = ${password}`);
