@@ -1,7 +1,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-
+const jsonData = require('../../DatabaseInfo.json');
 export enum EntryType {
   PRODUCT,
   MODULE,
@@ -107,20 +107,12 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
  * @class DatabaseService
  */
 let self:any;
+const DBConfigAddress:string = "../../DatabaseInfo.json";
 @Injectable()
 export class DatabaseService {
-  pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    port: 1226,
-    database: 'pharmadb',
-    password: 'toor',
-  });
+
+  pool = new Pool(jsonData)
    self = this
-  
-
-
-
   /*** INSERT QUERY */
   /**
    *Generically accepts objects defined in Model Service Class
