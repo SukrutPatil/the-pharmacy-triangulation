@@ -43,8 +43,8 @@ export class AuthController {
         console.log("One")
         // First write the session object
         req.session.loggedInUser = theResultObject.rows[0].name; // The Name of User
-        //Redirect to all modules page
-        res.redirect('../user/allModules');
+        //Redirect to home page
+        res.redirect('../');
       }
       // If there are more than one row 
       else {

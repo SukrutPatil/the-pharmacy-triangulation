@@ -107,7 +107,7 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
  * @class DatabaseService
  */
 let self:any;
-const DBConfigAddress:string = "../../DatabaseInfo.json";
+
 @Injectable()
 export class DatabaseService {
 
