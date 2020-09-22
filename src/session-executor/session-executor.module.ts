@@ -2,6 +2,6 @@ import { Module } from '@nestjs/common';
 import { SessionExecutorService } from './session-executor.service';
 
 @Module({
-  providers: [SessionExecutorService]
+  providers: [SessionExecutorService],
 })
 export class SessionExecutorModule {}
