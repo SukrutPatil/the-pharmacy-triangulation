@@ -56,7 +56,7 @@ section form .column2 {
 }
 
 section form .column2 .field {
-  width: 80%;
+  width: 100%;
   padding: 5px;
 }
 
@@ -80,7 +80,7 @@ section form .column2 .field textarea {
 
 section form .column2 .field-th {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 0px;
   padding: 5px;
 }
 
