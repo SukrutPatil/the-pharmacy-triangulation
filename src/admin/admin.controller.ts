@@ -12,7 +12,7 @@ import { Request, Response } from 'express';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly se: SessionExecutorService) {}
+  constructor(private readonly se: SessionExecutorService) { }
 
   // Asking user to login
   @Get('login')
@@ -36,16 +36,16 @@ export class AdminController {
   // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('NewProduct', {});
-      },
-      () => {
-        res.status(301).redirect('login');
-      },
-    );
+    // this.se.sessionExecutor(
+    //   req,
+    //   res,
+    //   () => {
+    res.render('NewProduct', {});
+    //   },
+    //   () => {
+    //     res.status(301).redirect('login');
+    //   },
+    // );  
   }
 
   @Post('newProduct')
@@ -161,7 +161,7 @@ export class AdminController {
    */
 
   @Get('delete/:id')
-  deleteItem(@Req() req: Request, @Res() res: Response): any {}
+  deleteItem(@Req() req: Request, @Res() res: Response): any { }
   /**
    * Based on id the item to be deleted can be
    * easily distingus.
