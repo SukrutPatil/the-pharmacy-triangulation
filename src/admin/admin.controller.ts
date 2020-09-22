@@ -9,10 +9,12 @@ import {
   Res,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { ModelService } from '../model/model.service';
+import { DatabaseService } from '../database/database.service';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly se: SessionExecutorService) { }
+  constructor(private readonly se: SessionExecutorService,private readonly mg:ModelService,private readonly db:DatabaseService) { }
 
   // Asking user to login
   @Get('login')
@@ -50,7 +52,17 @@ export class AdminController {
 
   @Post('newProduct')
   createNewProduct(@Req() req: Request, @Res() res: Response): any {
-    throw 'expects further implementation';
+    const {
+      product_name,
+      product_price,
+      product_discounted_amount,
+      product_manufactured_by,
+      product_batch_number,
+      product_hsn_code,
+      product_expiry_date,
+      product_total_in_stock
+    } = req.body;
+   
   }
 
   // Creating a new article
