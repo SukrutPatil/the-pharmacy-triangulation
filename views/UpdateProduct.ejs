@@ -70,17 +70,45 @@
         <form action="admin/updateProduct" method="POST">
           <div class="column1">
             <div class="field">
-              <p>Name</p>
-              <input type="text" />
+              <p>Brand Name</p>
+              <input type="text" name="brand_name" />
             </div>
             <div class="field">
-              <p>Price</p>
-              <input type="text" />
+              <p>Brand Code</p>
+              <input type="text" name="brand_code" />
             </div>
             <div class="field">
-              <p>Discounted Amount</p>
-              <input type="text" />
+              <p>Strength</p>
+              <input type="text" name="strength" />
             </div>
+            <div class="field">
+              <p>Quantity</p>
+              <input type="number" name="qty" />
+            </div>
+            <div class="field">
+              <p>Packing</p>
+              <input type="text" name="packing" />
+            </div>
+            <div class="field">
+              <p>Manufacturer</p>
+              <input type="text" name="manufacturer" />
+            </div>
+            <div class="field">
+              <p>Marketed Byt</p>
+              <input type="text" name="marketedby" />
+            </div>
+            <div class="field">
+              <p>Batch No.</p>
+              <input type="text" name="batch_number" />
+            </div>
+            <div class="field">
+              <p>HSN Code.</p>
+              <input type="text" name="hsn_code" />
+            </div>
+            <button class="save" type="submit">Save</button>
+            <button class="delete" type="submit">Delete</button>
+          </div>
+          <div class="column2">
             <div class="field-th">
               <p>Upload Thumbnail</p>
               <div id="drop-area">
@@ -91,6 +119,7 @@
                   multiple
                   accept="image/*"
                   onchange="handleFiles(this.files)"
+                  name="product_thumbnail"
                 />
                 <div id="gallery"></div>
                 <div class="pbb">
@@ -99,29 +128,37 @@
                 </div>
               </div>
             </div>
-            <button class="save" type="submit">Save</button>
-            <button class="delete" type="submit">Delete</button>
-          </div>
-          <div class="column2">
             <div class="field">
-              <p>Manufactured By</p>
-              <input type="number" />
+              <p>Mfg Date</p>
+              <input type="date" name="mfg_date" />
             </div>
             <div class="field">
-              <p>Batch Number.</p>
-              <input type="number" />
+              <p>Exp Date</p>
+              <input type="date" name="exp_date" />
             </div>
             <div class="field">
-              <p>HSN Code</p>
-              <input type="number" />
+              <p>Mrp</p>
+              <input type="number" name="product_mrp" />
             </div>
             <div class="field">
-              <p>Expiry Date</p>
-              <input type="number" />
+              <p>Purchase Price</p>
+              <input type="number" name="product_purchase_price" />
             </div>
             <div class="field">
-              <p>Total In Stalk</p>
-              <input type="number" />
+              <p>Rate</p>
+              <input type="number" name="product_rate" />
+            </div>
+            <div class="field">
+              <p>SGST</p>
+              <input type="number" name="product_sgst" />
+            </div>
+            <div class="field">
+              <p>CGST</p>
+              <input type="number" name="product_cgst" />
+            </div>
+            <div class="field">
+              <p>Cost Var</p>
+              <input type="number" name="product_cost_var" />
             </div>
           </div>
         </form>
