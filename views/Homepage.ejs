@@ -55,7 +55,12 @@
                 <% } else {%>
 
                 <!-- If User Is Logged In -->
-
+                <a href="/auth/signout">
+                    <button>
+                        <p><%= loggedInUser %></p>
+                        <img src="../public/assets/frontArrow.png" alt="">
+                    </button>
+                </a>
                 <% } %>
 
             </div>
