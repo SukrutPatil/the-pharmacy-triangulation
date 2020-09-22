@@ -6,15 +6,23 @@ import { Request, Response } from 'express';
 // '' Will work for home page if User hasn't login yet
 // if user logined, then it user/... routing will work
 export class UserController {
-  constructor(private readonly se: SessionExecutorService) { }
+  constructor(private readonly se: SessionExecutorService) {}
 
   @Get(['', 'AllModules'])
   getAllModules(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(req, res, () => {
-      res.render('AllModules', {}, (err: Error, html: String) => { if (err) res.status(501).redirect('../'); else res.send(html) })
-    }, () => {
-      res.status(307).redirect('../auth/login');
-    });
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('AllModules', {}, (err: Error, html: String) => {
+          if (err) res.status(501).redirect('../');
+          else res.send(html);
+        });
+      },
+      () => {
+        res.status(307).redirect('../auth/login');
+      },
+    );
   }
 
   @Get('MedicationCounseling')
@@ -108,4 +116,17 @@ export class UserController {
     );
   }
 
+  @Get('Articles')
+  getArticle(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('Articles', {});
+      },
+      () => {
+        res.status(301).redirect('../auth/login');
+      },
+    );
+  }
 }

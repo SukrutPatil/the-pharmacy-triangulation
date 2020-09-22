@@ -9,10 +9,12 @@ import {
   Res,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { ModelService } from '../model/model.service';
+import { DatabaseService } from '../database/database.service';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly se: SessionExecutorService) {}
+  constructor(private readonly se: SessionExecutorService,private readonly mg:ModelService,private readonly db:DatabaseService) { }
 
   // Asking user to login
   @Get('login')
@@ -36,21 +38,31 @@ export class AdminController {
   // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('NewProduct', {});
-      },
-      () => {
-        res.status(301).redirect('login');
-      },
-    );
+    // this.se.sessionExecutor(
+    //   req,
+    //   res,
+    //   () => {
+    res.render('NewProduct', {});
+    //   },
+    //   () => {
+    //     res.status(301).redirect('login');
+    //   },
+    // );  
   }
 
   @Post('newProduct')
   createNewProduct(@Req() req: Request, @Res() res: Response): any {
-    throw 'expects further implementation';
+    const {
+      product_name,
+      product_price,
+      product_discounted_amount,
+      product_manufactured_by,
+      product_batch_number,
+      product_hsn_code,
+      product_expiry_date,
+      product_total_in_stock
+    } = req.body;
+   
   }
 
   // Creating a new article
@@ -161,7 +173,7 @@ export class AdminController {
    */
 
   @Get('delete/:id')
-  deleteItem(@Req() req: Request, @Res() res: Response): any {}
+  deleteItem(@Req() req: Request, @Res() res: Response): any { }
   /**
    * Based on id the item to be deleted can be
    * easily distingus.

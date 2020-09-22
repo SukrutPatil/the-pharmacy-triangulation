@@ -18,6 +18,7 @@
     />
     <title>Document</title>
   </head>
+
   <body>
     <div class="nav-container">
       <nav>
@@ -67,19 +68,23 @@
     <section>
       <h1>Add New Product</h1>
       <div class="main">
-        <form action="admin/newProduct" method="POST">
+        <form
+          action="admin/newProduct"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           <div class="column1">
             <div class="field">
               <p>Name</p>
-              <input type="text" />
+              <input type="text" name="product_name" />
             </div>
             <div class="field">
               <p>Price</p>
-              <input type="text" />
+              <input type="text" name="product_price" />
             </div>
             <div class="field">
               <p>Discounted Amount</p>
-              <input type="text" />
+              <input type="text" name="product_discounted_amount" />
             </div>
             <div class="field-th">
               <p>Upload Thumbnail</p>
@@ -91,6 +96,7 @@
                   multiple
                   accept="image/*"
                   onchange="handleFiles(this.files)"
+                  name="product_thumbnail"
                 />
                 <div id="gallery"></div>
                 <div class="pbb">
@@ -104,23 +110,23 @@
           <div class="column2">
             <div class="field">
               <p>Manufactured By</p>
-              <input type="number" />
+              <input type="text" name="product_manufactured_by" />
             </div>
             <div class="field">
               <p>Batch Number.</p>
-              <input type="number" />
+              <input type="text" name="product_batch_number" />
             </div>
             <div class="field">
               <p>HSN Code</p>
-              <input type="number" />
+              <input type="text" name="product_hsn_code" />
             </div>
             <div class="field">
               <p>Expiry Date</p>
-              <input type="number" />
+              <input type="text" name="product_expiry_date" />
             </div>
             <div class="field">
-              <p>Total In Stalk</p>
-              <input type="number" />
+              <p>Total In Stock</p>
+              <input type="text" name="product_total_in_stock" />
             </div>
           </div>
         </form>
