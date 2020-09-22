@@ -14,7 +14,11 @@ import { DatabaseService } from '../database/database.service';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly se: SessionExecutorService,private readonly mg:ModelService,private readonly db:DatabaseService) { }
+  constructor(
+    private readonly se: SessionExecutorService,
+    private readonly mg: ModelService,
+    private readonly db: DatabaseService,
+  ) {}
 
   // Asking user to login
   @Get('login')
@@ -35,6 +39,21 @@ export class AdminController {
      *  */
   }
 
+  @Get('products')
+  getProducts(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        const pID = req.params.id;
+        res.render('AllProducts', {});
+      },
+      () => {
+        res.status(301).redirect('login');
+      },
+    );
+  }
+
   // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
@@ -47,7 +66,7 @@ export class AdminController {
     //   () => {
     //     res.status(301).redirect('login');
     //   },
-    // );  
+    // );
   }
 
   @Post('newProduct')
@@ -60,9 +79,22 @@ export class AdminController {
       product_batch_number,
       product_hsn_code,
       product_expiry_date,
-      product_total_in_stock
+      product_total_in_stock,
     } = req.body;
-   
+  }
+
+  @Get('articles')
+  getAllArticles(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('Articles', {});
+      },
+      () => {
+        res.status(301).redirect('login');
+      },
+    );
   }
 
   // Creating a new article
@@ -85,6 +117,20 @@ export class AdminController {
     throw 'expects further implementation';
   }
 
+  @Get('modules')
+  getAllModule(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('AllModules', {});
+      },
+      () => {
+        res.status(301).redirect('login');
+      },
+    );
+  }
+
   // Creating a new module
   @Get('createNewModule')
   getNewModulePage(@Req() req: Request, @Res() res: Response): any {
@@ -103,6 +149,20 @@ export class AdminController {
   @Post('newModule')
   createNewModule(@Req() req: Request, @Res() res: Response): any {
     throw 'expects further implementation';
+  }
+
+  @Get('sessions')
+  getAllSessions(@Req() req: Request, @Res() res: Response): any {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('AllSessions', {});
+      },
+      () => {
+        res.status(301).redirect('login');
+      },
+    );
   }
 
   // Update a new Product
@@ -173,7 +233,7 @@ export class AdminController {
    */
 
   @Get('delete/:id')
-  deleteItem(@Req() req: Request, @Res() res: Response): any { }
+  deleteItem(@Req() req: Request, @Res() res: Response): any {}
   /**
    * Based on id the item to be deleted can be
    * easily distingus.
