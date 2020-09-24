@@ -71,6 +71,18 @@ export class AuthController {
   postSignupInformation() {
     throw new Error('Method not implemented.');
   }
+
+  @Get('membership')
+  @Render('MembershipBuying.ejs')
+  getMembersipForm(@Req() req: Request, @Res() res: Response): any {
+    throw new Error('Method not implemented');
+  }
+
+  @Post('membershipBuying')
+  getMembership(@Req() req: Request, @Res() res: Response): any {
+    throw 'Method Yet to be implemented';
+  }
+
   @Get('signout')
   signoutAction(@Req() req: Request, @Res() res: Response) {
     delete req.session.loggedInUser;

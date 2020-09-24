@@ -9,28 +9,6 @@ import { throws } from 'assert';
 export class UserController {
   constructor(private readonly se: SessionExecutorService) {}
 
-  @Get('membership')
-  getMembersipForm(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('MembershipBuying', {}, (err: Error, html: String) => {
-          if (err) res.status(501).redirect('../');
-          else res.send(html);
-        });
-      },
-      () => {
-        res.status(307).redirect('../auth/login');
-      },
-    );
-  }
-
-  @Post('membershipBuying')
-  getMembership(@Req() req: Request, @Res() res: Response): any {
-    throw 'Method Yet to be implemented';
-  }
-
   @Get(['', 'AllModules'])
   getAllModules(@Req() req: Request, @Res() res: Response): any {
     this.se.sessionExecutor(
@@ -49,18 +27,8 @@ export class UserController {
   }
 
   @Get('MedicationCounseling')
-  getMedicationCounseling(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('Medication', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  @Render('Medication.ejs')
+  getMedicationCounseling(@Req() req: Request, @Res() res: Response): any {}
 
   @Post('Medication')
   getMedicationSession(@Req() req: Request, @Res() res: Response): any {
@@ -69,21 +37,11 @@ export class UserController {
   }
 
   @Get('EntrepreneurshipCounseling')
+  @Render('Entrepreneurship.ejs')
   getEntrepreneurshipCounseling(
     @Req() req: Request,
     @Res() res: Response,
-  ): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('Entrepreneurship', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  ): any {}
 
   @Post('Entrepreneurship')
   getEntrepreneurshipSession(@Req() req: Request, @Res() res: Response): any {
@@ -92,18 +50,8 @@ export class UserController {
   }
 
   @Get('CareerCounseling')
-  getCareerCounseling(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('Career', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  @Render('Career.ejs')
+  getCareerCounseling(@Req() req: Request, @Res() res: Response): any {}
 
   @Post('Career')
   getCareerSession(@Req() req: Request, @Res() res: Response): any {
@@ -112,18 +60,8 @@ export class UserController {
   }
 
   @Get('DietCounseling')
-  getDietCounseling(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('Diet', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  @Render('Diet.ejs')
+  getDietCounseling(@Req() req: Request, @Res() res: Response): any {}
 
   @Post('Diet')
   getDietSession(@Req() req: Request, @Res() res: Response): any {
@@ -132,30 +70,10 @@ export class UserController {
   }
 
   @Get('Products')
-  getProducts(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('ProductSelling', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  @Render('ProductSelling.ejs')
+  getProducts(@Req() req: Request, @Res() res: Response): any {}
 
   @Get('Articles')
-  getArticle(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
-      req,
-      res,
-      () => {
-        res.render('Articles', {});
-      },
-      () => {
-        res.status(301).redirect('../auth/login');
-      },
-    );
-  }
+  @Render('Articles.ejs')
+  getArticle(@Req() req: Request, @Res() res: Response): any {}
 }

@@ -48,11 +48,7 @@
         <form action="/auth/login" method="POST">
           <div class="emailField">
             <p>Email</p>
-<<<<<<< HEAD
-            <input type="email"  name = "email"/>
-=======
             <input type="text" name="email" />
->>>>>>> 9661c9205c8bc7162bf73cb21f3338d899b53273
           </div>
           <div class="passwordField">
             <p>Password</p>
@@ -62,17 +58,19 @@
         </form>
         <a class="forgot" href="">Forgot Password?</a>
         <div class="adminLogin">
-          <a href="adminLogIn.html">
+          <a href="/admin/login">
             <img src="../public/assets/clientBtn.png" alt="" />
           </a>
         </div>
       </div>
       <div class="pageShift">
         <p>Not a Member ?</p>
-        <button>
-          <p>Get Membership</p>
-          <img src="../public/assets/frontArrow.png" alt="" />
-        </button>
+        <a href="/auth/membership">
+          <button>
+            <p>Get Membership</p>
+            <img src="../public/assets/frontArrow.png" alt="" />
+          </button>
+        </a>
       </div>
     </section>
 
