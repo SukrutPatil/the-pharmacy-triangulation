@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as session from 'express-session';
+import * as express from 'express';
 import { start } from 'repl';
 declare const module:any;
 async function bootstrap() {
@@ -11,6 +12,12 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
   app.enableCors();
+  app.use(
+    express.urlencoded({
+      extended: true,
+    })
+  );
+  app.use(express.json());
   app.use(session({
     secret: 'MadeByJaskiratSukrutSumit',
     resave: true,

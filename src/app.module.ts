@@ -8,11 +8,11 @@ import { ModelService } from './model/model.service';
 // Services
 import { AuthModule } from './auth/auth.module';
 import { SecurityModule } from './security/security.module';
-
 import { AdminModule } from './admin/admin.module';
 import { ModelModule } from './model/model.module';
 import { SessionExecutorModule } from './session-executor/session-executor.module';
 import { UserModule } from './user/user.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -22,8 +22,11 @@ import { UserModule } from './user/user.module';
     ModelModule,
     SessionExecutorModule,
     UserModule,
+    MulterModule.register({
+      dest: './uploads'
+    })
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService, ModelService, SecurityService],
 })
-export class AppModule {}
+export class AppModule { }

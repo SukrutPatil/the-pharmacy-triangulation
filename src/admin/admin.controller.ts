@@ -1,5 +1,6 @@
 import { SessionExecutorService } from './../session-executor/session-executor.service';
 import {
+  Body,
   Controller,
   Get,
   Post,
@@ -7,11 +8,14 @@ import {
   Render,
   Req,
   Res,
+  UseInterceptors,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ModelService } from '../model/model.service';
-import { DatabaseService } from '../database/database.service';
-
+import { DatabaseService, EntryType } from '../database/database.service';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import * as multer from 'multer';
+import * as mime from 'mime';
 @Controller('admin')
 export class AdminController {
   constructor(
@@ -57,30 +61,89 @@ export class AdminController {
   // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
-    // this.se.sessionExecutor(
-    //   req,
-    //   res,
-    //   () => {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
     res.render('NewProduct', {});
-    //   },
-    //   () => {
-    //     res.status(301).redirect('login');
-    //   },
-    // );
+      },
+      () => {
+        res.status(301).redirect('login');
+      },
+    );
   }
 
   @Post('newProduct')
-  createNewProduct(@Req() req: Request, @Res() res: Response): any {
+  @UseInterceptors(
+    FilesInterceptor('product_thumbnail', 1, {
+      storage: multer.diskStorage({
+        destination: './uploads/products',
+        filename: (_, file, cb) => {
+          const match = ['image/png', 'image/jpeg'];
+          if (match.indexOf(file.mimetype) === -1) {
+            const errorMessage: Error = {
+              message: 'Invalid File',
+              name: 'INVALID_EXTENSION',
+            };
+            return cb(errorMessage, null);
+          }
+          const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
+            file.mimetype
+          )}`;
+          return cb(null, filename);
+        },
+      }),
+    }),
+  )
+  async createNewProduct(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<any> {
     const {
-      product_name,
-      product_price,
-      product_discounted_amount,
-      product_manufactured_by,
-      product_batch_number,
-      product_hsn_code,
-      product_expiry_date,
-      product_total_in_stock,
+      brand_name,
+      brand_code,
+      strength,
+      qty,
+      packing,
+      manufacturer,
+      marketedby,
+      batch_number,
+      hsn_code,
+      mfg_date,
+      exp_date,
+      product_mrp,
+      product_purchase_price,
+      product_rate,
+      product_sgst,
+      product_cgst,
+      product_cost_var,
+      product_sku,
     } = req.body;
+    console.log(req.body);
+    const theDrugObject = this.mg.createDrugObject(
+      brand_name,
+      brand_code,
+      strength,
+      qty,
+      packing,
+      manufacturer,
+      marketedby,
+      batch_number,
+      hsn_code,
+      mfg_date,
+      exp_date,
+      product_mrp,
+      product_purchase_price,
+      product_rate,
+      product_sgst,
+      product_cgst,
+      product_cost_var,
+      product_sku,
+    );
+    console.log('To Database Service');
+    const returnedObject = await this.db.addDrug(theDrugObject);
+    if (returnedObject.error) console.log(returnedObject.error);
+    res.redirect('products')
   }
 
   @Get('articles')
@@ -233,9 +296,10 @@ export class AdminController {
    */
 
   @Get('delete/:id')
-  deleteItem(@Req() req: Request, @Res() res: Response): any {}
+  deleteItem(@Req() req: Request, @Res() res: Response): any {
   /**
    * Based on id the item to be deleted can be
    * easily distingus.
    */
+  }
 }

@@ -1,7 +1,8 @@
-
 import { Injectable } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-const jsonData = require('../../DatabaseInfo.json');
+import { Drug } from '../model/model.service';
+import * as jsonData from '../../DatabaseInfo.json';
+import { dir } from 'console';
 export enum EntryType {
   PRODUCT,
   MODULE,
@@ -66,6 +67,7 @@ const MODULE_TABLE_DEFINITION: TableDefinitionInterface = {
 const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'DrugLedger',
   columnNames: [
+    'id',
     'brandName',
     'brandCode',
     'strnth',
@@ -100,72 +102,141 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
 /**
  *The Database Core Connector
  *
- * Note: This class only returns the result object. The classes using this object must implement further actions on it. 
+ * Note: This class only returns the result object. The classes using this object must implement further actions on it.
  * This implementation must be implemented in controllers.
  * Check out DBReturnInterface above
  * @export
  * @class DatabaseService
  */
-let self:any;
+let self: any;
 
 @Injectable()
 export class DatabaseService {
-
-  pool = new Pool(jsonData)
-   self = this
+  pool = new Pool(jsonData);
+  self = this;
   /*** INSERT QUERY */
   /**
    *Generically accepts objects defined in Model Service Class
    *
    * @memberof DatabaseService
    */
-  public add = async <T>(
-    etype: EntryType,
-    obj: T,
-  ): Promise<DBReturnInterface> => {
-    let insertQuery: string;
-    const values: Array<any> = Object.keys(obj).map(key => obj[key]);
+  // public add = async <T>(
+  //   etype: EntryType,
+  //   obj: T,
+  // ): Promise<DBReturnInterface> => {
+  //   let insertQuery: string;
+  //   const values: Array<any> = Object.keys(obj).map(key => obj[key]);
 
-    switch (etype) {
-      case EntryType.MEMBER:
-        insertQuery = this.generateInsertQuerySkeleton(MEMBER_TABLE_DEFINITION);
-        break;
-      case EntryType.PRODUCT:
-        insertQuery = this.generateInsertQuerySkeleton(
-          PRODUCT_TABLE_DEFINITION,
-        );
-        break;
-      case EntryType.TRANSACTION:
-        insertQuery = this.generateInsertQuerySkeleton(
-          TRANSACTION_TABLE_DEFINITION,
-        );
-        break;
-      case EntryType.MODULE:
-        insertQuery = this.generateInsertQuerySkeleton(MODULE_TABLE_DEFINITION);
-        break;
-      case EntryType.SESSION:
-        insertQuery = this.generateInsertQuerySkeleton(
-          SESSION_TABLE_DEFINITION,
-        );
-        break;
-      case EntryType.DRUG:
-        insertQuery = this.generateInsertQuerySkeleton(DRUG_TABLE_DEFINITION);
-        break;
-    }
+  //   switch (etype) {
+  //     case EntryType.MEMBER:
+  //       insertQuery = this.generateInsertQuerySkeleton(MEMBER_TABLE_DEFINITION);
+  //       break;
+  //     case EntryType.PRODUCT:
+  //       insertQuery = this.generateInsertQuerySkeleton(
+  //         PRODUCT_TABLE_DEFINITION,
+  //       );
+  //       break;
+  //     case EntryType.TRANSACTION:
+  //       insertQuery = this.generateInsertQuerySkeleton(
+  //         TRANSACTION_TABLE_DEFINITION,
+  //       );
+  //       break;
+  //     case EntryType.MODULE:
+  //       insertQuery = this.generateInsertQuerySkeleton(MODULE_TABLE_DEFINITION);
+  //       break;
+  //     case EntryType.SESSION:
+  //       insertQuery = this.generateInsertQuerySkeleton(
+  //         SESSION_TABLE_DEFINITION,
+  //       );
+  //       break;
+  //     case EntryType.DRUG:
+  //       insertQuery = this.generateInsertQuerySkeleton(DRUG_TABLE_DEFINITION);
+  //       break;
+  //   }
+
+  //   return new Promise(resolve => {
+  //     const objectToResolve:DBReturnInterface = {status:QueryStatus.SUCCESSFULL};
+
+  //     console.log("Entering Query Callback: "+insertQuery)
+  //     console.log(values)
+  //     this.pool.query(insertQuery, values, (err, result) => {
+  //       if (err) {
+  //         objectToResolve.error = err;
+  //         objectToResolve.status = QueryStatus.FAILED;
+  //       } else objectToResolve.resultObject = result;
+  //       resolve(objectToResolve);
+  //     });
+  //   });
+  // };
+  public addDrug = async (drugObject: Drug): Promise<any> => {
+    const insertQuerySkeleton = `insert into pharmaschema."${
+      DRUG_TABLE_DEFINITION.tableName
+    }"(${DRUG_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)`;
+    const {
+      id,
+      batchno,
+      brandCode,
+      brandName,
+      cgst,
+      costvar,
+      expdate,
+      hsncode,
+      manufacturer,
+      marketedby,
+      mfgdate,
+      mrp,
+      packing,
+      purchaseprice,
+      qty,
+      rate,
+      sgst,
+      sku,
+      strnth,
+    } = drugObject;
+    const values = [
+      id,
+      brandName,
+      brandCode,
+      strnth,
+      qty,
+      packing,
+      sku,
+      manufacturer,
+      marketedby,
+      batchno,
+      hsncode,
+      mfgdate,
+      expdate,
+      mrp,
+      purchaseprice,
+      rate,
+      sgst,
+      cgst,
+      costvar,
+    ];
+    const query = {
+      text: insertQuerySkeleton,
+      values: values,
+      rowMode: 'array',
+    };
     return new Promise(resolve => {
-      let objectToResolve: DBReturnInterface;
-      objectToResolve.status = QueryStatus.SUCCESSFULL;
-      
-      this.pool.query(insertQuery, values, (err, result) => {
+      const returnObject: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
+      this.pool.connect((err) => {
+        if (err) console.log(err);
+      });
+      this.pool.query(query, (err: Error, result) => {
         if (err) {
-          objectToResolve.error = err;
-          objectToResolve.status = QueryStatus.FAILED;
-        } else objectToResolve.resultObject = result;
-        resolve(objectToResolve);
+          returnObject.error = err;
+          returnObject.status = QueryStatus.FAILED;
+        } else {
+          returnObject.resultObject = result;
+        }
+        resolve(returnObject);
       });
     });
   };
-
   /*** UPDATE QUERIES */
 
   /*** DELETE QUERIES */
@@ -175,8 +246,6 @@ export class DatabaseService {
     etype: EntryType,
     optionalWhereClause = '',
   ): Promise<DBReturnInterface> => {
-
-
     let tblname: string;
     switch (etype) {
       case EntryType.DRUG:
@@ -198,20 +267,21 @@ export class DatabaseService {
         break;
     }
     return new Promise(resolve => {
-      let objectToResolve: DBReturnInterface = { status: QueryStatus.SUCCESSFULL };
+      const objectToResolve: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
       const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
       console.log(theQuery);
-      this.pool.connect((err,client)=>{
+      this.pool.connect((err) => {
         if (err) console.log(err);
-        client.query
       });
       this.pool.query(theQuery, (err, result) => {
         if (err) {
-          console.log("Query Callback Error");
+          console.log('Query Callback Error');
           objectToResolve.error = err;
           objectToResolve.status = QueryStatus.FAILED;
         } else {
-          console.log("Query Callback no Error");
+          console.log('Query Callback no Error');
           objectToResolve.resultObject = result;
         }
         resolve(objectToResolve);
@@ -219,15 +289,18 @@ export class DatabaseService {
     });
   };
   /*** Skeletons */
-  private generateInsertQuerySkeleton = (
+  public generateInsertQuerySkeleton = (
     tableDefinition: TableDefinitionInterface,
   ): string => {
-    const theQuery = `insert into ${tableDefinition.tableName
-      }(${tableDefinition.columnNames.toString()}) VALUES ?`;
+    const theQuery = `insert into pharmaschema."${
+      tableDefinition.tableName
+    }"(${tableDefinition.columnNames.toString()}) VALUES ?`;
     return theQuery;
   };
 
-  getEntryType = () => {
+  getEntryType = (): any => {
     return EntryType;
-  }
+  };
 }
+
+

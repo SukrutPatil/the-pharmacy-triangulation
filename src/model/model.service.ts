@@ -22,6 +22,27 @@ enum RandomIdType {
   PRODUCT,
   VIDEO,
 }
+export interface Drug {
+  id: any;
+  brandName: any;
+  brandCode: any;
+  strnth: any;
+  qty: any;
+  packing: any;
+  sku: any;
+  manufacturer: any;
+  marketedby: any;
+  batchno: any;
+  hsncode: any;
+  mfgdate: any;
+  expdate: any;
+  mrp: any;
+  purchaseprice: any;
+  rate: any;
+  sgst: any;
+  cgst: any;
+  costvar: any;
+}
 /**
  *
  *
@@ -84,7 +105,7 @@ export interface Video {
  */
 @Injectable()
 export class ModelService {
-  constructor(private securityService: SecurityService) {}
+  constructor(private securityService: SecurityService) { }
   /**
    *GENERATES MEMBER OBJECT
    *
@@ -109,28 +130,50 @@ export class ModelService {
       isAdmin,
     };
   };
-  /**
-   *GENERATES PRODUCT OBJECT
-   *
-   * @memberof ModelService
-   */
-  public createProductObject = (
-    name: string,
-    price: number,
-    info: string,
-    product_main_image_src: string,
-    itemsInStock: number,
-  ): Product => {
-    const product_id = this.generateUniqueID(RandomIdType.PRODUCT);
+  public createDrugObject = (
+    brand_name: string,
+    brand_code: string,
+    strength: string,
+    qty: string,
+    packing: string,
+    manufacturer: string,
+    marketedby: string,
+    batch_number: string,
+    hsn_code: string,
+    mfg_date: string,
+    exp_date: string,
+    product_mrp: string,
+    product_purchase_price: string,
+    product_rate: string,
+    product_sgst: string,
+    product_cgst: string,
+    product_cost_var: string,
+    product_sku: string
+  ): Drug => {
+    const id = this.generateUniqueID(RandomIdType.PRODUCT);
     return {
-      product_id,
-      product_main_image_src,
-      name,
-      price,
-      info,
-      itemsInStock,
+      id: id,
+      brandName: brand_name,
+      batchno:batch_number,
+      brandCode:brand_code,
+      cgst:product_cgst,
+      costvar:product_cost_var,
+      expdate:exp_date,
+      hsncode:hsn_code,
+      manufacturer:manufacturer,
+      marketedby:marketedby,
+      mfgdate:mfg_date,
+      mrp:product_mrp,
+      packing:packing,
+      purchaseprice:product_purchase_price,
+      qty:qty,
+      rate:product_rate,
+      sgst:product_sgst,
+      sku:product_sku,
+      strnth:strength
     };
   };
+
   /**
    *GENERATES TRANSACTION OBJECT
    *
