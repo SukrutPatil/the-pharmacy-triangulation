@@ -8,6 +8,7 @@ import {
   Render,
   Req,
   Res,
+  UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
@@ -98,6 +99,7 @@ export class AdminController {
   async createNewProduct(
     @Req() req: Request,
     @Res() res: Response,
+    @UploadedFile() file:Express.Multer.File
   ): Promise<any> {
     const {
       brand_name,
@@ -139,6 +141,7 @@ export class AdminController {
       product_cgst,
       product_cost_var,
       product_sku,
+      file.filename
     );
     console.log('To Database Service');
     const returnedObject = await this.db.addDrug(theDrugObject);

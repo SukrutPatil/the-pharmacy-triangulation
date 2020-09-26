@@ -86,6 +86,7 @@ const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
     'sgst',
     'cgst',
     'costvar',
+    'imgaddress'
   ],
 };
 const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
@@ -192,6 +193,7 @@ export class DatabaseService {
       sgst,
       sku,
       strnth,
+      imgaddress
     } = drugObject;
     const values = [
       id,
@@ -213,6 +215,7 @@ export class DatabaseService {
       sgst,
       cgst,
       costvar,
+      imgaddress
     ];
     const query = {
       text: insertQuerySkeleton,
