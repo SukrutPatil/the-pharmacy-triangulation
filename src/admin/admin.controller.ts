@@ -152,7 +152,7 @@ export class AdminController {
       req,
       res,
       () => {
-        res.render('Articles', {});
+        res.render('AllArticles', {});
       },
       () => {
         res.status(301).redirect('login');
