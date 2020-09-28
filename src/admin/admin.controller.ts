@@ -17,6 +17,7 @@ import { DatabaseService, EntryType } from '../database/database.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multer from 'multer';
 import * as mime from 'mime';
+let theFileName = '';
 @Controller('admin')
 export class AdminController {
   constructor(
@@ -46,7 +47,7 @@ export class AdminController {
 
   @Get('products')
   getProducts(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -62,7 +63,7 @@ export class AdminController {
   // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -73,7 +74,7 @@ export class AdminController {
       },
     );
   }
-
+  
   @Post('newProduct')
   @UseInterceptors(
     FilesInterceptor('product_thumbnail', 1, {
@@ -91,6 +92,7 @@ export class AdminController {
           const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
             file.mimetype
           )}`;
+          theFileName=filename;
           return cb(null, filename);
         },
       }),
@@ -99,7 +101,7 @@ export class AdminController {
   async createNewProduct(
     @Req() req: Request,
     @Res() res: Response,
-    @UploadedFile() file:Express.Multer.File
+ 
   ): Promise<any> {
     const {
       brand_name,
@@ -141,7 +143,8 @@ export class AdminController {
       product_cgst,
       product_cost_var,
       product_sku,
-      file.filename
+      theFileName,
+      req.session.adminEmail
     );
     console.log('To Database Service');
     const returnedObject = await this.db.addDrug(theDrugObject);
@@ -151,7 +154,7 @@ export class AdminController {
 
   @Get('articles')
   getAllArticles(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -166,7 +169,7 @@ export class AdminController {
   // Creating a new article
   @Get('createNewArticle')
   getNewArticlePage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -185,7 +188,7 @@ export class AdminController {
 
   @Get('modules')
   getAllModule(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -200,7 +203,7 @@ export class AdminController {
   // Creating a new module
   @Get('createNewModule')
   getNewModulePage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -219,7 +222,7 @@ export class AdminController {
 
   @Get('sessions')
   getAllSessions(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -234,7 +237,7 @@ export class AdminController {
   // Update a new Product
   @Get('updateProduct/:id')
   getUpdateProductPage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -255,7 +258,7 @@ export class AdminController {
   // Update a article
   @Get('updateArticle/:id')
   getUpdateArticlePage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {
@@ -276,7 +279,7 @@ export class AdminController {
   // Update a module
   @Get('updateModule/:id')
   getUpdateModulePage(@Req() req: Request, @Res() res: Response): any {
-    this.se.sessionExecutor(
+    this.se.adminSessionExecutor(
       req,
       res,
       () => {

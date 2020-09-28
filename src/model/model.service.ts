@@ -43,6 +43,7 @@ export interface Drug {
   cgst: any;
   costvar: any;
   imgaddress:string;
+  adminemail:string;
 }
 /**
  *
@@ -150,7 +151,8 @@ export class ModelService {
     product_cgst: string,
     product_cost_var: string,
     product_sku: string,
-    imgaddress:string
+    imgaddress:string,
+    adminemail:string
   ): Drug => {
     const id = this.generateUniqueID(RandomIdType.PRODUCT);
     return {
@@ -173,7 +175,8 @@ export class ModelService {
       sgst:product_sgst,
       sku:product_sku,
       strnth:strength,
-      imgaddress:imgaddress
+      imgaddress:imgaddress,
+      adminemail:adminemail
     };
   };
 
