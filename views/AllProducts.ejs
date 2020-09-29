@@ -70,16 +70,19 @@
             <td>Price (regu.)</td>
             <td>Price (sale)</td>
           </tr>
-          <% for( let index = 0; index < arrayOfProductIds.length; index++ ) { %>
-            <tr>
-              <td style="padding-top:5px ;">
-                <img src="../uploads/products/<%=arrayOfImageAddresses[index]%>" alt="" />
-              </td>
-              <td><a href="product/<%=arrayOfProductIds[index] %>"><%= arrayofBrandNames[index] %></a></td>
-              <td><%= arrayOfRegularPrices[index] %></td>
-              <td><%= arrayOfSalePrices[index] %></td>
-            </tr>
+          <% if (arrayOfProductIds!="") { %>
+            <% for( let index = 0; index < arrayOfProductIds.length; index++ ) { %>
+              <tr>
+                <td style="padding-top:5px ;">
+                  <img src="../uploads/products/<%=arrayOfImageAddresses[index]%>" alt="" />
+                </td>
+                <td><a href="product/<%=arrayOfProductIds[index] %>"><%= arrayOfBrandNames[index] %></a></td>
+                <td><%= arrayOfRegularPrices[index] %></td>
+                <td><%= arrayOfSalePrices[index] %></td>
+              </tr>
+            <% } %>           
           <% } %>
+
         </table>
       </div>
     </section>
