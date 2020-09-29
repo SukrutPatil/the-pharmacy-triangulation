@@ -1,14 +1,11 @@
 import { SessionExecutorService } from './../session-executor/session-executor.service';
 import {
-  Body,
   Controller,
   Get,
   Post,
-  Redirect,
   Render,
   Req,
   Res,
-  UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
@@ -33,26 +30,96 @@ export class AdminController {
     return { userNotFoundError: 'No' };
   }
   @Post('adminLoginAction')
-  adminLoginAction(@Req() req: Request, @Res() res: Response): any {
+  async adminLoginAction(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<any> {
     const { adminEmail, adminPassword } = req.body;
-    throw 'expects further implementation';
+    const theDatabaseReturnObject = await this.db.retrieve(
+      EntryType.MEMBER,
+      `where email = '${adminEmail}' and admin = 'yes' and password = '${adminPassword}'`,
+    );
+    /*** If there is an error while retrieving from database */
+    if (theDatabaseReturnObject.error) {
+      console.debug(theDatabaseReturnObject.error);
+    }
+    /*** If there is no admin with these credentials*/
+    if (theDatabaseReturnObject.resultObject.rowCount == 0) {
+      console.debug(`No Admin Found`);
+    } else if (theDatabaseReturnObject.resultObject.rowCount != 1) {
+      /*** If there are multiple admins with these credentials i.e. a logical error in database */
+      console.debug(`Internal Error: 501`);
+    } else {
+      /*** Everyting is Good Here */
+      req.session.loggedInUser =
+        theDatabaseReturnObject.resultObject.rows[0].name;
+      req.session.adminEmail = adminEmail;
+      res.redirect('products');
+    }
+
     /****
      * Check if the user exists as admin in database
      * Add information to the req.session object
      * req.session.loggedInUser = username
      * If yes, render AllModules.ejs
      * If no, render AdminLogin with {userNotFound:'Yes'}
-     *  */
+     ***/
   }
-
+  /**
+   * Renders All Products Related To The Admin
+   * @param req Express Request
+   * @param res Express Response
+   */
   @Get('products')
   getProducts(@Req() req: Request, @Res() res: Response): any {
     this.se.adminSessionExecutor(
       req,
       res,
-      () => {
-        const pID = req.params.id;
-        res.render('AllProducts', {});
+      async () => {
+        const { adminEmail } = req.session;
+        // Fetching the products from database
+        const theDBReturnObject = await this.db.retrieve(
+          EntryType.DRUG,
+          `where adminemail = '${adminEmail}'`,
+        );
+
+        if (theDBReturnObject.error) {
+          /** Some error occured while retrieving the drugs */
+          console.debug(theDBReturnObject.error);
+          res.status(501).redirect('../');
+        } else {
+          const allRows = theDBReturnObject?.resultObject?.rows;
+          const arrayOfProductIds = [];
+          const arrayOfImageAddresses = [];
+          const arrayOfRegularPrices = [];
+          const arrayOfSalePrices = [];
+          const arrayOfBrandNames = [];
+
+          allRows.forEach(row => {
+            arrayOfProductIds.push(row.id);
+            arrayOfImageAddresses.push(row.imgaddress);
+            arrayOfRegularPrices.push(row.mrp);
+            arrayOfSalePrices.push(row.purchaseprice);
+            arrayOfBrandNames.push(row.brandname);
+          });
+          res.render(
+            'AllProducts',
+            {
+              arrayOfProductIds: arrayOfProductIds,
+              arrayOfImageAddresses: arrayOfImageAddresses,
+              arrayOfRegularPrices: arrayOfRegularPrices,
+              arrayOfSalePrices: arrayOfSalePrices,
+              arrayOfBrandNames: arrayOfBrandNames,
+            },
+            (err, html) => {
+              if (err) {
+                console.debug(err);
+                res.status(501).redirect('../');
+              }
+              res.send(html);
+            },
+          );
+        }
       },
       () => {
         res.status(301).redirect('login');
@@ -60,21 +127,25 @@ export class AdminController {
     );
   }
 
-  // Creating a new Product
   @Get('createNewProduct')
   getNewProductPage(@Req() req: Request, @Res() res: Response): any {
     this.se.adminSessionExecutor(
       req,
       res,
       () => {
-    res.render('NewProduct', {});
+        res.render('NewProduct', {});
       },
       () => {
         res.status(301).redirect('login');
       },
     );
   }
-  
+  /**
+   * Creates New Drug/Product Using SessionExecutorService, ModelService and DatabaseService
+   * @param req Express Request Object
+   * @param res Express Response Object
+   * Uses Multer Middleware to read multipart/form-data encryption type.
+   * */
   @Post('newProduct')
   @UseInterceptors(
     FilesInterceptor('product_thumbnail', 1, {
@@ -90,9 +161,9 @@ export class AdminController {
             return cb(errorMessage, null);
           }
           const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
-            file.mimetype
+            file.mimetype,
           )}`;
-          theFileName=filename;
+          theFileName = filename;
           return cb(null, filename);
         },
       }),
@@ -101,7 +172,6 @@ export class AdminController {
   async createNewProduct(
     @Req() req: Request,
     @Res() res: Response,
- 
   ): Promise<any> {
     const {
       brand_name,
@@ -144,12 +214,12 @@ export class AdminController {
       product_cost_var,
       product_sku,
       theFileName,
-      req.session.adminEmail
+      req.session.adminEmail,
     );
     console.log('To Database Service');
     const returnedObject = await this.db.addDrug(theDrugObject);
     if (returnedObject.error) console.log(returnedObject.error);
-    res.redirect('products')
+    res.redirect('products');
   }
 
   @Get('articles')
@@ -303,9 +373,9 @@ export class AdminController {
 
   @Get('delete/:id')
   deleteItem(@Req() req: Request, @Res() res: Response): any {
-  /**
-   * Based on id the item to be deleted can be
-   * easily distingus.
-   */
+    /**
+     * Based on id the item to be deleted can be
+     * easily distingus.
+     */
   }
 }

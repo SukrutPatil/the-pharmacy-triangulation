@@ -41,7 +41,7 @@ export class AuthController {
         res.render(
           'Login',
           { userNotFound: true },
-          (err: Error, html: String) => {
+          (err: Error, html: string) => {
             if (err) res.status(501).send('../');
             else res.send(html);
           },
@@ -84,8 +84,9 @@ export class AuthController {
   }
 
   @Get('signout')
-  signoutAction(@Req() req: Request, @Res() res: Response) {
+  signoutAction(@Req() req: Request, @Res() res: Response):any {
     delete req.session.loggedInUser;
+    delete req.session?.adminEmail;
     res.redirect('./login');
   }
 }
