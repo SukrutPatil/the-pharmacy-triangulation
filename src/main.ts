@@ -6,6 +6,7 @@ import * as session from 'express-session';
 import * as express from 'express';
 import { start } from 'repl';
 declare const module:any;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..'));

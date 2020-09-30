@@ -1,177 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../public/css/NewProduct.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div class="nav-container">
-      <nav>
-        <div class="logo"></div>
-        <div class="nav-links">
-          <ul>
-            <div class="dropdown">
-              <button class="dropbtn">Articles</button>
-              <div class="dropdown-content">
-                <a href="/admin/articles">My Articles</a>
-                <a href="/admin/createNewArticle">Write New Article</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Modules</button>
-              <div class="dropdown-content">
-                <a href="/admin/modules">All Modules</a>
-                <a href="/admin/createNewModule">New Module</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Products</button>
-              <div class="dropdown-content">
-                <a href="/admin/products">All Products</a>
-                <a href="/admin/createNewProduct">New Products</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Sessions</button>
-              <div class="dropdown-content">
-                <a href="/admin/sessions">All Sessions</a>
-              </div>
-            </div>
-            <div class="logoutBtn">
-              <a href="">
-                <img
-                  src="../public/assets/logOut.png"
-                  alt=""
-                  style="height: 30px; margin: 5px;"
-                />
-              </a>
-            </div>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <section>
-      <h1>Add New Product</h1>
-      <div class="main">
-        <form
-          action="newProduct"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <div class="column1">
-            <div class="field">
-              <p>Brand Name</p>
-              <input type="text" name="brand_name" />
-            </div>
-            <div class="field">
-              <p>Brand Code</p>
-              <input type="text" name="brand_code" />
-            </div>
-            <div class="field">
-              <p>Strength</p>
-              <input type="text" name="strength" />
-            </div>
-            <div class="field">
-              <p>Quantity</p>
-              <input type="number" name="qty" />
-            </div>
-            <div class="field">
-              <p>Packing</p>
-              <input type="text" name="packing" />
-            </div>
-            <div class="field">
-              <p>Manufacturer</p>
-              <input type="text" name="manufacturer" />
-            </div>
-            <div class="field">
-              <p>Marketed Byt</p>
-              <input type="text" name="marketedby" />
-            </div>
-            <div class="field">
-              <p>Batch No.</p>
-              <input type="text" name="batch_number" />
-            </div>
-            <div class="field">
-              <p>HSN Code.</p>
-              <input type="text" name="hsn_code" />
-            </div>
-            
-            <button class="save" type="submit">Save</button>
-          </div>
-          <div class="column2">
-            <div class="field-th">
-              <p>Upload Thumbnail</p>
-              <div id="drop-area">
-                <input
-                  type="file"
-                  max-size="2000"
-                  id="fileElem"
-                  multiple
-                  accept="image/*"
-                  onchange="handleFiles(this.files)"
-                />
-                <div id="gallery"></div>
-                <div class="pbb">
-                  <progress id="progress-bar" max="100" value="0"></progress>
-                  <label class="button" for="fileElem">Select some files</label>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <p>Mfg Date</p>
-              <input type="date" name="mfg_date" />
-            </div>
-            <div class="field">
-              <p>Exp Date</p>
-              <input type="date" name="exp_date" />
-            </div>
-            <div class="field">
-              <p>Mrp</p>
-              <input type="number" name="product_mrp" />
-            </div>
-            <div class="field">
-              <p>Purchase Price</p>
-              <input type="number" name="product_purchase_price" />
-            </div>
-            <div class="field">
-              <p>Rate</p>
-              <input type="number" name="product_rate" />
-            </div>
-            <div class="field">
-              <p>SGST</p>
-              <input type="number" name="product_sgst" />
-            </div>
-            <div class="field">
-              <p>sku</p>
-              <input type="number" name="product_sku" />
-            </div>
-            <div class="field">
-              <p>CGST</p>
-              <input type="number" name="product_cgst" />
-            </div>
-            <div class="field">
-              <p>Cost Var</p>
-              <input type="number" name="product_cost_var" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/NewProduct.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav>
+      <div class="logo"></div>
+      <div class="nav-links">
+        <ul>
+          <div class="dropdown">
+            <button class="dropbtn">Articles</button>
+            <div class="dropdown-content">
+              <a href="/admin/articles">My Articles</a>
+              <a href="/admin/createNewArticle">Write New Article</a>
             </div>
           </div>
-        </form>
+          <div class="dropdown">
+            <button class="dropbtn">Modules</button>
+            <div class="dropdown-content">
+              <a href="/admin/modules">All Modules</a>
+              <a href="/admin/createNewModule">New Module</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Products</button>
+            <div class="dropdown-content">
+              <a href="/admin/products">All Products</a>
+              <a href="/admin/createNewProduct">New Products</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Sessions</button>
+            <div class="dropdown-content">
+              <a href="/admin/sessions">All Sessions</a>
+            </div>
+          </div>
+          <div class="logoutBtn">
+            <a href="">
+              <img src="../public/assets/logOut.png" alt="" style="height: 30px; margin: 5px;" />
+            </a>
+          </div>
+        </ul>
       </div>
-    </section>
-    <script src="../public/js/dropbox.js"></script>
-  </body>
+    </nav>
+  </div>
+  <section>
+    <h1>Add New Product</h1>
+    <div class="main">
+      <form action="newProduct" method="POST" enctype="multipart/form-data">
+        <div class="column1">
+          <div class="field">
+            <p>Brand Name</p>
+            <input type="text" name="brand_name" />
+          </div>
+          <div class="field">
+            <p>Brand Code</p>
+            <input type="text" name="brand_code" />
+          </div>
+          <div class="field">
+            <p>Strength</p>
+            <input type="text" name="strength" />
+          </div>
+          <div class="field">
+            <p>Quantity</p>
+            <input type="number" name="qty" />
+          </div>
+          <div class="field">
+            <p>Packing</p>
+            <input type="text" name="packing" />
+          </div>
+          <div class="field">
+            <p>Manufacturer</p>
+            <input type="text" name="manufacturer" />
+          </div>
+          <div class="field">
+            <p>Marketed Byt</p>
+            <input type="text" name="marketedby" />
+          </div>
+          <div class="field">
+            <p>Batch No.</p>
+            <input type="text" name="batch_number" />
+          </div>
+          <div class="field">
+            <p>HSN Code.</p>
+            <input type="text" name="hsn_code" />
+          </div>
+
+          <button class="save" type="submit">Save</button>
+        </div>
+        <div class="column2">
+          <div class="field-th">
+            <p>Upload Thumbnail</p>
+            <div id="drop-area">
+              <input type="file" max-size="2000" id="fileElem" accept="image/*" onchange="handleFiles(this.files)"
+                name="product_thumbnail" />
+              <div id="gallery"></div>
+              <div class="pbb">
+                <progress id="progress-bar" max="100" value="0"></progress>
+                <label class="button" for="fileElem">Select some files</label>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <p>Mfg Date</p>
+            <input type="date" name="mfg_date" />
+          </div>
+          <div class="field">
+            <p>Exp Date</p>
+            <input type="date" name="exp_date" />
+          </div>
+          <div class="field">
+            <p>Mrp</p>
+            <input type="number" name="product_mrp" />
+          </div>
+          <div class="field">
+            <p>Purchase Price</p>
+            <input type="number" name="product_purchase_price" />
+          </div>
+          <div class="field">
+            <p>Rate</p>
+            <input type="number" name="product_rate" />
+          </div>
+          <div class="field">
+            <p>SGST</p>
+            <input type="number" name="product_sgst" />
+          </div>
+          <div class="field">
+            <p>sku</p>
+            <input type="number" name="product_sku" />
+          </div>
+          <div class="field">
+            <p>CGST</p>
+            <input type="number" name="product_cgst" />
+          </div>
+          <div class="field">
+            <p>Cost Var</p>
+            <input type="number" name="product_cost_var" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script src="../public/js/dropbox.js"></script>
+</body>
+
 </html>

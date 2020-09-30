@@ -11,10 +11,46 @@ import {
 import { Request, Response } from 'express';
 import { ModelService } from '../model/model.service';
 import { DatabaseService, EntryType } from '../database/database.service';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import {
+  FileFieldsInterceptor,
+  FilesInterceptor,
+} from '@nestjs/platform-express';
 import * as multer from 'multer';
 import * as mime from 'mime';
+import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 let theFileName = '';
+const theOtherImagesArray: Array<string> = [];
+let self: AdminController;
+const multerOptions: MulterOptions = {
+  storage: multer.diskStorage({
+    destination: (_, file, cb) => {
+      if (file.fieldname == 'product_thumbnail')
+        return cb(null, './uploads/products');
+      else if (file.fieldname == 'article_thumbnail')
+        return cb(null, './uploads/articles/thumbnail');
+      else if (file.fieldname == 'article_otherimages[]')
+        return cb(null, './uploads/articles/thumbnail');
+    },
+    filename: (_, file, cb) => {
+      const match = ['image/png', 'image/jpeg'];
+      if (match.indexOf(file.mimetype) === -1) {
+        const errorMessage: Error = {
+          message: 'Invalid File',
+          name: 'INVALID_EXTENSION',
+        };
+        return cb(errorMessage, null);
+      }
+      const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
+        file.mimetype,
+      )}`;
+      theFileName = filename;
+      if (file.fieldname == 'article_otherimages[]')
+        theOtherImagesArray.push(theFileName);
+      return cb(null, filename);
+    },
+  }),
+};
+
 @Controller('admin')
 export class AdminController {
   constructor(
@@ -23,6 +59,7 @@ export class AdminController {
     private readonly db: DatabaseService,
   ) {}
 
+ 
   // Asking user to login
   @Get('login')
   @Render('AdminLogin.ejs')
@@ -147,28 +184,7 @@ export class AdminController {
    * Uses Multer Middleware to read multipart/form-data encryption type.
    * */
   @Post('newProduct')
-  @UseInterceptors(
-    FilesInterceptor('product_thumbnail', 1, {
-      storage: multer.diskStorage({
-        destination: './uploads/products',
-        filename: (_, file, cb) => {
-          const match = ['image/png', 'image/jpeg'];
-          if (match.indexOf(file.mimetype) === -1) {
-            const errorMessage: Error = {
-              message: 'Invalid File',
-              name: 'INVALID_EXTENSION',
-            };
-            return cb(errorMessage, null);
-          }
-          const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
-            file.mimetype,
-          )}`;
-          theFileName = filename;
-          return cb(null, filename);
-        },
-      }),
-    }),
-  )
+  @UseInterceptors(FilesInterceptor('product_thumbnail', 1, multerOptions))
   async createNewProduct(
     @Req() req: Request,
     @Res() res: Response,
@@ -252,7 +268,15 @@ export class AdminController {
   }
 
   @Post('newArticle')
-
+  @UseInterceptors(
+    FileFieldsInterceptor(
+      [
+        { name: 'article_thumbnail', maxCount: 1 },
+        { name: 'article_otherimages[]', maxCount: 3 },
+      ],
+    multerOptions,
+    ),
+  )
   createNewArticle(@Req() req: Request, @Res() res: Response): any {
     throw 'expects further implementation';
   }
@@ -379,4 +403,5 @@ export class AdminController {
      * easily distingus.
      */
   }
+
 }
