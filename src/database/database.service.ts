@@ -10,7 +10,7 @@ export enum EntryType {
   MEMBER,
   SESSION,
   DRUG,
-  ARTICLE
+  ARTICLE,
 }
 export enum QueryStatus {
   FAILED,
@@ -108,7 +108,7 @@ const ARTICLE_TABLE_DEFINITION: TableDefinitionInterface = {
     'id',
     'name',
     'about',
-    'article',
+    'admin',
     'publisher',
     'thumbnail',
     'otherimages',
@@ -256,14 +256,14 @@ export class DatabaseService {
       });
     });
   };
-  public addArticle = async (articleObject: Article) => {
+  public addArticle = async (articleObject: Article):Promise<DBReturnInterface> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       ARTICLE_TABLE_DEFINITION.tableName
     }"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7)`;
     const {
       id,
       about,
-      article,
+      admin,
       name,
       otherimages,
       publisher,
@@ -273,12 +273,33 @@ export class DatabaseService {
       id,
       name,
       about,
-      article,
+      admin,
       publisher,
       thumbnail,
       otherimages,
     ];
-  };
+    const query = {
+      text: insertQuerySkeleton,
+      values: values,
+      rowMode: 'array',
+    };
+    return new Promise(resolve=>{
+      const returnObject: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
+      this.pool.connect(err => {
+        if (err) console.log(err);
+      });
+      this.pool.query(query, (err: Error, result) => {
+        if (err) {
+          returnObject.error = err;
+          returnObject.status = QueryStatus.FAILED;
+        } else {
+          returnObject.resultObject = result;
+        }
+        resolve(returnObject);
+    })
+  })};
   /*** UPDATE QUERIES */
 
   /*** DELETE QUERIES */
@@ -307,8 +328,8 @@ export class DatabaseService {
       case EntryType.TRANSACTION:
         tblname = TRANSACTION_TABLE_DEFINITION.tableName;
         break;
-        case EntryType.ARTICLE:
-          tblname = ARTICLE_TABLE_DEFINITION.tableName;
+      case EntryType.ARTICLE:
+        tblname = ARTICLE_TABLE_DEFINITION.tableName;
     }
     return new Promise(resolve => {
       const objectToResolve: DBReturnInterface = {

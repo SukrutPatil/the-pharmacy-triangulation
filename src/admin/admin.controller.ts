@@ -18,6 +18,7 @@ import {
 import * as multer from 'multer';
 import * as mime from 'mime';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
+import * as fs from 'fs';
 let theFileName = '';
 const theOtherImagesArray: Array<string> = [];
 let self: AdminController;
@@ -29,7 +30,7 @@ const multerOptions: MulterOptions = {
       else if (file.fieldname == 'article_thumbnail')
         return cb(null, './uploads/articles/thumbnail');
       else if (file.fieldname == 'article_otherimages[]')
-        return cb(null, './uploads/articles/thumbnail');
+        return cb(null, './uploads/articles/other');
     },
     filename: (_, file, cb) => {
       const match = ['image/png', 'image/jpeg'];
@@ -40,7 +41,10 @@ const multerOptions: MulterOptions = {
         };
         return cb(errorMessage, null);
       }
-      const filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
+      let filename: string;
+      if (file.fieldname.startsWith('article'))
+        filename = `ART${Date.now()}.${mime.getExtension(file.mimetype)}`;
+      else filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
         file.mimetype,
       )}`;
       theFileName = filename;
@@ -59,7 +63,6 @@ export class AdminController {
     private readonly db: DatabaseService,
   ) {}
 
- 
   // Asking user to login
   @Get('login')
   @Render('AdminLogin.ejs')
@@ -244,6 +247,7 @@ export class AdminController {
       req,
       res,
       () => {
+        
         res.render('AllArticles', {});
       },
       () => {
@@ -274,11 +278,40 @@ export class AdminController {
         { name: 'article_thumbnail', maxCount: 1 },
         { name: 'article_otherimages[]', maxCount: 3 },
       ],
-    multerOptions,
+      multerOptions,
     ),
   )
-  createNewArticle(@Req() req: Request, @Res() res: Response): any {
-    throw 'expects further implementation';
+  async createNewArticle(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<any> {
+    const {
+      article_name,
+      article_publisher_name,
+      article_about,
+      article_article,
+    } = req.body;
+    const theArticleObject = this.mg.createArticleObject(
+      article_name,
+      article_publisher_name,
+      article_about,
+      req.session.adminEmail,
+      theFileName,
+      theOtherImagesArray.toString(),
+    );
+    const theDatabaseReturnObject = await this.db.addArticle(theArticleObject);
+    if (theDatabaseReturnObject.error) {
+      // Some Error Occured Internally
+      console.debug(theDatabaseReturnObject.error);
+      res.status(501).redirect('../');
+    } else {
+      fs.writeFile(`Articles/${theArticleObject.id}.md`, article_article, err => {
+        if (err) console.debug(`Error Occured While Writing File: ${err}`);
+        else console.debug(`The File Has Been Written. with details
+        ${article_article}`);
+        res.redirect('/articles')
+      });
+    }
   }
 
   @Get('modules')
@@ -403,5 +436,4 @@ export class AdminController {
      * easily distingus.
      */
   }
-
 }

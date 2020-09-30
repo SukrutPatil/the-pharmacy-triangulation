@@ -78,7 +78,7 @@ export interface Article {
   name: string;
   publisher:string;
   about: string;
-  article: string;
+  admin: string;
   thumbnail: string;
   otherimages: string;
 }
@@ -108,9 +108,9 @@ export class ModelService {
   /**
    * GENERATES ARTICLE OBJECT
    */
-  public createArticleObject = (name:string,publisher:string,about:string,article:string,thumbnail:string,otherimages:string): Article => {
+  public createArticleObject = (name:string,publisher:string,about:string,admin:string,thumbnail:string,otherimages:string): Article => {
     const id = this.generateUniqueID(RandomIdType.ARTICLE);
-    return {id,about,article,name,otherimages,publisher,thumbnail };
+    return {id,about,admin,name,otherimages,publisher,thumbnail };
   };
   /**
    *GENERATES MEMBER OBJECT
