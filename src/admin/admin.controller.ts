@@ -22,6 +22,7 @@ import * as fs from 'fs';
 let theFileName = '';
 const theOtherImagesArray: Array<string> = [];
 let self: AdminController;
+
 const multerOptions: MulterOptions = {
   storage: multer.diskStorage({
     destination: (_, file, cb) => {
@@ -44,10 +45,11 @@ const multerOptions: MulterOptions = {
       let filename: string;
       if (file.fieldname.startsWith('article'))
         filename = `ART${Date.now()}.${mime.getExtension(file.mimetype)}`;
-      else filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
-        file.mimetype,
-      )}`;
-      theFileName = filename;
+      else
+        filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
+          file.mimetype,
+        )}`;
+      if (file.fieldname!='article_otherimages[]')theFileName = filename;
       if (file.fieldname == 'article_otherimages[]')
         theOtherImagesArray.push(theFileName);
       return cb(null, filename);
@@ -246,9 +248,35 @@ export class AdminController {
     this.se.adminSessionExecutor(
       req,
       res,
-      () => {
-        
-        res.render('AllArticles', {});
+      async () => {
+        const theDBReturnObject = await this.db.retrieve(
+          EntryType.ARTICLE,
+          `where admin = '${req.session.adminEmail}'`,
+        );
+        if (theDBReturnObject.error) {
+          // Some Database Error Has Occured
+          console.debug('Internal Error Here');
+          res.status(501).redirect('../');
+        }
+        else {
+          const artThumbnailArray = [];
+          const artNameArray = [];
+          const artPublisherArray = [];
+          const artDopArray=[];
+          theDBReturnObject.resultObject.rows.forEach((row)=>{
+            artThumbnailArray.push(row.thumbnail);
+            artNameArray.push(row.name);
+            artPublisherArray.push(row.publisher);
+            artDopArray.push(row.dop);
+          });  
+          res.render('AllArticles', {
+            artThumbnailArray:artThumbnailArray,
+            artNameArray:artNameArray,
+            artPublisherArray:artPublisherArray,
+            artDopArray:artDopArray
+          });
+        }
+
       },
       () => {
         res.status(301).redirect('login');
@@ -305,12 +333,17 @@ export class AdminController {
       console.debug(theDatabaseReturnObject.error);
       res.status(501).redirect('../');
     } else {
-      fs.writeFile(`Articles/${theArticleObject.id}.md`, article_article, err => {
-        if (err) console.debug(`Error Occured While Writing File: ${err}`);
-        else console.debug(`The File Has Been Written. with details
+      fs.writeFile(
+        `Articles/${theArticleObject.id}.md`,
+        article_article,
+        err => {
+          if (err) console.debug(`Error Occured While Writing File: ${err}`);
+          else
+            console.debug(`The File Has Been Written. with details
         ${article_article}`);
-        res.redirect('/articles')
-      });
+          res.redirect('./articles');
+        },
+      );
     }
   }
 

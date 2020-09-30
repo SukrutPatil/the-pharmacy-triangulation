@@ -70,20 +70,20 @@
             <td>Publisher's Name</td>
             <td>Date</td>
           </tr>
-          <tr>
-            <td style="padding-top:5px ;">
-              <img src="../public/assets/demo1.png" alt="" />
-            </td>
-            <td><a href="">Module Name</a></td>
-            <td>Catagory</td>
-            <td>Price (regu.)</td>
-          </tr>
-          <tr>
-            <td><img src="../public/assets/demo1.png" alt="" /></td>
-            <td><a href="">Module Name</a></td>
-            <td>Catagory</td>
-            <td>Price (regu.)</td>
-          </tr>
+          <% if (artThumbnailArray!="") { %>
+           <% for( let index = 0; index < artThumbnailArray.length; index++ ) { %>
+            <tr>
+              <td style="padding-top:5px ;">
+                <img src="../uploads/articles/thumbnail/<%= artThumbnailArray[index] %>"  alt="" />
+              </td>
+              <td><a href=""><%= artNameArray[index] %> </a></td>
+              <td><%=artPublisherArray[index] %></td>
+              <td><%= artDopArray[index] %> </td>
+            </tr>
+           <% } %>
+          <% } %>
+          
+          
         </table>
       </div>
     </section>

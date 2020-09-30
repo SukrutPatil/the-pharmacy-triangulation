@@ -112,8 +112,10 @@ const ARTICLE_TABLE_DEFINITION: TableDefinitionInterface = {
     'publisher',
     'thumbnail',
     'otherimages',
+    'dop'
   ],
 };
+
 /**
  *The Database Core Connector
  *
@@ -259,7 +261,7 @@ export class DatabaseService {
   public addArticle = async (articleObject: Article):Promise<DBReturnInterface> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       ARTICLE_TABLE_DEFINITION.tableName
-    }"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7)`;
+    }"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8)`;
     const {
       id,
       about,
@@ -268,6 +270,7 @@ export class DatabaseService {
       otherimages,
       publisher,
       thumbnail,
+      dop
     } = articleObject;
     const values = [
       id,
@@ -277,6 +280,7 @@ export class DatabaseService {
       publisher,
       thumbnail,
       otherimages,
+      dop
     ];
     const query = {
       text: insertQuerySkeleton,
