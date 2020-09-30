@@ -67,7 +67,7 @@
     <section>
       <h1>Add New Article</h1>
       <div class="main">
-        <form action="admin/newArticle" method="POST">
+        <form action="newArticle" method="POST" enctype="multipart/form-data">
           <div class="column1">
             <div class="field">
               <p>Name</p>
@@ -91,6 +91,7 @@
                   multiple
                   accept="image/*"
                   onchange="handleFiles(this.files)"
+                  name = "article_thumbnail"
                 />
                 <div id="gallery"></div>
                 <div class="pbb">
@@ -108,6 +109,7 @@
                   multiple
                   max-size="10000"
                   accept="image/*"
+                  name = "article_other[]"
                   onchange="handleFilesImg(this.files)"
                 />
                 <div id="gallery-img"></div>

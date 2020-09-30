@@ -102,13 +102,23 @@ export class AdminController {
             arrayOfSalePrices.push(row.purchaseprice);
             arrayOfBrandNames.push(row.brandname);
           });
-          res.render('AllProducts', {arrayOfProductIds:arrayOfProductIds,arrayOfImageAddresses:arrayOfImageAddresses, arrayOfRegularPrices:arrayOfRegularPrices,arrayOfSalePrices:arrayOfSalePrices,arrayOfBrandNames:arrayOfBrandNames}, (err, html) => {
-            if (err) {
-              console.debug(err);
-              res.status(501).redirect('../');
-            }
-            res.send(html);
-          });
+          res.render(
+            'AllProducts',
+            {
+              arrayOfProductIds: arrayOfProductIds,
+              arrayOfImageAddresses: arrayOfImageAddresses,
+              arrayOfRegularPrices: arrayOfRegularPrices,
+              arrayOfSalePrices: arrayOfSalePrices,
+              arrayOfBrandNames: arrayOfBrandNames,
+            },
+            (err, html) => {
+              if (err) {
+                console.debug(err);
+                res.status(501).redirect('../');
+              }
+              res.send(html);
+            },
+          );
         }
       },
       () => {
@@ -242,6 +252,7 @@ export class AdminController {
   }
 
   @Post('newArticle')
+
   createNewArticle(@Req() req: Request, @Res() res: Response): any {
     throw 'expects further implementation';
   }
