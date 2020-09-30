@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-import { Drug } from '../model/model.service';
+import { Article, Drug } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
-import { dir } from 'console';
+
 export enum EntryType {
   PRODUCT,
   MODULE,
@@ -10,6 +10,7 @@ export enum EntryType {
   MEMBER,
   SESSION,
   DRUG,
+  ARTICLE
 }
 export enum QueryStatus {
   FAILED,
@@ -87,7 +88,7 @@ const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
     'cgst',
     'costvar',
     'imgaddress',
-    'adminemail'
+    'adminemail',
   ],
 };
 const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
@@ -99,6 +100,18 @@ const SESSION_TABLE_DEFINITION: TableDefinitionInterface = {
     'category',
     'counsellingDate',
     'sessionId',
+  ],
+};
+const ARTICLE_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'ArticleLedger',
+  columnNames: [
+    'id',
+    'name',
+    'about',
+    'article',
+    'publisher',
+    'thumbnail',
+    'otherimages',
   ],
 };
 /**
@@ -195,7 +208,7 @@ export class DatabaseService {
       sku,
       strnth,
       imgaddress,
-      adminemail
+      adminemail,
     } = drugObject;
     const values = [
       id,
@@ -218,7 +231,7 @@ export class DatabaseService {
       cgst,
       costvar,
       imgaddress,
-      adminemail
+      adminemail,
     ];
     const query = {
       text: insertQuerySkeleton,
@@ -229,7 +242,7 @@ export class DatabaseService {
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect((err) => {
+      this.pool.connect(err => {
         if (err) console.log(err);
       });
       this.pool.query(query, (err: Error, result) => {
@@ -242,6 +255,29 @@ export class DatabaseService {
         resolve(returnObject);
       });
     });
+  };
+  public addArticle = async (articleObject: Article) => {
+    const insertQuerySkeleton = `insert into pharmaschema."${
+      ARTICLE_TABLE_DEFINITION.tableName
+    }"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7)`;
+    const {
+      id,
+      about,
+      article,
+      name,
+      otherimages,
+      publisher,
+      thumbnail,
+    } = articleObject;
+    const values = [
+      id,
+      name,
+      about,
+      article,
+      publisher,
+      thumbnail,
+      otherimages,
+    ];
   };
   /*** UPDATE QUERIES */
 
@@ -271,6 +307,8 @@ export class DatabaseService {
       case EntryType.TRANSACTION:
         tblname = TRANSACTION_TABLE_DEFINITION.tableName;
         break;
+        case EntryType.ARTICLE:
+          tblname = ARTICLE_TABLE_DEFINITION.tableName;
     }
     return new Promise(resolve => {
       const objectToResolve: DBReturnInterface = {
@@ -278,7 +316,7 @@ export class DatabaseService {
       };
       const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
       console.log(theQuery);
-      this.pool.connect((err) => {
+      this.pool.connect(err => {
         if (err) console.log(err);
       });
       this.pool.query(theQuery, (err, result) => {
@@ -308,5 +346,3 @@ export class DatabaseService {
     return EntryType;
   };
 }
-
-

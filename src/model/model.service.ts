@@ -21,6 +21,7 @@ enum RandomIdType {
   TRANSACTION,
   PRODUCT,
   VIDEO,
+  ARTICLE,
 }
 export interface Drug {
   id: any;
@@ -42,8 +43,8 @@ export interface Drug {
   sgst: any;
   cgst: any;
   costvar: any;
-  imgaddress:string;
-  adminemail:string;
+  imgaddress: string;
+  adminemail: string;
 }
 /**
  *
@@ -72,18 +73,14 @@ export interface Transaction {
   email: string;
   product_id: string;
 }
-/**
- *
- *
- * @interface Product
- */
-export interface Product {
-  product_id: string;
-  product_main_image_src: string;
+export interface Article {
+  id: string;
   name: string;
-  price: number;
-  info: string;
-  itemsInStock: number;
+  publisher:string;
+  about: string;
+  article: string;
+  thumbnail: string;
+  otherimages: string;
 }
 /**
  *
@@ -107,7 +104,14 @@ export interface Video {
  */
 @Injectable()
 export class ModelService {
-  constructor(private securityService: SecurityService) { }
+  constructor(private securityService: SecurityService) {}
+  /**
+   * GENERATES ARTICLE OBJECT
+   */
+  public createArticleObject = (name:string,publisher:string,about:string,article:string,thumbnail:string,otherimages:string): Article => {
+    const id = this.generateUniqueID(RandomIdType.ARTICLE);
+    return {id,about,article,name,otherimages,publisher,thumbnail };
+  };
   /**
    *GENERATES MEMBER OBJECT
    *
@@ -151,32 +155,32 @@ export class ModelService {
     product_cgst: string,
     product_cost_var: string,
     product_sku: string,
-    imgaddress:string,
-    adminemail:string
+    imgaddress: string,
+    adminemail: string,
   ): Drug => {
     const id = this.generateUniqueID(RandomIdType.PRODUCT);
     return {
       id: id,
       brandName: brand_name,
-      batchno:batch_number,
-      brandCode:brand_code,
-      cgst:product_cgst,
-      costvar:product_cost_var,
-      expdate:exp_date,
-      hsncode:hsn_code,
-      manufacturer:manufacturer,
-      marketedby:marketedby,
-      mfgdate:mfg_date,
-      mrp:product_mrp,
-      packing:packing,
-      purchaseprice:product_purchase_price,
-      qty:qty,
-      rate:product_rate,
-      sgst:product_sgst,
-      sku:product_sku,
-      strnth:strength,
-      imgaddress:imgaddress,
-      adminemail:adminemail
+      batchno: batch_number,
+      brandCode: brand_code,
+      cgst: product_cgst,
+      costvar: product_cost_var,
+      expdate: exp_date,
+      hsncode: hsn_code,
+      manufacturer: manufacturer,
+      marketedby: marketedby,
+      mfgdate: mfg_date,
+      mrp: product_mrp,
+      packing: packing,
+      purchaseprice: product_purchase_price,
+      qty: qty,
+      rate: product_rate,
+      sgst: product_sgst,
+      sku: product_sku,
+      strnth: strength,
+      imgaddress: imgaddress,
+      adminemail: adminemail,
     };
   };
 
@@ -234,6 +238,9 @@ export class ModelService {
         break;
       case RandomIdType.TRANSACTION:
         prefix = `TRS`;
+        break;
+      case RandomIdType.ARTICLE:
+        prefix = `ART`;
         break;
     }
     const suffix: string =
