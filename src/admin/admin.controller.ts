@@ -49,7 +49,7 @@ const multerOptions: MulterOptions = {
         filename = `${file.fieldname}-${Date.now()}.${mime.getExtension(
           file.mimetype,
         )}`;
-      if (file.fieldname!='article_otherimages[]')theFileName = filename;
+      if (file.fieldname != 'article_otherimages[]') theFileName = filename;
       if (file.fieldname == 'article_otherimages[]')
         theOtherImagesArray.push(theFileName);
       return cb(null, filename);
@@ -257,26 +257,24 @@ export class AdminController {
           // Some Database Error Has Occured
           console.debug('Internal Error Here');
           res.status(501).redirect('../');
-        }
-        else {
+        } else {
           const artThumbnailArray = [];
           const artNameArray = [];
           const artPublisherArray = [];
-          const artDopArray=[];
-          theDBReturnObject.resultObject.rows.forEach((row)=>{
+          const artDopArray = [];
+          theDBReturnObject.resultObject.rows.forEach(row => {
             artThumbnailArray.push(row.thumbnail);
             artNameArray.push(row.name);
             artPublisherArray.push(row.publisher);
             artDopArray.push(row.dop);
-          });  
+          });
           res.render('AllArticles', {
-            artThumbnailArray:artThumbnailArray,
-            artNameArray:artNameArray,
-            artPublisherArray:artPublisherArray,
-            artDopArray:artDopArray
+            artThumbnailArray: artThumbnailArray,
+            artNameArray: artNameArray,
+            artPublisherArray: artPublisherArray,
+            artDopArray: artDopArray,
           });
         }
-
       },
       () => {
         res.status(301).redirect('login');
@@ -309,42 +307,54 @@ export class AdminController {
       multerOptions,
     ),
   )
-  async createNewArticle(
+   createNewArticle(
     @Req() req: Request,
     @Res() res: Response,
-  ): Promise<any> {
-    const {
-      article_name,
-      article_publisher_name,
-      article_about,
-      article_article,
-    } = req.body;
-    const theArticleObject = this.mg.createArticleObject(
-      article_name,
-      article_publisher_name,
-      article_about,
-      req.session.adminEmail,
-      theFileName,
-      theOtherImagesArray.toString(),
+  ): any {
+    this.se.adminSessionExecutor(
+      req,
+      res,
+      async() => {
+        const {
+          article_name,
+          article_publisher_name,
+          article_about,
+          article_article,
+        } = req.body;
+        const theArticleObject = this.mg.createArticleObject(
+          article_name,
+          article_publisher_name,
+          article_about,
+          req.session.adminEmail,
+          theFileName,
+          theOtherImagesArray.toString(),
+        );
+        const theDatabaseReturnObject = await this.db.addArticle(
+          theArticleObject,
+        );
+        if (theDatabaseReturnObject.error) {
+          // Some Error Occured Internally
+          console.debug(theDatabaseReturnObject.error);
+          res.status(501).redirect('../');
+        } else {
+          fs.writeFile(
+            `Articles/${theArticleObject.id}.md`,
+            article_article,
+            err => {
+              if (err)
+                console.debug(`Error Occured While Writing File: ${err}`);
+              else
+                console.debug(`The File Has Been Written. with details
+                      ${article_article}`);
+              res.redirect('./articles');
+            },
+          );
+        }
+      },
+      () => {
+        res.redirect('login');
+      },
     );
-    const theDatabaseReturnObject = await this.db.addArticle(theArticleObject);
-    if (theDatabaseReturnObject.error) {
-      // Some Error Occured Internally
-      console.debug(theDatabaseReturnObject.error);
-      res.status(501).redirect('../');
-    } else {
-      fs.writeFile(
-        `Articles/${theArticleObject.id}.md`,
-        article_article,
-        err => {
-          if (err) console.debug(`Error Occured While Writing File: ${err}`);
-          else
-            console.debug(`The File Has Been Written. with details
-        ${article_article}`);
-          res.redirect('./articles');
-        },
-      );
-    }
   }
 
   @Get('modules')
