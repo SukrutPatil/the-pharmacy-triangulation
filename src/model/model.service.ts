@@ -3,11 +3,11 @@ import * as crypticKeyGenerator from 'crypto-random-string';
 import { SecurityService } from '../security/security.service';
 const dateFetch = () => {
   let today: any = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    const yyyy = today.getFullYear();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  const yyyy = today.getFullYear();
 
-  today = mm + "/" + dd + "/" + yyyy;
+  today = mm + '/' + dd + '/' + yyyy;
   return today;
 };
 /**
@@ -29,7 +29,7 @@ export enum ModuleType {
 enum RandomIdType {
   TRANSACTION,
   PRODUCT,
-  VIDEO,
+  MODULE,
   ARTICLE,
 }
 export interface Drug {
@@ -85,25 +85,25 @@ export interface Transaction {
 export interface Article {
   id: string;
   name: string;
-  publisher:string;
+  publisher: string;
   about: string;
   admin: string;
   thumbnail: string;
   otherimages: string;
-  dop:string;
+  dop: string;
 }
-/**
- *
- *
- * @interface Video
- */
-export interface Video {
-  video_id: string;
-  video_title: string;
-  video_src: string;
-  video_info: string;
-  video_module: ModuleType;
-  video_json_src: string;
+export interface Module {
+  id: string;
+  name: string;
+  desc: string;
+  price: string;
+  category: string;
+  thumbnail: string;
+  video: string;
+  articletitle: string;
+  article: string;
+  adminEmail: string;
+  dop: string;
 }
 
 /**
@@ -118,10 +118,17 @@ export class ModelService {
   /**
    * GENERATES ARTICLE OBJECT
    */
-  public createArticleObject = (name:string,publisher:string,about:string,admin:string,thumbnail:string,otherimages:string): Article => {
+  public createArticleObject = (
+    name: string,
+    publisher: string,
+    about: string,
+    admin: string,
+    thumbnail: string,
+    otherimages: string,
+  ): Article => {
     const id = this.generateUniqueID(RandomIdType.ARTICLE);
     const dop = dateFetch();
-    return {id,about,admin,name,otherimages,publisher,thumbnail,dop };
+    return { id, about, admin, name, otherimages, publisher, thumbnail, dop };
   };
   /**
    *GENERATES MEMBER OBJECT
@@ -194,7 +201,21 @@ export class ModelService {
       adminemail: adminemail,
     };
   };
-
+  public createModuleObject = (
+    name: string,
+    desc: string,
+    price: string,
+    category: string,
+    thumbnail: string,
+    video: string,
+    articletitle: string,
+    article: string,
+    adminEmail: string,
+    dop: string,
+  ):Module => {
+    const id = this.generateUniqueID(RandomIdType.MODULE);
+    return {id,adminEmail,article,articletitle,category,desc,dop,name,price,thumbnail,video};
+  };
   /**
    *GENERATES TRANSACTION OBJECT
    *
@@ -210,28 +231,7 @@ export class ModelService {
     const transactionId = this.generateUniqueID(RandomIdType.TRANSACTION);
     return { transactionId, address, buyerName, email, phone, product_id };
   };
-  /**
-   *GENERATES VIDEO OBJECT
-   *
-   * @memberof ModelService
-   */
-  public createVideoObject = (
-    video_title: string,
-    video_src: string,
-    video_info: string,
-    video_module: ModuleType,
-    video_json_src: string,
-  ): Video => {
-    const video_id = this.generateUniqueID(RandomIdType.VIDEO);
-    return {
-      video_id,
-      video_info,
-      video_json_src,
-      video_module,
-      video_src,
-      video_title,
-    };
-  };
+
   /**
    *Generates Unique IDs based on Enum
    *
@@ -244,8 +244,8 @@ export class ModelService {
       case RandomIdType.PRODUCT:
         prefix = `PRO`;
         break;
-      case RandomIdType.VIDEO:
-        prefix = `VID`;
+      case RandomIdType.MODULE:
+        prefix = `MOD`;
         break;
       case RandomIdType.TRANSACTION:
         prefix = `TRS`;

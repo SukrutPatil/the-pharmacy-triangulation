@@ -67,7 +67,7 @@
     <section>
       <h1>Add New Module</h1>
       <div class="main">
-        <form action="admin/newModule" method="POST">
+        <form action="newModule" method="POST" enctype="multipart/form-data">
           <div class="column1">
             <div class="field">
               <p>Name</p>
@@ -100,6 +100,7 @@
                   type="file"
                   max-size="2000"
                   id="fileElem"
+                  name = "moduleThumbnail"
                   multiple
                   accept="image/*"
                   onchange="handleFiles(this.files)"
@@ -119,6 +120,7 @@
                   id="fileElem-img"
                   max-size="10000"
                   accept="video/*"
+                  name = "moduleVideo"
                   onchange="handleFilesImg(this.files)"
                 />
                 <div id="gallery-img"></div>
@@ -146,8 +148,7 @@
               <textarea
                 rows="70"
                 cols="50"
-                name="comment"
-                form="usrform"
+                name="module_article"
               ></textarea>
             </div>
           </div>

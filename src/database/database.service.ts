@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-import { Article, Drug } from '../model/model.service';
+import { Article, Drug, Module } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
 
 export enum EntryType {
@@ -53,16 +53,19 @@ const PRODUCT_TABLE_DEFINITION: TableDefinitionInterface = {
   ],
 };
 const MODULE_TABLE_DEFINITION: TableDefinitionInterface = {
-  tableName: 'VideoLedger',
+  tableName: 'ModuleLedger',
   columnNames: [
-    'moduleId',
-    'moduleDesc',
-    'moduleCategory',
-    'modulePrice',
-    'moduleArticleTitle',
-    'moduleArticleBody',
-    'moduleThumbnailSrc',
-    'moduleVideoSrc',
+    'id',
+    'name',
+    'desc',
+    'price',
+    'category',
+    'thumbnail',
+    'video',
+    'articletitle',
+    'article',
+    'adminEmail',
+    'dop',
   ],
 };
 const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
@@ -112,7 +115,7 @@ const ARTICLE_TABLE_DEFINITION: TableDefinitionInterface = {
     'publisher',
     'thumbnail',
     'otherimages',
-    'dop'
+    'dop',
   ],
 };
 
@@ -258,7 +261,9 @@ export class DatabaseService {
       });
     });
   };
-  public addArticle = async (articleObject: Article):Promise<DBReturnInterface> => {
+  public addArticle = async (
+    articleObject: Article,
+  ): Promise<DBReturnInterface> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       ARTICLE_TABLE_DEFINITION.tableName
     }"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8)`;
@@ -270,7 +275,7 @@ export class DatabaseService {
       otherimages,
       publisher,
       thumbnail,
-      dop
+      dop,
     } = articleObject;
     const values = [
       id,
@@ -280,14 +285,14 @@ export class DatabaseService {
       publisher,
       thumbnail,
       otherimages,
-      dop
+      dop,
     ];
     const query = {
       text: insertQuerySkeleton,
       values: values,
       rowMode: 'array',
     };
-    return new Promise(resolve=>{
+    return new Promise(resolve => {
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
@@ -302,8 +307,64 @@ export class DatabaseService {
           returnObject.resultObject = result;
         }
         resolve(returnObject);
-    })
-  })};
+      });
+    });
+  };
+  public addModule = async (
+    theModuleObject: Module,
+  ): Promise<DBReturnInterface> => {
+    const insertQuerySkeleton = `insert into pharmaschema."${
+      MODULE_TABLE_DEFINITION.tableName
+    }"(${MODULE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
+    const {
+      id,
+      adminEmail,
+      article,
+      articletitle,
+      category,
+      desc,
+      dop,
+      name,
+      price,
+      thumbnail,
+      video,
+    } = theModuleObject;
+    const values = [
+      id,
+      name,
+      desc,
+      price,
+      category,
+      thumbnail,
+      video,
+      articletitle,
+      article,
+      adminEmail,
+      dop,
+    ];
+    const query = {
+      text: insertQuerySkeleton,
+      values: values,
+      rowMode: 'array',
+    };
+    return new Promise(resolve => {
+      const returnObject: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
+      this.pool.connect(err => {
+        if (err) console.log(err);
+      });
+      this.pool.query(query, (err: Error, result) => {
+        if (err) {
+          returnObject.error = err;
+          returnObject.status = QueryStatus.FAILED;
+        } else {
+          returnObject.resultObject = result;
+        }
+        resolve(returnObject);
+      });
+    });
+  };
   /*** UPDATE QUERIES */
 
   /*** DELETE QUERIES */

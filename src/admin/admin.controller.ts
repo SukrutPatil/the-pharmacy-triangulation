@@ -307,14 +307,11 @@ export class AdminController {
       multerOptions,
     ),
   )
-   createNewArticle(
-    @Req() req: Request,
-    @Res() res: Response,
-  ): any {
+  createNewArticle(@Req() req: Request, @Res() res: Response): any {
     this.se.adminSessionExecutor(
       req,
       res,
-      async() => {
+      async () => {
         const {
           article_name,
           article_publisher_name,
@@ -387,6 +384,15 @@ export class AdminController {
   }
 
   @Post('newModule')
+  @UseInterceptors(
+    FileFieldsInterceptor(
+      [
+        { name: 'moduleThumbnail', maxCount: 1 },
+        { name: 'moduleVideo', maxCount: 1 },
+      ],
+      multerOptions,
+    ),
+  )
   createNewModule(@Req() req: Request, @Res() res: Response): any {
     throw 'expects further implementation';
   }
