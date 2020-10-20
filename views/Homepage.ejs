@@ -112,60 +112,32 @@
         <h2>Popular among the buyers</h2>
         <div class="pro-crousel">
             <div class="your-class">
+                <% if (prod_name!="") { %>
+                <% for( let index = 0; index < prod_name.length; index++ ) { %>
+                <div>
+                    <div class="card">
+                        <img src="../uploads/products/<%= prod_img[index] %> " alt="">
+                        <div class="desc">
+                            <p><%= prod_name[index] %> </p>
+                            <p> <%= prod_price[index] %> </p>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <% }  else { %>
                 <div>
                     <div class="card">
                         <img src="../public/assets/p1.png" alt="">
                         <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
+                            <p>Demo Product (No Product In Database)</p>
+                            <p> Rs. 000</p>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="card">
-                        <img src="../public/assets/p1.png" alt="">
-                        <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card">
-                        <img src="../public/assets/p1.png" alt="">
-                        <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card">
-                        <img src="../public/assets/p1.png" alt="">
-                        <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card">
-                        <img src="../public/assets/p1.png" alt="">
-                        <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card">
-                        <img src="../public/assets/p1.png" alt="">
-                        <div class="desc">
-                            <p>P Name</p>
-                            <p> Rs. 500</p>
-                        </div>
-                    </div>
-                </div>
+                <% } %>
+
+
+
 
             </div>
         </div>

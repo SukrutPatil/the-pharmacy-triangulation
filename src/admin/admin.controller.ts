@@ -8,7 +8,7 @@ import {
   Res,
   UseInterceptors,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+import e, { Request, Response } from 'express';
 import { ModelService } from '../model/model.service';
 import { DatabaseService, EntryType } from '../database/database.service';
 import {
@@ -19,8 +19,10 @@ import * as multer from 'multer';
 import * as mime from 'mime';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 import * as fs from 'fs';
-let theFileName = '';
-const theOtherImagesArray: Array<string> = [];
+let theFileName = '',
+  theModuleThumbnail = '',
+  theModuleVideo = '';
+let theOtherImagesArray: Array<string> = [];
 let self: AdminController;
 
 const multerOptions: MulterOptions = {
@@ -32,9 +34,13 @@ const multerOptions: MulterOptions = {
         return cb(null, './uploads/articles/thumbnail');
       else if (file.fieldname == 'article_otherimages[]')
         return cb(null, './uploads/articles/other');
+      else if (file.fieldname == 'moduleThumbnail')
+        return cb(null, './uploads/modules/thumbnail');
+      else if (file.fieldname == 'moduleVideo')
+        return cb(null, './uploads/modules/video');
     },
     filename: (_, file, cb) => {
-      const match = ['image/png', 'image/jpeg'];
+      const match = ['image/png', 'image/jpeg', 'video/mp4'];
       if (match.indexOf(file.mimetype) === -1) {
         const errorMessage: Error = {
           message: 'Invalid File',
@@ -52,6 +58,8 @@ const multerOptions: MulterOptions = {
       if (file.fieldname != 'article_otherimages[]') theFileName = filename;
       if (file.fieldname == 'article_otherimages[]')
         theOtherImagesArray.push(theFileName);
+      if (file.fieldname == 'moduleThumbnail') theModuleThumbnail = filename;
+      if (file.fieldname == 'moduleVideo') theModuleVideo = filename;
       return cb(null, filename);
     },
   }),
@@ -195,6 +203,7 @@ export class AdminController {
     @Res() res: Response,
   ): Promise<any> {
     const {
+      name,
       brand_name,
       brand_code,
       strength,
@@ -216,6 +225,7 @@ export class AdminController {
     } = req.body;
     console.log(req.body);
     const theDrugObject = this.mg.createDrugObject(
+      name,
       brand_name,
       brand_code,
       strength,
@@ -352,6 +362,7 @@ export class AdminController {
         res.redirect('login');
       },
     );
+    theOtherImagesArray = [];
   }
 
   @Get('modules')
@@ -394,7 +405,46 @@ export class AdminController {
     ),
   )
   createNewModule(@Req() req: Request, @Res() res: Response): any {
-    throw 'expects further implementation';
+    this.se.adminSessionExecutor(
+      req,
+      res,
+      async () => {
+        const {
+          module_name,
+          module_desc,
+          module_price,
+          module_type,
+          module_article_title,
+          module_article,
+        } = req.body;
+        const theModuleObject = this.mg.createModuleObject(
+          module_name,
+          module_desc,
+          module_price,
+          module_type,
+          theModuleThumbnail,
+          theModuleVideo,
+          module_article_title,
+          module_article,
+          req.session.adminEmail,
+        );
+        const theDBReturnObject = await this.db.addModule(theModuleObject);
+        if (theDBReturnObject.error) console.log(theDBReturnObject.error);
+        else {
+          fs.writeFile(
+            `Modules/${theModuleObject.id} ${theModuleObject.articletitle}.md`,
+            module_article,
+            err => {
+              console.log(err);
+            },
+          );
+        }
+        res.redirect('modules');
+      },
+      () => {
+        res.status(501).redirect('../');
+      },
+    );
   }
 
   @Get('sessions')
@@ -482,7 +532,7 @@ export class AdminController {
   deleteItem(@Req() req: Request, @Res() res: Response): any {
     /**
      * Based on id the item to be deleted can be
-     * easily distingus.
+     * easily distinguish.
      */
   }
 }
