@@ -191,7 +191,7 @@ export class DatabaseService {
   public addDrug = async (drugObject: Drug): Promise<any> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       DRUG_TABLE_DEFINITION.tableName
-    }"(${DRUG_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)`;
+    }"(${DRUG_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22)`;
     const {
       id,
       batchno,
@@ -214,6 +214,7 @@ export class DatabaseService {
       strnth,
       imgaddress,
       adminemail,
+      name
     } = drugObject;
     const values = [
       id,
@@ -237,6 +238,7 @@ export class DatabaseService {
       costvar,
       imgaddress,
       adminemail,
+      name
     ];
     const query = {
       text: insertQuerySkeleton,
