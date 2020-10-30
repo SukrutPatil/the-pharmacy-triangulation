@@ -10,7 +10,7 @@
     padding-top: 8vh;
     padding-top: 8vh;
     overflow-x: hidden;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Arimo', sans-serif;
     height: 100vh;
     background: url(../assets/Background.jpg);
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@
             flex: 1;
   }
   section .heading h1 {
-    font-size: 200px;
+    font-size: 100px;
     line-height: 50px;
   }
   section .heading .btns {
@@ -98,7 +98,7 @@
     padding-right: 10px;
     padding-bottom: 10px;
     overflow-x: hidden;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Arimo', sans-serif;
     height: 100%;
     background: url(../assets/phoneBg.png);
     background-repeat: no-repeat;
@@ -161,7 +161,7 @@
     padding-top: 8vh;
     padding-top: 8vh;
     overflow-x: hidden;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Arimo', sans-serif;
     height: 100%;
     background: url(../assets/Background.jpg);
     background-repeat: no-repeat;
@@ -1165,7 +1165,7 @@
 @media screen and (min-width: 1600px) {
   .footer {
     margin: auto;
-    max-width: 1400px;
+    max-width: 2900px;
     background: url(../assets/footerBg.png);
     height: 100%;
     width: 100%;
