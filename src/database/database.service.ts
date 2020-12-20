@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Pool, QueryResult } from 'pg';
+import { Pool, PoolConfig, QueryResult } from 'pg';
 import { Article, Drug, Module } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
 
@@ -132,6 +132,7 @@ let self: any;
 
 @Injectable()
 export class DatabaseService {
+
   pool = new Pool(jsonData);
   self = this;
   /*** INSERT QUERY */
