@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-DatabaseInfo.json
+#DatabaseInfo.json
 # Logs
 logs
 *.log
