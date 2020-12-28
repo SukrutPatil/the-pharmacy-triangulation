@@ -34,6 +34,7 @@
           <li><a href="/user/DietCounseling">Diet counseling</a></li>
           <li><a href="/user/Products">Products</a></li>
           <li><a href="/user/Articles">Articles</a></li>
+          <li><a href="/user/Articles">Dashboard</a></li>
         </ul>
         <div class="burger">
           <div class="line1"></div>
@@ -44,7 +45,8 @@
     </div>
     <section>
       <h1>Get Membership</h1>
-      <div class="buyingContainer">
+
+      <div class="block">
         <form action="user/membershipBuying" method="POST">
           <div class="field">
             <p>Name</p>
@@ -55,7 +57,7 @@
             <input type="text" />
           </div>
           <div class="field">
-            <p>Phone Number</p>
+            <p>Phone No.</p>
             <input type="text" />
           </div>
           <div class="field">
@@ -63,33 +65,26 @@
             <input type="text" />
           </div>
           <div class="field">
-            <p>Password</p>
+            <p>Confirm Password</p>
             <input type="password" />
           </div>
-          <div class="btnsDiv">
+          <div class="field">
+            <p>Type</p>
             <select name="cars" id="cars">
-              <option value="Medication counseling"
-                >Medication counseling</option
-              >
-              <option value="Entrepreneurship counseling"
-                >Entrepreneurship counseling</option
-              >
+              <option value="Medication counseling">All</option>
+              <option value="Medication counseling">Medication counseling</option>
+              <option value="Medication counseling">Diet counseling</option>
+              <option value="Entrepreneurship counseling">Entrepreneurship counseling</option>
               <option value="Career counseling">Career counseling</option>
             </select>
-            <button class="logInbtn" type="submit">Log In</button>
           </div>
+          <button class="logInbtn" type="submit"><p> Log In</p><img src="../public/assets/frontArrow.png" alt="" /></button>
         </form>
+        <a href="">Already a member? Log In</a>
       </div>
-      <div class="pageShift">
-        <p>Already a Member ?</p>
-        <a href="/auth/login">
-            <button>
-            <p>Log In</p>
-            <img src="../public/assets/frontArrow.png" alt="" />
-          </button>
-        </a>
-      </div>
+
     </section>
+
     <script src="../public/js/nav.js"></script>
   </body>
 </html>

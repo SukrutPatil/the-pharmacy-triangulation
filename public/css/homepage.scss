@@ -29,9 +29,12 @@
                 margin-top: 100px;
                 display: flex;
                 width: max-content;
-
+                a{
+                    text-decoration: none;
+                }
                 button{
                     display: flex;
+                    cursor: pointer;
                     background: white;
                     color: #054A29;
                     justify-content: center;
@@ -41,6 +44,7 @@
                     margin-right: 50px;
                     border: none;
                     border-radius: 10px;
+                    
                     p{
                         padding-top:15px ;
                         font-size: 20px;

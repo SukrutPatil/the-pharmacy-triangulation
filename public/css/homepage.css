@@ -40,10 +40,14 @@
     width: -moz-max-content;
     width: max-content;
   }
+  section .heading .btns a {
+    text-decoration: none;
+  }
   section .heading .btns button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    cursor: pointer;
     background: white;
     color: #054A29;
     -webkit-box-pack: center;
