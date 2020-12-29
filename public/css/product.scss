@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+h3{
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    padding: 10px 0px;
+    color: green;
+}
+p{
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 0px;
+    text-align: justify;
+}
+section{
+    
+    .heading{
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{ 
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+    }
+    .product{
+        display: flex;
+        padding: 50px;
+        justify-content: space-around;  
+
+        .image{
+            flex: 1;
+            img{
+                display: block;
+                width: 400px;
+                margin: auto;
+                object-fit: cover;
+            }
+        }
+        .info{
+            flex: 1;
+            .buttons{
+                margin-top: 20px;
+                button{
+                    font-family: 'Roboto', sans-serif;
+                    padding: 20px 50px;
+                    font-weight: bolder;
+                    border-radius: 10px;
+                    margin: 20px;
+                    border: none;
+                    background: rgb(209, 209, 209);
+                }
+                .buy{
+                    color: white;
+                    background: #054A29;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and(max-width:1312px){
+    section{
+        .heading{
+            h1{
+                font-size: 50px;
+                padding-top: 10px;
+            }
+        }
+        .product{
+            display: flex;
+            padding: 50px;
+            justify-content: space-around;  
+            flex-direction: column;
+            .image{
+                margin-bottom: 20px;
+                img{
+                    display: block;
+                    width: 100%;
+                    margin: auto;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+   
+
+}
+
+
+@import 'nav';
+@import 'knowledgeCenter';
+@import 'footer';
+
+
+
