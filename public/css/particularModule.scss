@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.thumbnail{
+    width: 100%;
+    height: 400px;
+    background: url(../assets/vagies.png);
+    background-size: cover;
+    position: relative;
+
+    h1{
+        position: absolute;
+        bottom: 0;
+        padding: 20px;
+    }
+}
+.content1{
+    padding: 10px;
+    display: flex;
+    
+    .video-section{
+        flex: 1;
+        padding: 10px;
+        h1{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+        }
+        h2{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+        }
+        h3{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+            text-align: justify;
+        }
+        video{
+            width: 100%;
+
+        }
+    }
+    .discussion{
+        flex: 1;
+        padding: 10px;
+        
+        h1{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+        }
+        h2{
+            font-family: 'Roboto', sans-serif;
+            padding: 20px 0px;
+        }
+        h3{
+            font-family: 'Roboto', sans-serif;
+            padding-bottom: 20px;
+            padding-top: 10px;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            
+            text-align: justify;
+        }
+        .box{
+            width: 90%;
+            padding: 10px;
+            height: 650px;
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px grey;
+            margin: auto;
+            .messages{
+                height: 50%;
+                width: 100%;
+                overflow-y: scroll;
+                padding: 10px;
+            }
+            textarea{
+                width: 100%;
+                margin-top: 50px;
+                border: 2px solid black;
+                padding: 5px;
+                border-radius: 10px;
+                outline: none;
+                font-family: 'Roboto', sans-serif;
+            }
+            button{
+                font-family: 'Roboto', sans-serif;
+                padding: 10px 40px;
+                color: white;
+                background: #44B54F;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.content2{
+    display: flex;
+    padding: 10px;
+    .text{
+        padding: 10px;
+        flex: 1;
+    }
+    p{
+        text-align: justify;
+        font-family: 'Roboto', sans-serif;
+    }
+    .images{
+        flex: 1;
+        padding: 20px;
+        img{
+            width: 90%;
+            border: black 2px solid;
+            display: block;
+            margin: auto;
+        }
+    }
+}
+@media screen and(max-width:1312px){
+    .thumbnail{
+        h1{
+            font-size: 30px;
+        }
+    }
+    .content1{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        .discussion{
+            .box{
+                width: 100%;
+            }
+        }
+    }
+    .content2{
+        flex-direction: column;
+
+        .images{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+
+@import 'nav';
