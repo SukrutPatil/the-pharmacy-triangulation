@@ -13,6 +13,7 @@ import { ModelModule } from './model/model.module';
 import { SessionExecutorModule } from './session-executor/session-executor.module';
 import { UserModule } from './user/user.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { MulterModule } from '@nestjs/platform-express';
     UserModule,
     MulterModule.register({
       dest: './uploads'
-    })
+    }),
+    ProductsModule
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService, ModelService, SecurityService],
