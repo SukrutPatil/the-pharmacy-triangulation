@@ -19,9 +19,9 @@ export class AppController {
       res.status(501);
     }
     theDBReturnObject.resultObject.rows.forEach(productEntry => {
-      const { id, name, mrp, imgaddress } = productEntry;
+      const { id, brandname, mrp, imgaddress } = productEntry;
       prod_id.push(id);
-      prod_name.push(name);
+      prod_name.push(brandname);
       prod_price.push(mrp);
       prod_img.push(imgaddress);
     });

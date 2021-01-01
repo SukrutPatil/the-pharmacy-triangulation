@@ -532,7 +532,7 @@ export class AdminController {
   deleteItem(@Req() req: Request, @Res() res: Response): any {
     /**
      * Based on id the item to be deleted can be
-     * easily distinguish.
+     * easily distinguis</a>h.</a>
      */
   }
 }
