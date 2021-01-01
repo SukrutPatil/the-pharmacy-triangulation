@@ -117,11 +117,13 @@
                 <% for( let index = 0; index < prod_name.length; index++ ) { %>
                 <div>
                     <div class="card">
+                        <a href="../products/<%=prod_id[index] %>">
                         <img src="../uploads/products/<%= prod_img[index] %> " alt="">
                         <div class="desc">
                             <p><%= prod_name[index] %> </p>
                             <p> <%= prod_price[index] %> </p>
                         </div>
+                    </a>
                     </div>
                 </div>
                 <% } %>
