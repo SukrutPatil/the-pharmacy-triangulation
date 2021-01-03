@@ -10,7 +10,7 @@ export class ProductsController {
     console.log(id);
     const product = await this.productsService.getParticularProduct(id);
     if (!product) {
-      res.render('404', {});
+      res.render('404', {errorMessage: 'This Product is No Longer Available!'});
       return;
     }
     // Fetch Product  Information

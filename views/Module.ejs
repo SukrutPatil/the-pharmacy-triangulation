@@ -33,20 +33,18 @@
         </nav>
     </div>
     <div class="head">
-        <img src="../public/assets/vagies.png" alt="">
-        <h1 class="title">Module Name | Catagory</h1>
+        <img src="../uploads/modules/thumbnail/<%= theModule.thumbnail %>" alt="">
+        <h1 class="title"><%= theModule.name %> | <%= theModule.category %></h1>
     </div>
     <div class="vp">
         <div class="video-area">
             <video controls>
-                <source src="" type="video/mp4">
+                <source src="../uploads/modules/video/<%= theModule.video %>" type="video/mp4">
             </video>
-            <h1>Video Title</h1>
-            <h2>July 7, 2020 | By Sukrut Patil</h2>
+            <h1><%= theModule.articletitle %></h1>
+            <h2> <%= theModule.dop %>| By <%=theAuthor %></h2>
             <p>
-             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt et obcaecati 
-             eaque voluptas veritatis. Aliquam recusandae sint at perferendis delectus corrupti. 
-              Sed asperiores debitis pariatur vero corporis sit aliquid voluptates?
+             <%= theModule.description %>
 
             </p>
 
@@ -90,60 +88,8 @@
 
     <div class="article-section">
         <div class="article">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies mauris in nisi aliquam, a
-                hendrerit arcu malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam id 
-                enim ut massa faucibus tempus in sit amet enim. Suspendisse potenti. Phasellus at venenatis erat. 
-                Sed nec consequat ex. Sed rhoncus turpis sed sem viverra bibendum. Nullam ultrices rhoncus cursus.
-                 Vestibulum a odio elementum, porta risus vitae, iaculis erat. Quisque nec lacinia justo. Integer 
-                 finibus turpis nec cursus sodales. Vestibulum et euismod sem. Donec placerat vehicula enim, non
-                  pulvinar eros venenatis at. Praesent convallis arcu non mollis scelerisque. Nullam blandit neque 
-                  magna, in aliquam lorem consequat ut. Donec neque sem, scelerisque vel molestie ac, varius sed diam.
-            </p>
-            <br>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies mauris in nisi aliquam, a
-             hendrerit arcu malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam id 
-             enim ut massa faucibus tempus in sit amet enim. Suspendisse potenti. Phasellus at venenatis erat. 
-             Sed nec consequat ex. Sed rhoncus turpis sed sem viverra bibendum. Nullam ultrices rhoncus cursus.
-              Vestibulum a odio elementum, porta risus vitae, iaculis erat. Quisque nec lacinia justo. Integer 
-              finibus turpis nec cursus sodales. Vestibulum et euismod sem. Donec placerat vehicula enim, non
-               pulvinar eros venenatis at. Praesent convallis arcu non mollis scelerisque. Nullam blandit neque 
-               magna, in aliquam lorem consequat ut. Donec neque sem, scelerisque vel molestie ac, varius sed diam.
-            </p>
-            <br>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies mauris in nisi aliquam, a
-             hendrerit arcu malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam id 
-             enim ut massa faucibus tempus in sit amet enim. Suspendisse potenti. Phasellus at venenatis erat. 
-             Sed nec consequat ex. Sed rhoncus turpis sed sem viverra bibendum. Nullam ultrices rhoncus cursus.
-              Vestibulum a odio elementum, porta risus vitae, iaculis erat. Quisque nec lacinia justo. Integer 
-              finibus turpis nec cursus sodales. Vestibulum et euismod sem. Donec placerat vehicula enim, non
-               pulvinar eros venenatis at. Praesent convallis arcu non mollis scelerisque. Nullam blandit neque 
-               magna, in aliquam lorem consequat ut. Donec neque sem, scelerisque vel molestie ac, varius sed diam.
-            </p>
-            <br>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies mauris in nisi aliquam, a
-             hendrerit arcu malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam id 
-             enim ut massa faucibus tempus in sit amet enim. Suspendisse potenti. Phasellus at venenatis erat. 
-             Sed nec consequat ex. Sed rhoncus turpis sed sem viverra bibendum. Nullam ultrices rhoncus cursus.
-              Vestibulum a odio elementum, porta risus vitae, iaculis erat. Quisque nec lacinia justo. Integer 
-              finibus turpis nec cursus sodales. Vestibulum et euismod sem. Donec placerat vehicula enim, non
-               pulvinar eros venenatis at. Praesent convallis arcu non mollis scelerisque. Nullam blandit neque 
-               magna, in aliquam lorem consequat ut. Donec neque sem, scelerisque vel molestie ac, varius sed diam.
-            </p>
-            <br>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies mauris in nisi aliquam, a
-             hendrerit arcu malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam id 
-             enim ut massa faucibus tempus in sit amet enim. Suspendisse potenti. Phasellus at venenatis erat. 
-             Sed nec consequat ex. Sed rhoncus turpis sed sem viverra bibendum. Nullam ultrices rhoncus cursus.
-              Vestibulum a odio elementum, porta risus vitae, iaculis erat. Quisque nec lacinia justo. Integer 
-              finibus turpis nec cursus sodales. Vestibulum et euismod sem. Donec placerat vehicula enim, non
-               pulvinar eros venenatis at. Praesent convallis arcu non mollis scelerisque. Nullam blandit neque 
-               magna, in aliquam lorem consequat ut. Donec neque sem, scelerisque vel molestie ac, varius sed diam.
-            </p>
+            
+            <%=theModule.article %>
 
         </div>
         <div class="images">

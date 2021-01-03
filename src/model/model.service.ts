@@ -33,7 +33,7 @@ enum RandomIdType {
   ARTICLE,
 }
 export interface Drug {
-  name:string;
+  name: string;
   id: any;
   brandName: any;
   brandCode: any;
@@ -96,7 +96,7 @@ export interface Article {
 export interface Module {
   id: string;
   name: string;
-  desc: string;
+  description: string;
   price: string;
   category: string;
   thumbnail: string;
@@ -156,7 +156,7 @@ export class ModelService {
     };
   };
   public createDrugObject = (
-    name:string,
+    name: string,
     brand_name: string,
     brand_code: string,
     strength: string,
@@ -181,7 +181,7 @@ export class ModelService {
     const id = this.generateUniqueID(RandomIdType.PRODUCT);
     return {
       id: id,
-      name:name,
+      name: name,
       brandName: brand_name,
       batchno: batch_number,
       brandCode: brand_code,
@@ -206,7 +206,7 @@ export class ModelService {
   };
   public createModuleObject = (
     name: string,
-    desc: string,
+    description: string,
     price: string,
     category: string,
     thumbnail: string,
@@ -223,7 +223,7 @@ export class ModelService {
       article,
       articletitle,
       category,
-      desc,
+      description,
       dop,
       name,
       price,

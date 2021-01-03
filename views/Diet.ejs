@@ -35,42 +35,18 @@
             <h1>Diet counseling</h1>
         </div>
         <div class="your-class">
-            <div>
-                <div class="card">
-                    <img src="../public/assets/counsiling.png" alt="">
-                    <div class="disc">
-                        <h1>Module Heading</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aperiam.</p>
+            <% for (const module of allModules) { %>
+                <div>
+                    <div class="card">
+                        <img src="../uploads/modules/thumbnail/<%= module.thumbnail %>"alt="">
+                        <div class="disc">
+                            <h1><%= module.name %></h1>
+                            <p><%= module.description %></p>
+                        </div>
                     </div>
-                </div>
             </div>
-            <div>
-                <div class="card">
-                    <img src="../public/assets/counsiling.png" alt="">
-                    <div class="disc">
-                        <h1>Module Heading</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aperiam.</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card">
-                    <img src="../public/assets/counsiling.png" alt="">
-                    <div class="disc">
-                        <h1>Module Heading</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aperiam.</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card">
-                    <img src="../public/assets/counsiling.png" alt="">
-                    <div class="disc">
-                        <h1>Module Heading</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aperiam.</p>
-                    </div>
-                </div>
-            </div>
+           <% } %>
+          
           </div>
           <div class="info">
               <div class="context">
@@ -126,71 +102,20 @@
            quibusdam distinctio quis labore voluptates autem aut vitae officiis 
            debitis, suscipit beatae.</p>
         <div class="allcards">
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
+            <% for (const module of allModules) { %>
+                <div class="card">
+                    <img src="../uploads/modules/thumbnail/<%= module.thumbnail %>" alt="">
+                    <div class="desc">
+                        <a href="../module/<%= module.id %>">
+                        <p class="mName"><%=module.name %></p>
+                        <p class="price"><%=module.price %></p>
+                        <p class="catagory"><%=module.category %></p>
+                        <p><%= module.description %></p>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                    <p class="mName">Module Name</p>
-                    <p class="price">Rs. 500</p>
-                    <p class="catagory">Medication</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
+                    <% } %>
+            
             </div>
     </section>
     <section class="footer">

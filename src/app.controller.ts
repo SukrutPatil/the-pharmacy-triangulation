@@ -1,16 +1,20 @@
 import { Controller, Get, Render, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { DatabaseService, EntryType } from './database/database.service';
+import { ProductsService } from './products/products.service';
 @Controller()
 export class AppController {
-  constructor(private readonly db: DatabaseService) {}
+  constructor(
+    private readonly db: DatabaseService,
+    private readonly ps: ProductsService,
+  ) {}
 
   @Get()
   @Render('Homepage.ejs')
   async getHomePage(@Req() req: Request, @Res() res: Response): Promise<any> {
     //Fetch products Data
     const theDBReturnObject = await this.db.retrieve(EntryType.DRUG);
-    const prod_id: Array<string> =[];
+    const prod_id: Array<string> = [];
     const prod_name: Array<string> = [];
     const prod_price: Array<string> = [];
     const prod_img: Array<string> = [];
@@ -33,10 +37,16 @@ export class AppController {
       prod_img: prod_img,
     };
   }
-
+  @Get('listOfAllProducts')
+  async getListOfAllProductsPage(@Res() res:Response) {
+    const allProducts = await this.ps.getAllProducts();
+    if (!allProducts) res.render('404', {errorMessage:'No Products found in database. '});
+    res.render('ListOfAllProducts', { allProducts });
+  }
   @Get('aboutUs')
   @Render('AboutUs.ejs')
   getAboutUSPage(): any {
     return {};
   }
+  
 }

@@ -57,7 +57,7 @@ const MODULE_TABLE_DEFINITION: TableDefinitionInterface = {
   columnNames: [
     'id',
     'name',
-    'desc',
+    'description',
     'price',
     'category',
     'thumbnail',
@@ -325,7 +325,7 @@ export class DatabaseService {
       article,
       articletitle,
       category,
-      desc,
+      description,
       dop,
       name,
       price,
@@ -335,7 +335,7 @@ export class DatabaseService {
     const values = [
       id,
       name,
-      desc,
+      description,
       price,
       category,
       thumbnail,
@@ -350,6 +350,7 @@ export class DatabaseService {
       values: values,
       rowMode: 'array',
     };
+    console.log(query);
     return new Promise(resolve => {
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
@@ -430,8 +431,9 @@ export class DatabaseService {
     }"(${tableDefinition.columnNames.toString()}) VALUES ?`;
     return theQuery;
   };
-
+  
   getEntryType = (): any => {
     return EntryType;
   };
+
 }
