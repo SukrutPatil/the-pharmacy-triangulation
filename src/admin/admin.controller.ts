@@ -19,6 +19,7 @@ import * as multer from 'multer';
 import * as mime from 'mime';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 import * as fs from 'fs';
+import { ModuleService } from '../module/module.service';
 let theFileName = '',
   theModuleThumbnail = '',
   theModuleVideo = '';
@@ -71,6 +72,7 @@ export class AdminController {
     private readonly se: SessionExecutorService,
     private readonly mg: ModelService,
     private readonly db: DatabaseService,
+    private readonly ms: ModuleService,
   ) {}
 
   // Asking user to login
@@ -366,12 +368,18 @@ export class AdminController {
   }
 
   @Get('modules')
-  getAllModule(@Req() req: Request, @Res() res: Response): any {
+  async getAllModule(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const allModules = await this.ms.getAllModules();
+    
     this.se.adminSessionExecutor(
       req,
       res,
       () => {
-        res.render('AllModules', {});
+        if (!allModules) {
+          res.render('404', {});
+          return;
+        }
+        res.render('AllModules', {allModules});
       },
       () => {
         res.status(301).redirect('login');
@@ -430,15 +438,7 @@ export class AdminController {
         );
         const theDBReturnObject = await this.db.addModule(theModuleObject);
         if (theDBReturnObject.error) console.log(theDBReturnObject.error);
-        else {
-          fs.writeFile(
-            `Modules/${theModuleObject.id} ${theModuleObject.articletitle}.md`,
-            module_article,
-            err => {
-              console.log(err);
-            },
-          );
-        }
+
         res.redirect('modules');
       },
       () => {

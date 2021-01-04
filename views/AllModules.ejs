@@ -64,32 +64,30 @@
       <h1>All Modules</h1>
       <div class="table">
         <table>
+          
           <tr class="header">
             <td>Thum.</td>
             <td>Module Name</td>
-            <td>Catagory</td>
+            <td>Category</td>
             <td>Price (regu.)</td>
-            <td>Price (sale)</td>
+            <!-- <td>Price (sale)</td> -->
             <td>Date of publish</td>
           </tr>
-          <tr>
+
+          <% for (const module of allModules) { %>
+            <tr>
             <td style="padding-top:5px ;">
-              <img src="../public/assets/demo1.png" alt="" />
+              <img src="../uploads/modules/thumbnail/<%=module.thumbnail %>" />
             </td>
-            <td><a href="">Module Name</a></td>
-            <td>Catagory</td>
-            <td>Price (regu.)</td>
-            <td>Price (sale)</td>
-            <td>Date of publish</td>
+            <td><a href=""><%=module.name %></a></td>
+            <td><%=module.category %></td>
+            <td><%=module.price %></td>
+            <!-- <td>Price (sale)</td> -->
+            <td><%= module.dop %></td>
           </tr>
-          <tr>
-            <td><img src="../public/assets/demo1.png" alt="" /></td>
-            <td><a href="">Module Name</a></td>
-            <td>Catagory</td>
-            <td>Price (regu.)</td>
-            <td>Price (sale)</td>
-            <td>Date of publish</td>
-          </tr>
+            <% } %>
+          
+          
         </table>
       </div>
     </section>

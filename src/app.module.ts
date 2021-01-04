@@ -14,6 +14,10 @@ import { SessionExecutorModule } from './session-executor/session-executor.modul
 import { UserModule } from './user/user.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ProductsModule } from './products/products.module';
+import { ProductsService } from './products/products.service';
+import { ModuleService } from './module/module.service';
+
+import { ModuleController } from './module/module.controller';
 
 @Module({
   imports: [
@@ -28,7 +32,7 @@ import { ProductsModule } from './products/products.module';
     }),
     ProductsModule
   ],
-  controllers: [AppController],
-  providers: [AppService, DatabaseService, ModelService, SecurityService],
+  controllers: [AppController,  ModuleController],
+  providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService],
 })
 export class AppModule { }

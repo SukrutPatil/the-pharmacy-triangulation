@@ -1,13 +1,16 @@
 import { Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
-import { SessionExecutorService } from 'src/session-executor/session-executor.service';
+import { SessionExecutorService } from '../session-executor/session-executor.service';
 import { Request, Response } from 'express';
-import { throws } from 'assert';
+import { ModuleCategory, ModuleService } from '../module/module.service';
 
 @Controller('user')
 // '' Will work for home page if User hasn't login yet
 // if user logined, then it user/... routing will work
 export class UserController {
-  constructor(private readonly se: SessionExecutorService) {}
+  constructor(
+    private readonly se: SessionExecutorService,
+    private readonly ms: ModuleService,
+  ) {}
 
   @Get(['', 'AllModules'])
   getAllModules(@Req() req: Request, @Res() res: Response): any {
@@ -27,8 +30,20 @@ export class UserController {
   }
 
   @Get('MedicationCounseling')
-  @Render('Medication.ejs')
-  getMedicationCounseling(@Req() req: Request, @Res() res: Response): any {}
+  async getMedicationCounseling(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<any> {
+    const allModules = await this.ms.getModulesByCategory(ModuleCategory.MED);
+
+    if (!allModules.length) {
+      res.render('404', {errorMessage: 'There are no Medication Modules Available Yet!'});
+      return;
+    }
+
+    // console.log(allModules);
+    res.render('Medication', { allModules });
+  }
 
   @Post('Medication')
   getMedicationSession(@Req() req: Request, @Res() res: Response): any {
@@ -37,11 +52,20 @@ export class UserController {
   }
 
   @Get('EntrepreneurshipCounseling')
-  @Render('Entrepreneurship.ejs')
-  getEntrepreneurshipCounseling(
+  async getEntrepreneurshipCounseling(
     @Req() req: Request,
     @Res() res: Response,
-  ): any {}
+  ): Promise<any> {
+    const allModules = await this.ms.getModulesByCategory(
+      ModuleCategory.ENTREPRENEURSHIP,
+    );
+    if (!allModules.length) {
+      res.render('404', {errorMessage: 'There are no Entrepreneurship Modules Available Yet!'});
+      return;
+    }
+    // console.log(allModules);
+    res.render('Entrepreneurship', { allModules });
+  }
 
   @Post('Entrepreneurship')
   getEntrepreneurshipSession(@Req() req: Request, @Res() res: Response): any {
@@ -50,8 +74,17 @@ export class UserController {
   }
 
   @Get('CareerCounseling')
-  @Render('Career.ejs')
-  getCareerCounseling(@Req() req: Request, @Res() res: Response): any {}
+  async getCareerCounseling(@Req() req: Request, @Res() res: Response) {
+    const allModules = await this.ms.getModulesByCategory(
+      ModuleCategory.CAREER,
+    );
+    if (!allModules.length) {
+      res.render('404', {errorMessage: 'There are no Career Modules Available Yet!'});
+      return;
+    }
+    // console.log(allModules);
+    res.render('Career', { allModules });
+  }
 
   @Post('Career')
   getCareerSession(@Req() req: Request, @Res() res: Response): any {
@@ -60,8 +93,20 @@ export class UserController {
   }
 
   @Get('DietCounseling')
-  @Render('Diet.ejs')
-  getDietCounseling(@Req() req: Request, @Res() res: Response): any {}
+  
+  async getDietCounseling(@Req() req: Request, @Res() res: Response) {
+    const allModules = await this.ms.getModulesByCategory(ModuleCategory.DIET);
+    if (!allModules.length) {
+      console.log('rendering 404');
+      res.render('404', {
+        errorMessage: 'There are no Diet Modules Available Yet!',
+      });
+      return;
+    }
+    // console.log(allModules);
+    console.log('rendering diet')
+    res.render('Diet', { allModules });
+  }
 
   @Post('Diet')
   getDietSession(@Req() req: Request, @Res() res: Response): any {
