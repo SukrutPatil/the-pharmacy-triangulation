@@ -116,7 +116,9 @@ export class UserController {
 
   @Get('Products')
   @Render('ProductSelling.ejs')
-  getProducts(@Req() req: Request, @Res() res: Response): any {}
+  getProducts(@Req() req: Request, @Res() res: Response): any {
+    res.redirect('../listofallproducts');
+  }
 
   @Get('Articles')
   @Render('Articles.ejs')
