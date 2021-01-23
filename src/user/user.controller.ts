@@ -37,7 +37,9 @@ export class UserController {
     const allModules = await this.ms.getModulesByCategory(ModuleCategory.MED);
 
     if (!allModules.length) {
-      res.render('404', {errorMessage: 'There are no Medication Modules Available Yet!'});
+      res.render('404', {
+        errorMessage: 'There are no Medication Modules Available Yet!',
+      });
       return;
     }
 
@@ -60,7 +62,9 @@ export class UserController {
       ModuleCategory.ENTREPRENEURSHIP,
     );
     if (!allModules.length) {
-      res.render('404', {errorMessage: 'There are no Entrepreneurship Modules Available Yet!'});
+      res.render('404', {
+        errorMessage: 'There are no Entrepreneurship Modules Available Yet!',
+      });
       return;
     }
     // console.log(allModules);
@@ -79,7 +83,9 @@ export class UserController {
       ModuleCategory.CAREER,
     );
     if (!allModules.length) {
-      res.render('404', {errorMessage: 'There are no Career Modules Available Yet!'});
+      res.render('404', {
+        errorMessage: 'There are no Career Modules Available Yet!',
+      });
       return;
     }
     // console.log(allModules);
@@ -93,7 +99,6 @@ export class UserController {
   }
 
   @Get('DietCounseling')
-  
   async getDietCounseling(@Req() req: Request, @Res() res: Response) {
     const allModules = await this.ms.getModulesByCategory(ModuleCategory.DIET);
     if (!allModules.length) {
@@ -104,7 +109,7 @@ export class UserController {
       return;
     }
     // console.log(allModules);
-    console.log('rendering diet')
+    console.log('rendering diet');
     res.render('Diet', { allModules });
   }
 
@@ -123,4 +128,30 @@ export class UserController {
   @Get('Articles')
   @Render('Articles.ejs')
   getArticle(@Req() req: Request, @Res() res: Response): any {}
+
+  @Get('UserDashboard')
+  getUserDashboard(@Req() req: Request, @Res() res: Response) {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        res.render('UserDashboard', {});
+      },
+      () => {
+        res.render('404', { errorMessage: 'Please Log In First!' });
+      },
+    );
+  }
+  @Get('UserOrders')
+  getUserOrders(@Req() req: Request, @Res() res: Response) {
+    this.se.sessionExecutor(
+      req,
+      res,
+      () => {
+        // Fetch All UserOrders
+        
+      },
+      () => {},
+    );
+  }
 }

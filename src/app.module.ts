@@ -19,6 +19,8 @@ import { ModuleService } from './module/module.service';
 
 import { ModuleController } from './module/module.controller';
 
+import { OrderService } from './order/order.service';
+import {OrderModule} from './order/order.module'
 @Module({
   imports: [
     AuthModule,
@@ -30,9 +32,10 @@ import { ModuleController } from './module/module.controller';
     MulterModule.register({
       dest: './uploads'
     }),
-    ProductsModule
+    ProductsModule,
+    OrderModule
   ],
   controllers: [AppController,  ModuleController],
-  providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService],
+  providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService, OrderService],
 })
 export class AppModule { }
