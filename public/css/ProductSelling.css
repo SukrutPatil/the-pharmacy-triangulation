@@ -63,6 +63,7 @@
     height: -moz-fit-content;
     height: fit-content;
     width: 250px;
+    height: 300px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 100px;
@@ -70,13 +71,13 @@
     transition: all 0.3s ease-out;
   }
   .products .card img {
-    height: 80%;
+    height: 60%;
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
   }
   .products .card .name-price {
-    height: 20%;
+    height: 40%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

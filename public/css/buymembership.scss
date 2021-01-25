@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+section{
+    min-height: 100vh;
+    background: url(../assets/Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:50px;
+    padding-bottom: 50px;
+
+    h1{
+        text-align: center;
+        font-size:70px;
+        color: white;
+    }
+    .card{
+        width:500px;
+        height:100%;
+        background: white;
+        margin: auto;
+        padding:50px 20px;
+        border-radius: 20px;
+
+        .field{
+            label{
+                line-height:10px;
+            }
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0px;
+            input{
+                font-family: 'Roboto', sans-serif;
+                padding:7px;
+                border: none;
+                background: #D9ECDD;
+            }
+        }
+        button{
+            width: 100%;
+            font-size: 20px;
+            background: #054A29;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            padding-top: 10px;
+        }
+        a{
+            text-decoration: none;
+            color:#D70404;
+        }
+    }
+}
+
+
+@import 'nav';
