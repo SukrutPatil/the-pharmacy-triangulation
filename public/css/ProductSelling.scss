@@ -52,12 +52,12 @@
         }
         .card{
             border: 1px solid grey;
-            height: fit-content;   
             width: 250px;     
             height: 300px;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 100px;
+            position: relative;
             transition: all 0.3s ease-out;
             img{
                 height:60%;
@@ -65,21 +65,26 @@
                 object-fit: cover;
             }
             .name-price{
-                height: 40%;
-                display: flex;
-                justify-content: space-around;
-                padding: 20px;
+                padding:5px;
+                display:flex;
+                justify-content:space-between;
                 p{
                     font-family: 'Roboto', sans-serif;
-                    font-size:19px;
+                    font-size:16px;
                     font-weight: bolder;
                 }
-                .price{
-                    color: green;
-                    font-size: 14px;
-                    padding-top: 5px;
-                }
-               
+            }
+            button{
+                width: 100%;
+                padding-top: 5px;
+                background: #054A29;
+                color: white;
+                position: absolute;
+                bottom:0;
+                border: none;
+                cursor: pointer;
+                padding-top: 10px;
+
             }
         }
         .card:hover{
@@ -172,33 +177,39 @@
         }
         .card{
             border: 1px solid grey;
-            height: fit-content;   
             width: 250px;     
+            height: 300px;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 100px;
+            position: relative;
             transition: all 0.3s ease-out;
             img{
-                height:80%;
+                height:60%;
                 width: 100%;
                 object-fit: cover;
             }
             .name-price{
-                height: 20%;
-                display: flex;
-                justify-content: space-around;
-                padding: 20px;
+                padding:5px;
+                display:flex;
+                justify-content:space-between;
                 p{
                     font-family: 'Roboto', sans-serif;
-                    font-size:19px;
+                    font-size:16px;
                     font-weight: bolder;
                 }
-                .price{
-                    color: green;
-                    font-size: 14px;
-                    padding-top: 5px;
-                }
-               
+            }
+            button{
+                width: 100%;
+                padding-top: 5px;
+                background: #054A29;
+                color: white;
+                position: absolute;
+                bottom:0;
+                border: none;
+                cursor: pointer;
+                padding-top: 10px;
+
             }
         }
         .card:hover{

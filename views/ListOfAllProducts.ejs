@@ -56,15 +56,16 @@
     </section>
     <section class="products">
       <% for (const product of allProducts) { %>
-        <a href="products/<%=product.id%>">
+        
           <div class="card">
             <img src="../uploads/products/<%=product.imgaddress %>" alt="" />
             <div class="name-price">
               <p><%= product.brandname %></p>
-              <p class="price"><%=product.mrp %></p>
+              <p class="price">₹ <%=product.mrp %></p>
             </div>
+            <button>Buy Now</button>
           </div>
-        </a>
+       
         <% } %>
       
     </section>
