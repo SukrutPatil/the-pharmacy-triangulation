@@ -1,0 +1,58 @@
+.card {
+  margin: 50px;
+  width: 90%;
+  border: black solid 2px;
+  padding: 10px;
+}
+
+.card h1 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10px 0;
+}
+
+.card .field input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.card .field label {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card .decline {
+  color: white;
+  background-color: #8B0000;
+  padding: 10px 30px;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+.card .accept {
+  color: white;
+  background-color: #14213D;
+  padding: 10px 30px;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+/*# sourceMappingURL=confirmation.css.map */
