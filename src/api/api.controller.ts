@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { ApiService } from './api.service';
+import { Request } from 'express';
 
 @Controller('api')
 export class ApiController {
@@ -9,4 +10,14 @@ export class ApiController {
     const chats = await this.apiService.getChats(moduleId);
     return { chats };
   }
+    @Post('updateChat')
+    async updateChat(@Body() body: any, @Req() req: Request) {
+        console.log(body);
+        const { chat,theModuleId } = body;
+        const chatter = req.session.loggedInUser;
+        const done = await this.apiService.updateChat(theModuleId, chatter, chat);
+        console.log(done);
+        return { done };
+    }
+
 }
