@@ -104,14 +104,14 @@
   width: 100%;
 }
 
-.vp .discussion-box .message-area form textarea {
+.vp .discussion-box .message-area form #post {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   padding: 10px;
   font-size: 16px;
 }
 
-.vp .discussion-box .message-area form button {
+.vp .discussion-box .message-area form #postBtn {
   font-family: 'Roboto', sans-serif;
   background: #44B54F;
   color: white;
