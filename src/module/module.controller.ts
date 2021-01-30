@@ -7,10 +7,11 @@ export class ModuleController {
     @Get(':id')
     async getModuleById(@Param('id') id: string,@Res() res: Response) {
         const theModule = await this.ms.getModuleById(id);
+
         if (!theModule) res.render('404', {});
         const theAuthor = await this.ms.getModuleAuthorName(id);
         console.log(theAuthor);
-        res.render('Module', { theModule,theAuthor });
+        res.render('Module', { theModule,theAuthor,id });
     }
 
 
