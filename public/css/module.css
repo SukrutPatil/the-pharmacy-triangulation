@@ -83,6 +83,12 @@
   margin: auto;
 }
 
+.vp .discussion-box .message-area .box {
+  height: 400px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
 .vp .discussion-box .message-area .opinion p {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -184,6 +190,7 @@
     border: black 2px solid;
     border-radius: 20px;
     margin: auto;
+    overflow-y: scroll;
   }
   .vp .discussion-box .message-area .opinion p {
     font-family: 'Roboto', sans-serif;
