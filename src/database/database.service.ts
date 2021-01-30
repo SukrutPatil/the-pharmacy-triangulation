@@ -425,6 +425,10 @@ export class DatabaseService {
         break;
       case EntryType.USER:
         tblname = USER_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.CHAT:
+        tblname = CHAT_TABLE_DEFINITION.tableName;
+        break;
     }
     return new Promise(resolve => {
       const objectToResolve: DBReturnInterface = {

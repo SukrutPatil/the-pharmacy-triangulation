@@ -57,26 +57,7 @@
             <div class="message-area" id = "message-area">
                 <h1>Discussion Box</h1>
                 <div class="box" id = "message-area-box">
-                <div class="opinion">
-                    <p>
-                        Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
-                    <h2>- JOhn Doe</h2>
-                </div>
-                <div class="opinion">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                        Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
-                    <h2>- JOhn Doe</h2>
-                </div>
-                <div class="opinion">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                        Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
-                    <h2>- JOhn Doe</h2>
-                </div>
-                <div class="opinion">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                        Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
-                    <h2>- JOhn Doe</h2>
-                </div>
+                <!-- JQUERY INSERT-->
                 </div>
             
                 
@@ -165,9 +146,16 @@
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
+const theModuleId = "<%= id %>"
 const theMessageArea = $("#message-area-box");
-const dbConnect =()=>{
-
+const retrieveInitialChat =()=>{
+    console.log('hi There');
+$.get(`/api/fetchChat/${theModuleId}`,({chats})=>{
+    if (chats.length==0) return;
+    chats.forEach(({sender,chat})=>{
+        addNewChat(chat,sender);
+    });
+})
 }
 const thePostButton = $("#postBtn");
 const addNewChat = (chat,chatter)=>{
@@ -181,6 +169,6 @@ thePostButton.on('click',()=>{
     const theCurrentChat = $("#post").val();
     addNewChat(theCurrentChat,'JSGREWAL');
 });
-
+$(retrieveInitialChat);
 </script>
 </html>
