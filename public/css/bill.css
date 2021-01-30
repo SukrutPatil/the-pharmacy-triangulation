@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 50px;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.header .logo {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.header .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.header .info .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px;
+}
+
+.header .info .field label {
+  font-weight: bolder;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin: 10px;
+}
+
+.bill table {
+  width: 100%;
+}
+
+.bill table tr th {
+  text-align: center;
+  padding: 5px;
+}
+
+.bill table tr td {
+  text-align: center;
+}
+
+.info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.summery {
+  float: right;
+}
+
+.summery table tr td {
+  text-align: left;
+  padding: 5px;
+  font-weight: bolder;
+}
+
+.notes h2 {
+  margin: 10px;
+}
+
+.notes h4 {
+  margin: 5px 10px;
+}
+/*# sourceMappingURL=bill.css.map */
