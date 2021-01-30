@@ -829,9 +829,10 @@
         flex-wrap: wrap;
   }
   .knowledgeCenter .allcards .card {
-    height: 400px;
+    min-height: 100%;
     -webkit-box-shadow: 15px 15px 15px grey;
             box-shadow: 15px 15px 15px grey;
+    padding: 10px;
     background: white;
     width: 350px;
     margin-left: auto;

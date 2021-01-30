@@ -32,8 +32,9 @@
             display: flex;
             flex-wrap: wrap;
             .card{
-                height: 400px;
+                min-height: 100%;
                 box-shadow: 15px 15px 15px grey;
+                padding: 10px;
                 background: white;
                 width: 350px;
                 margin-left: auto;

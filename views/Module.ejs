@@ -54,6 +54,7 @@
         <div class="discussion-box">
             <div class="message-area" id = "message-area">
                 <h1>Discussion Box</h1>
+                <div class="box" id = "message-area-box">
                 <div class="opinion">
                     <p>
                         Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
@@ -74,11 +75,12 @@
                         Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
                     <h2>- JOhn Doe</h2>
                 </div>
-
-               
+                </div>
+            
+                
                     <textarea name="post" id="post" rows="5"></textarea><br>
                     <button id = "postBtn">Post</button>
-              
+                </div>  
             </div>
             
      
@@ -88,9 +90,9 @@
 
     <div class="article-section">
         <div class="article">
-            
+            <p>
             <%=theModule.article %>
-
+            </p>
         </div>
         <div class="images">
             <img src="../public/assets/counsiling.png" alt="">
@@ -149,21 +151,22 @@
 <script src="../public/js/nav.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(
 
+const theMessageArea = $("#message-area-box");
+const dbConnect =()=>{
 
-);
-const theMessageArea = $("#message-area");
+}
 const thePostButton = $("#postBtn");
 const addNewChat = (chat,chatter)=>{
  const newChat =    $(`<div class="opinion">
                     <p>${chat}</p>
-                    <h2>${chatter}</h2>
+                    <h2>- ${chatter}</h2>
                 </div>`);
- 
+ theMessageArea.append(newChat);
 }
 thePostButton.on('click',()=>{
-
+    const theCurrentChat = $("#post").val();
+    addNewChat(theCurrentChat,'JSGREWAL');
 });
 
 </script>

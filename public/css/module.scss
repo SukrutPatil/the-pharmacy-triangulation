@@ -63,6 +63,11 @@
             border: black 2px solid;
             border-radius: 20px;
             margin: auto;
+            .box{
+                height:400px;
+                overflow-y: scroll;
+                margin-bottom:20px;
+            }
             .opinion{
                 p{
                     font-family: 'Roboto', sans-serif;
@@ -151,6 +156,8 @@
                 border: black 2px solid;
                 border-radius: 20px;
                 margin: auto;
+                overflow-y: scroll;
+                
                 .opinion{
                     p{
                         font-family: 'Roboto', sans-serif;

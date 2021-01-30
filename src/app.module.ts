@@ -25,6 +25,7 @@ import { PaymentService } from './payment/payment.service';
 
 import { PaymentController } from './payment/payment.controller';
 import { DatabaseModule } from './database/database.module';
+import { ApiModule } from './api/api.module';
 @Module({
   imports: [
     AuthModule,
@@ -38,7 +39,8 @@ import { DatabaseModule } from './database/database.module';
     }),
     ProductsModule,
     OrderModule,
-    DatabaseModule
+    DatabaseModule,
+    ApiModule
   ],
   controllers: [AppController,  ModuleController,  PaymentController],
   providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService, OrderService, PaymentService],
