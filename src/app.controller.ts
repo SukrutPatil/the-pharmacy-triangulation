@@ -14,7 +14,7 @@ export class AppController {
   @Get()
   @Render('Homepage.ejs')
   async getHomePage(@Req() req: Request, @Res() res: Response): Promise<any> {
-    await this.as.getRandomArrayOfModules();
+    let allModules = await this.as.getRandomArrayOfModules();
     //Fetch products Data
     const theDBReturnObject = await this.db.retrieve(EntryType.DRUG);
     const prod_id: Array<string> = [];
@@ -38,6 +38,7 @@ export class AppController {
       prod_name: prod_name,
       prod_price: prod_price,
       prod_img: prod_img,
+      allModules
     };
   }
   @Get('listOfAllProducts')

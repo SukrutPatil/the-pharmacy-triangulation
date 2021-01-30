@@ -161,72 +161,21 @@
             quibusdam distinctio quis labore voluptates autem aut vitae officiis
             debitis, suscipit beatae.</p>
         <div class="allcards">
+            <% for (let mod of allModules) { %>
             <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
+                <img src="../uploads/modules/thumbnail/<%= mod.thumbnail%>" alt="">
                 <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
+                    <a href="./module/<%=mod.id %>">
+                        <p class="mName"><%=mod.name %></p>
+                        <p class="price">INR <%=mod.price %></p>
+                        <p class="catagory"><%= mod.category %></p>
+                        <p><%= mod.description %></p>
                     </a>
                 </div>
             </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="../public/assets/vagies.png" alt="">
-                <div class="desc">
-                    <a href="">
-                        <p class="mName">Module Name</p>
-                        <p class="price">Rs. 500</p>
-                        <p class="catagory">Medication</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, ullam?</p>
-                    </a>
-                </div>
-            </div>
+            <% } %>
+            
+        </div>
     </section>
     <section class="footer">
         <div class="address">
