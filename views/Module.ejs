@@ -52,10 +52,10 @@
         
 
         <div class="discussion-box">
-            <div class="message-area">
+            <div class="message-area" id = "message-area">
                 <h1>Discussion Box</h1>
                 <div class="opinion">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    <p>
                         Nesciunt et obcaecati eaque voluptas veritatis. Aliquam recusanda.</p>
                     <h2>- JOhn Doe</h2>
                 </div>
@@ -75,10 +75,10 @@
                     <h2>- JOhn Doe</h2>
                 </div>
 
-                <form action="">
+               
                     <textarea name="post" id="post" rows="5"></textarea><br>
-                    <button>Post</button>
-                </form>
+                    <button id = "postBtn">Post</button>
+              
             </div>
             
      
@@ -147,4 +147,24 @@
     </section>
 </body>
 <script src="../public/js/nav.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(
+
+
+);
+const theMessageArea = $("#message-area");
+const thePostButton = $("#postBtn");
+const addNewChat = (chat,chatter)=>{
+ const newChat =    $(`<div class="opinion">
+                    <p>${chat}</p>
+                    <h2>${chatter}</h2>
+                </div>`);
+ 
+}
+thePostButton.on('click',()=>{
+
+});
+
+</script>
 </html>

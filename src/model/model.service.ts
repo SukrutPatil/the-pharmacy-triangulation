@@ -32,6 +32,7 @@ enum RandomIdType {
   MODULE,
   ARTICLE,
   SESSION,
+  CHAT
 }
 export interface Drug {
   name: string;
@@ -114,6 +115,12 @@ export interface User {
   memtype: [string];
   phoneno: number;
   email: string;
+}
+export interface Chat {
+  moduleid: string;
+  sender: string;
+  chatid: string;
+  chat: string;
 }
 
 /**
@@ -290,6 +297,9 @@ export class ModelService {
         break;
       case RandomIdType.SESSION:
         prefix = 'SESS';
+        break;
+      case RandomIdType.CHAT:
+        prefix = "CHAT";
         break;
     }
     const suffix: string =

@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Pool, PoolConfig, QueryResult } from 'pg';
 import { Article, Drug, Module, User } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
-import { async } from 'rxjs';
 
 export enum EntryType {
   PRODUCT,
@@ -12,7 +11,8 @@ export enum EntryType {
   SESSION,
   DRUG,
   ARTICLE,
-  USER
+  USER,
+  CHAT,
 }
 export enum QueryStatus {
   FAILED,
@@ -41,6 +41,10 @@ const TRANSACTION_TABLE_DEFINITION: TableDefinitionInterface = {
     'email',
     'productId',
   ],
+};
+const CHAT_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'chatledger',
+  columnNames: ['moduleid', 'sender', 'chat', 'chatid'],
 };
 const PRODUCT_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'ProductLedger',
@@ -205,9 +209,8 @@ export class DatabaseService {
   //     });
   //   });
   // };
-  public addUser = async (userObject: User): Promise<any> => {
-    
-  }
+  public addUser = async (userObject: User): Promise<any> => { };
+  public addChat = async (chatObject):Promise<any> =>{ };
   public addDrug = async (drugObject: Drug): Promise<any> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       DRUG_TABLE_DEFINITION.tableName
@@ -309,6 +312,7 @@ export class DatabaseService {
       otherimages,
       dop,
     ];
+
     const query = {
       text: insertQuerySkeleton,
       values: values,
