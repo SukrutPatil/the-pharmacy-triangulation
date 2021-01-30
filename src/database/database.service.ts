@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, PoolConfig, QueryResult } from 'pg';
-import { Article, Drug, Module } from '../model/model.service';
+import { Article, Drug, Module, User } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
+import { async } from 'rxjs';
 
 export enum EntryType {
   PRODUCT,
@@ -11,6 +12,7 @@ export enum EntryType {
   SESSION,
   DRUG,
   ARTICLE,
+  USER
 }
 export enum QueryStatus {
   FAILED,
@@ -66,6 +68,17 @@ const MODULE_TABLE_DEFINITION: TableDefinitionInterface = {
     'article',
     'adminEmail',
     'dop',
+  ],
+};
+const USER_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'UserLedger',
+  columnNames: [
+    'userid',
+    'email',
+    'password',
+    'username',
+    'memtype',
+    'phoneno',
   ],
 };
 const DRUG_TABLE_DEFINITION: TableDefinitionInterface = {
@@ -132,6 +145,9 @@ let self: any;
 
 @Injectable()
 export class DatabaseService {
+  constructor() {
+    console.log('Database Service Initialized');
+  }
 
   pool = new Pool(jsonData);
   self = this;
@@ -189,6 +205,9 @@ export class DatabaseService {
   //     });
   //   });
   // };
+  public addUser = async (userObject: User): Promise<any> => {
+    
+  }
   public addDrug = async (drugObject: Drug): Promise<any> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       DRUG_TABLE_DEFINITION.tableName
@@ -215,7 +234,7 @@ export class DatabaseService {
       strnth,
       imgaddress,
       adminemail,
-      name
+      name,
     } = drugObject;
     const values = [
       id,
@@ -239,7 +258,7 @@ export class DatabaseService {
       costvar,
       imgaddress,
       adminemail,
-      name
+      name,
     ];
     const query = {
       text: insertQuerySkeleton,
@@ -399,6 +418,9 @@ export class DatabaseService {
         break;
       case EntryType.ARTICLE:
         tblname = ARTICLE_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.USER:
+        tblname = USER_TABLE_DEFINITION.tableName;
     }
     return new Promise(resolve => {
       const objectToResolve: DBReturnInterface = {
@@ -431,9 +453,8 @@ export class DatabaseService {
     }"(${tableDefinition.columnNames.toString()}) VALUES ?`;
     return theQuery;
   };
-  
+
   getEntryType = (): any => {
     return EntryType;
   };
-
 }

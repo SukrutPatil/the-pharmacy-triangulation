@@ -31,6 +31,7 @@ enum RandomIdType {
   PRODUCT,
   MODULE,
   ARTICLE,
+  SESSION,
 }
 export interface Drug {
   name: string;
@@ -106,6 +107,14 @@ export interface Module {
   adminEmail: string;
   dop: string;
 }
+export interface User {
+  userid: string;
+  username: string;
+  password: string;
+  memtype: [string];
+  phoneno: number;
+  email: string;
+}
 
 /**
  *
@@ -115,7 +124,9 @@ export interface Module {
  */
 @Injectable()
 export class ModelService {
-  constructor(private securityService: SecurityService) {}
+  constructor(private securityService: SecurityService) {
+    console.log('ModelService Class Initialized');
+  }
   /**
    * GENERATES ARTICLE OBJECT
    */
@@ -131,7 +142,16 @@ export class ModelService {
     const dop = dateFetch();
     return { id, about, admin, name, otherimages, publisher, thumbnail, dop };
   };
-  /**
+  public createUserObject = (
+    username: string,
+    email: string,
+    password: string,
+    memtype: string,
+    phoneno: number,
+  ) => {
+    return { username, email, password, memtype: memtype.split(','), phoneno };
+  };
+  /**      
    *GENERATES MEMBER OBJECT
    *
    * @memberof ModelService
@@ -267,6 +287,9 @@ export class ModelService {
         break;
       case RandomIdType.ARTICLE:
         prefix = `ART`;
+        break;
+      case RandomIdType.SESSION:
+        prefix = 'SESS';
         break;
     }
     const suffix: string =

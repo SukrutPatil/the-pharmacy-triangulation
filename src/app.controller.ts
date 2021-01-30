@@ -1,5 +1,6 @@
 import { Controller, Get, Render, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { AppService } from './app.service';
 import { DatabaseService, EntryType } from './database/database.service';
 import { ProductsService } from './products/products.service';
 @Controller()
@@ -7,11 +8,13 @@ export class AppController {
   constructor(
     private readonly db: DatabaseService,
     private readonly ps: ProductsService,
+    private readonly as: AppService
   ) {}
 
   @Get()
   @Render('Homepage.ejs')
   async getHomePage(@Req() req: Request, @Res() res: Response): Promise<any> {
+    await this.as.getRandomArrayOfModules();
     //Fetch products Data
     const theDBReturnObject = await this.db.retrieve(EntryType.DRUG);
     const prod_id: Array<string> = [];
@@ -48,5 +51,6 @@ export class AppController {
   getAboutUSPage(): any {
     return {};
   }
+  
   
 }

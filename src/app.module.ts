@@ -21,6 +21,10 @@ import { ModuleController } from './module/module.controller';
 
 import { OrderService } from './order/order.service';
 import {OrderModule} from './order/order.module'
+import { PaymentService } from './payment/payment.service';
+
+import { PaymentController } from './payment/payment.controller';
+import { DatabaseModule } from './database/database.module';
 @Module({
   imports: [
     AuthModule,
@@ -33,9 +37,10 @@ import {OrderModule} from './order/order.module'
       dest: './uploads'
     }),
     ProductsModule,
-    OrderModule
+    OrderModule,
+    DatabaseModule
   ],
-  controllers: [AppController,  ModuleController],
-  providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService, OrderService],
+  controllers: [AppController,  ModuleController,  PaymentController],
+  providers: [AppService, DatabaseService, ModelService, SecurityService,ProductsService, ModuleService, OrderService, PaymentService],
 })
 export class AppModule { }

@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import * as crypto from 'crypto';
 @Injectable()
 export class SecurityService {
+    constructor() {
+        console.log("Security Service Called");
+    }
     secureData = (key:string, value:string):any => {
         const cipher = crypto.createCipher('aes128', key);
         const encrypted = cipher.update(value, 'utf8', 'hex') + cipher.final('hex');
