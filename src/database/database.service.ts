@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, PoolConfig, QueryResult } from 'pg';
-import { Article, Drug, Module, User } from '../model/model.service';
+import { Article, Chat, Drug, Module, User } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
 
 export enum EntryType {
@@ -209,8 +209,36 @@ export class DatabaseService {
   //     });
   //   });
   // };
-  public addUser = async (userObject: User): Promise<any> => { };
-  public addChat = async (chatObject):Promise<any> =>{ };
+  public addUser = async (userObject: User): Promise<any> => {};
+  public addChat = async (chatObject: Chat): Promise<DBReturnInterface> => {
+    const insertQuerySkeleton = `insert into pharmaschema."${
+      CHAT_TABLE_DEFINITION.tableName
+    }"(${CHAT_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4)`;
+    const { moduleid, sender, chat, chatid } = chatObject;
+    const values = [moduleid, sender, chat, chatid];
+    const query = {
+      text: insertQuerySkeleton,
+      values: values,
+      rowMode: 'array',
+    };
+    return new Promise(resolve => {
+      const returnObject: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
+      this.pool.connect(err => {
+        if (err) console.log(err);
+      });
+      this.pool.query(query, (err: Error, result) => {
+        if (err) {
+          returnObject.error = err;
+          returnObject.status = QueryStatus.FAILED;
+        } else {
+          returnObject.resultObject = result;
+        }
+        resolve(returnObject);
+      });
+    });
+  };
   public addDrug = async (drugObject: Drug): Promise<any> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
       DRUG_TABLE_DEFINITION.tableName

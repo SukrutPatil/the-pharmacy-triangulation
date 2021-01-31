@@ -145,17 +145,28 @@
 <script src="../public/js/nav.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
-const theModuleId = "<%= id %>"
+const user = "<%= loggedInUser %>";
+let last=0;
+const theModuleId = "<%= id %>";
 const theMessageArea = $("#message-area-box");
 const retrieveInitialChat =()=>{
     console.log('hi There');
 $.get(`/api/fetchChat/${theModuleId}`,({chats})=>{
-    if (chats.length==0) return;
+    if (chats.length==last) return;
+    last = chats.length;
     chats.forEach(({sender,chat})=>{
         addNewChat(chat,sender);
     });
 })
+}
+const sendCurrentChat =(chat) => {
+    console.log('sendCurrentChat');
+    let res;
+$.post('/api/updateChat',{chat,theModuleId},(response)=>{
+    console.log(response);
+    res = response.done
+});
+return res;
 }
 const thePostButton = $("#postBtn");
 const addNewChat = (chat,chatter)=>{
@@ -165,10 +176,19 @@ const addNewChat = (chat,chatter)=>{
                 </div>`);
  theMessageArea.append(newChat);
 }
-thePostButton.on('click',()=>{
+thePostButton.on('click', ()=>{
+   console.log('Clicked Post');
     const theCurrentChat = $("#post").val();
-    addNewChat(theCurrentChat,'JSGREWAL');
+    const res = sendCurrentChat(theCurrentChat);
+    
+     addNewChat(theCurrentChat,user);
+
 });
-$(retrieveInitialChat);
+callAfterEveryFiveSeconds = ()=>{
+    setInterval(retrieveInitialChat,10000);
+}
+$(callAfterEveryFiveSeconds);
+
+
 </script>
-</html>
+</html> 

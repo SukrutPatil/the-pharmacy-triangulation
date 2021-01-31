@@ -32,7 +32,7 @@ enum RandomIdType {
   MODULE,
   ARTICLE,
   SESSION,
-  CHAT
+  CHAT,
 }
 export interface Drug {
   name: string;
@@ -158,7 +158,7 @@ export class ModelService {
   ) => {
     return { username, email, password, memtype: memtype.split(','), phoneno };
   };
-  /**      
+  /**
    *GENERATES MEMBER OBJECT
    *
    * @memberof ModelService
@@ -180,6 +180,18 @@ export class ModelService {
       password,
       membershipType,
       isAdmin,
+    };
+  };
+  public createChatObject = (
+    moduleid: string,
+    sender: string,
+    chat: string,
+  ) => {
+    return {
+      chatid: this.generateUniqueID(RandomIdType.CHAT),
+      moduleid,
+      sender,
+      chat,
     };
   };
   public createDrugObject = (
@@ -299,7 +311,7 @@ export class ModelService {
         prefix = 'SESS';
         break;
       case RandomIdType.CHAT:
-        prefix = "CHAT";
+        prefix = 'CHAT';
         break;
     }
     const suffix: string =
