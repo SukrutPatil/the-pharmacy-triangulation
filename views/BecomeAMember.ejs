@@ -1,91 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../public/css/membershipBuying.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMx | Buy Membership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/buymembership.css" />
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick-theme.css" />
+</head>
+<body>
     <div class="nav-container">
-      <nav>
-        <a href="/">
-          <div class="logo"><img src="" alt="">
-              <h1>LOGO</h1>
-          </div>
-          </a>
-        <ul class="nav-links">
-          <li>
-            <a href="/user/MedicationCounseling">Medication counseling</a>
-          </li>
-          <li>
-            <a href="/user/EntrepreneurshipCounseling"></a>
-              Entrepreneurship counseling
-            </a>
-          </li>
-          <li><a href="/user/CareerCounseling">Career counseling</a></li>
-          <li><a href="/user/DietCounseling">Diet counseling</a></li>
-          <li><a href="/user/Products">Products</a></li>
-          <li><a href="/user/Articles">Articles</a></li>
-          <li><a href="/user/Articles">Dashboard</a></li>
-        </ul>
-        <div class="burger">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
-      </nav>
+        <nav>
+            <div class="logo"><img src="" alt="">
+                <h1>LOGO</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
+                <li><a href="/user/EntrepreneurshipCounseling">Entrepreneurship counseling</a></li>
+                <li><a href="/user/CareerCounseling">Career counseling</a></li>
+                <li><a href="/user/DietCounseling">Diet counseling</a></li>
+                <li><a href="/user/Products">Products</a></li>
+                <li><a href="/user/Articles">Articles</a></li>
+                <li><a href="/user/Articles">Dashboard</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
     </div>
     <section>
-      <h1>Get Membership</h1>
-
-      <div class="block">
-        <form action="user/membershipBuying" method="POST">
-          <div class="field">
-            <p>Name</p>
-            <input type="text" />
-          </div>
-          <div class="field">
-            <p>Email</p>
-            <input type="text" />
-          </div>
-          <div class="field">
-            <p>Phone No.</p>
-            <input type="text" />
-          </div>
-          <div class="field">
-            <p>Password</p>
-            <input type="text" />
-          </div>
-          <div class="field">
-            <p>Confirm Password</p>
-            <input type="password" />
-          </div>
-          <div class="field">
-            <p>Type</p>
-            <select name="cars" id="cars">
-              <option value="Medication counseling">All</option>
-              <option value="Medication counseling">Medication counseling</option>
-              <option value="Medication counseling">Diet counseling</option>
-              <option value="Entrepreneurship counseling">Entrepreneurship counseling</option>
-              <option value="Career counseling">Career counseling</option>
-            </select>
-          </div>
-          <button class="logInbtn" type="submit"><p> Log In</p><img src="../public/assets/frontArrow.png" alt="" /></button>
-        </form>
-        <a href="">Already a member? Log In</a>
-      </div>
-
+        <h1>Get Membership</h1>
+        <div class="card">
+            <form action="../api/becomeAMember" method="POST">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone Number</label>
+                    <input type="number" name="phone" required>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="field">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" name="confirm" required>
+                </div>
+                <div class="field">
+                    <label for="confirm">Membership Type</label>
+                    <select name="type" id="" required>
+                        <option value=""></option>
+                        <option value="All">All</option>
+                        <option value="Medication Counseling">Medication</option>
+                        <option value="Entrepreneurship Counseling">Entrepreneurship</option>
+                        <option value="Career Counseling">Career</option>
+                        <option value="Diet Counseling">Diet </option>
+                    </select>
+                </div>
+                <button>Proceed to Pay</button>
+                <a href="">Already a member? Log In</a>
+            </form>
+        </div>
     </section>
-
+  
     <script src="../public/js/nav.js"></script>
-  </body>
-</html>
+    </body>
+  </html>
+  

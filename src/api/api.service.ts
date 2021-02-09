@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService, EntryType } from 'src/database/database.service';
-import { Chat, ModelService } from '../model/model.service';
+import {ModuleType, Chat, ModelService } from '../model/model.service';
+import * as Razorpay from 'razorpay';
+
 @Injectable()
 export class ApiService {
   constructor(private db: DatabaseService, private ms: ModelService) {}
@@ -22,4 +24,8 @@ export class ApiService {
     if (error) return false;
     return true;
   }
+  async newMember({name,email,phone,password,type}) {
+
+  }
+
 }

@@ -119,14 +119,14 @@
                 <% for( let index = 0; index < prod_name.length; index++ ) { %>
                 <div>
                     <div class="card">
-                        <a href="../buy/<%=prod_id[index] %>">
+                       
                         <img src="../uploads/products/<%= prod_img[index] %> " alt="">
                         <div class="desc">
                             <p><%= prod_name[index] %> </p>
                             <p> <%= prod_price[index] %> </p>
                         </div>
-                        <button style="width:100%">Buy Now</button>
-                    </a>
+                        <button style="width:100%" onclick='buyProduct("<%=prod_id[index] %>")''>Buy Now</button>
+                    
                     </div>
                 </div>
                 <% } %>
@@ -230,8 +230,11 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../public/css/slick/slick.min.js"></script>
+    <!-- Axios and RZP-->
+    <script src="../public/js/axios.min.js"></script>
+<script src = "../public/js/checkout.js"></script>
 
-    <script>
+<script>
         $(document).ready(function () {
             $('.your-class').slick({
                 slidesToShow: 5,
@@ -260,6 +263,17 @@
                 ]
             });
         });
+
+buyProduct = async(productId) =>{
+    console.log('Reached Here')
+    const {product} = await axios.get(`./products/getproductInfo/${productId}`);
+     
+    const {checkoutOptions} = await axios.get(`./api/getCheckoutForProduct/${productId}`);
+     
+    let rzp = new Razorpay(checkoutOptions);
+    rzp.open();
+    
+}
     </script>
 </body>
 
