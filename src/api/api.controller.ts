@@ -30,4 +30,9 @@ export class ApiController {
   const checkoutOptions =   await this.paymentService.getCheckoutOptionsForProduct(product_id);
     return { checkoutOptions };
   }
+  @Post('checkoutdone')
+  async xyz(@Body() body) {
+    console.log(body);
+    return {thanks:'thanks'};
+  }
 }
