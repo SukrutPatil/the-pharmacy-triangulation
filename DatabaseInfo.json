@@ -2,7 +2,7 @@
     "user":"postgres",
     "host":"localhost",
     "database":"pharmadb",
-    "password":"195357195",
+    "password":"toor",
     "port":5432
     
 }

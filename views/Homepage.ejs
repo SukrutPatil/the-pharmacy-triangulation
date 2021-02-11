@@ -251,8 +251,11 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../public/css/slick/slick.min.js"></script>
+    <!-- Axios and RZP-->
+    <script src="../public/js/axios.min.js"></script>
+<script src = "../public/js/checkout.js"></script>
 
-    <script>
+<script>
         $(document).ready(function () {
             $('.your-class').slick({
                 slidesToShow: 5,
@@ -281,6 +284,17 @@
                 ]
             });
         });
+
+buyProduct = async(productId) =>{
+    console.log('Reached Here')
+    const {product} = await axios.get(`./products/getproductInfo/${productId}`);
+     
+    const {checkoutOptions} = await axios.get(`./api/getCheckoutForProduct/${productId}`);
+     
+    let rzp = new Razorpay(checkoutOptions);
+    rzp.open();
+    
+}
     </script>
     <script>
         // Get the modal

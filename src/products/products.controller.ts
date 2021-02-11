@@ -10,10 +10,26 @@ export class ProductsController {
     console.log(id);
     const product = await this.productsService.getParticularProduct(id);
     if (!product) {
-      res.render('404', {errorMessage: 'This Product is No Longer Available!'});
+      res.render('404', {
+        errorMessage: 'This Product is No Longer Available!',
+      });
       return;
     }
     // Fetch Product  Information
     return { product };
+  }
+  @Get('getProductInfo/:id')
+  async getProductInfo(@Param('id') id: string) {
+    const product = await this.productsService.getParticularProduct(id);
+    // if (!product) {
+    //   res.render('404', {
+    //     errorMessage: 'This Product is No Longer Available!',
+    //   });
+    //   return;
+    // }
+    // console.log(product); 
+    // Fetch Product  Information
+    console.log('Recieved');
+    return {product};
   }
 }
