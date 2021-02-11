@@ -47,6 +47,9 @@
                        justify-content: space-around;
                        align-items: center;
                    } 
+                   button{
+                       width: 100%;
+                   }
                    h2{
                     height:10%;
                     padding: 5px 0px;
@@ -86,24 +89,37 @@
             .your-class{
                 .card{
                     width: 80%;
-                    height: 350px;
+                    height: 300px;
                     background: white;
                     margin: auto;
                     border: none;
                     border-radius: 10px;
                     overflow: hidden;
+                    position: relative;
+                    
                     img{
-                        height: 75%;
+                        height: 60%;
                         width: 100%;
                         object-fit: cover;
                     }
                    .desc{
                        display: flex;
+                       height:30%;
                        padding: 5px;
-
                        justify-content: space-around;
                        align-items: center;
                    } 
+                   button{
+                       width: 100%;
+                   }
+                   h2{
+                    height:10%;
+                    padding: 5px 0px;
+                    font-family: 'Roboto', sans-serif;
+                    background: #D9ECDD;
+                    display: block;
+                    text-align: center;
+                   }
                 }
             }
 
@@ -153,18 +169,32 @@
                     border: none;
                     border-radius: 10px;
                     overflow: hidden;
+                    position: relative;
+                    
                     img{
-                        height: 75%;
+                        height: 60%;
                         width: 100%;
                         object-fit: cover;
                     }
                    .desc{
                        display: flex;
+                       height:30%;
                        padding: 5px;
-
                        justify-content: space-around;
                        align-items: center;
                    } 
+                   button{
+                       width: 100%;
+                       
+                   }
+                   h2{
+                    height:10%;
+                    padding: 5px 0px;
+                    font-family: 'Roboto', sans-serif;
+                    background: #D9ECDD;
+                    display: block;
+                    text-align: center;
+                   }
                 }
             }
 

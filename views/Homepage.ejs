@@ -119,14 +119,12 @@
                 <% for( let index = 0; index < prod_name.length; index++ ) { %>
                 <div>
                     <div class="card">
-                        <a href="../buy/<%=prod_id[index] %>">
                         <img src="../uploads/products/<%= prod_img[index] %> " alt="">
                         <div class="desc">
                             <p><%= prod_name[index] %> </p>
                             <p> <%= prod_price[index] %> </p>
                         </div>
-                        <button style="width:100%">Buy Now</button>
-                    </a>
+                        <button id="myBtn">Buy Now</button>
                     </div>
                 </div>
                 <% } %>
@@ -141,11 +139,34 @@
                     </div>
                 </div>
                 <% } %>
-
-
-
-
             </div>
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Fill In your Address</p>
+                  <div class="field">
+                    <label for="">Flat, House No., Building, Apartment</label>
+                    <input type="text">
+                  </div>
+                  <div class="field">
+                    <label for="">Area, Coloney, Street</label>
+                    <input type="text">
+                  </div>
+                  <div class="field">
+                    <label for="">Landmark, City/ Town</label>
+                    <input type="text">
+                  </div>
+                  <div class="field">
+                    <label for="">Pin Code</label>
+                    <input type="number">
+                  </div>
+                  <button>Proceed to Pay</button>
+                </div>
+                
+              
+              </div>
         </div>
         <div class="allProducts" style="background: white;
         color: #054A29;
@@ -261,6 +282,33 @@
             });
         });
     </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
 </body>
 
 </html>

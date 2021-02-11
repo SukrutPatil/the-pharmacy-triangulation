@@ -658,6 +658,9 @@
         -ms-flex-align: center;
             align-items: center;
   }
+  .products .pro-crousel .your-class .card button {
+    width: 100%;
+  }
   .products .pro-crousel .your-class .card h2 {
     height: 10%;
     padding: 5px 0px;
@@ -690,15 +693,16 @@
   }
   .products .pro-crousel .your-class .card {
     width: 80%;
-    height: 350px;
+    height: 300px;
     background: white;
     margin: auto;
     border: none;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
   }
   .products .pro-crousel .your-class .card img {
-    height: 75%;
+    height: 60%;
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
@@ -707,12 +711,24 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 30%;
     padding: 5px;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .products .pro-crousel .your-class .card button {
+    width: 100%;
+  }
+  .products .pro-crousel .your-class .card h2 {
+    height: 10%;
+    padding: 5px 0px;
+    font-family: 'Roboto', sans-serif;
+    background: #D9ECDD;
+    display: block;
+    text-align: center;
   }
   .products .allProducts {
     background: white;
@@ -765,9 +781,10 @@
     border: none;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
   }
   .products .pro-crousel .your-class .card img {
-    height: 75%;
+    height: 60%;
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
@@ -776,12 +793,24 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 30%;
     padding: 5px;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .products .pro-crousel .your-class .card button {
+    width: 100%;
+  }
+  .products .pro-crousel .your-class .card h2 {
+    height: 10%;
+    padding: 5px 0px;
+    font-family: 'Roboto', sans-serif;
+    background: #D9ECDD;
+    display: block;
+    text-align: center;
   }
 }
 
@@ -1290,5 +1319,87 @@
     padding: 15px;
     color: white;
   }
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 400px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10px;
+}
+
+.field label {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 5px;
+  font-weight: bolder;
+}
+
+.field input {
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+}
+
+button {
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #054A29;
+  color: white;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  padding-top: 10px;
 }
 /*# sourceMappingURL=homepage.css.map */
