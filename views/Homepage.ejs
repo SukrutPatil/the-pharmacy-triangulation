@@ -124,7 +124,7 @@
                             <p><%= prod_name[index] %> </p>
                             <p> <%= prod_price[index] %> </p>
                         </div>
-                        <button id="myBtn">Buy Now</button>
+                        <button class="myBtn" data-product-id = "<%= prod_id[index]%>">Buy Now</button>
                     </div>
                 </div>
                 <% } %>
@@ -148,21 +148,21 @@
                   <p>Fill In your Address</p>
                   <div class="field">
                     <label for="">Flat, House No., Building, Apartment</label>
-                    <input type="text">
+                    <input id = "buyerAl1" type="text">
                   </div>
                   <div class="field">
                     <label for="">Area, Coloney, Street</label>
-                    <input type="text">
+                    <input type="text" id = "buyerAl2">
                   </div>
                   <div class="field">
                     <label for="">Landmark, City/ Town</label>
-                    <input type="text">
+                    <input type="text" id = "buyerAl3">
                   </div>
                   <div class="field">
                     <label for="">Pin Code</label>
-                    <input type="number">
+                    <input type="number" id = "buyerPincode">
                   </div>
-                  <button>Proceed to Pay</button>
+                  <button class = "initPay" onclick = "saveAddress()">Proceed to Pay</button>
                 </div>
                 
               
@@ -256,6 +256,8 @@
 <script src = "../public/js/checkout.js"></script>
 
 <script>
+    let theCurrentAddress;
+    let theCurrentProductId;
         $(document).ready(function () {
             $('.your-class').slick({
                 slidesToShow: 5,
@@ -284,32 +286,22 @@
                 ]
             });
         });
-
-buyProduct = async(productId) =>{
-    console.log('Reached Here')
-    const {product} = await axios.get(`./products/getproductInfo/${productId}`);
-     
-    const {checkoutOptions} = await axios.get(`./api/getCheckoutForProduct/${productId}`);
-     
-    let rzp = new Razorpay(checkoutOptions);
-    rzp.open();
-    
-}
-    </script>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+ // Get the modal
+ var modal = document.getElementById("myModal");
         
         // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+        var btns = document.getElementsByClassName("myBtn");
         
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         
         // When the user clicks the button, open the modal 
+       for (let btn of btns) {
         btn.onclick = function() {
           modal.style.display = "block";
+          theCurrentProductId = btn.getAttribute('data-product-id');
         }
+    }
         
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -322,7 +314,33 @@ buyProduct = async(productId) =>{
             modal.style.display = "none";
           }
         }
-        </script>
+
+
+        const saveAddress = async()=>{ 
+            console.log('called saveaddress');
+            const theDataToSubmit = {               
+                 al1:document.getElementById('buyerAl1').value,
+                al2:document.getElementById('buyerAl2').value,
+                al3:document.getElementById('buyerAl3').value,
+                pincode:document.getElementById('buyerPincode').value
+            }
+            theCurrentAddress = {...theDataToSubmit};
+          const {done} =  await axios.post('/api/saveAddress',{...theDataToSubmit});
+        done?buyProduct(theCurrentProductId):alert('Some Error Has Occured! Please Try Again Later!');
+
+        }
+const buyProduct = async(productId) =>{
+    console.log('Reached Here')
+    const {product} = await axios.get(`./products/getproductInfo/${productId}`);
+     
+    const {checkoutOptions} = await axios.get(`./api/getCheckoutForProduct/${productId}`);
+     
+    let rzp = new Razorpay(checkoutOptions);
+    rzp.open();
+    
+}
+    </script>
+
 </body>
 
 </html>

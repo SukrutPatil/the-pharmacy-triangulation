@@ -10,7 +10,6 @@ export class AuthController {
   getLoginPage(): any {
     return {};
   }
-
   getSignupPage() {
     throw new Error('Method not implemented.');
   }

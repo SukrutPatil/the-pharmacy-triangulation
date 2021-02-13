@@ -33,6 +33,14 @@ enum RandomIdType {
   ARTICLE,
   SESSION,
   CHAT,
+  ADDRESS,
+}
+export interface RzpProdUnit {
+  rzptrid:string,
+  user:string,
+  addressid:string,
+  time:string,
+  prodid:string
 }
 export interface Drug {
   name: string;
@@ -57,6 +65,13 @@ export interface Drug {
   costvar: any;
   imgaddress: string;
   adminemail: string;
+}
+export interface Address {
+  id: string;
+  al1: string;
+  al2?: string;
+  al3: string;
+  pincode: string;
 }
 /**
  *
@@ -112,7 +127,7 @@ export interface User {
   userid: string;
   username: string;
   password: string;
-  memtype: [string];
+  memtype: string[];
   phoneno: number;
   email: string;
 }
@@ -134,6 +149,16 @@ export class ModelService {
   constructor(private securityService: SecurityService) {
     console.log('ModelService Class Initialized');
   }
+
+  public createAddressObject = (
+    al1: string,
+    al2: string,
+    al3: string,
+    pincode: string,
+  ):Address => {
+    al2 = al2 ? al2 : ' ';
+    return { id: this.generateUniqueID(RandomIdType.ADDRESS),al1,al2,al3,pincode };
+  };
   /**
    * GENERATES ARTICLE OBJECT
    */
@@ -313,7 +338,11 @@ export class ModelService {
       case RandomIdType.CHAT:
         prefix = 'CHAT';
         break;
+      case RandomIdType.ADDRESS:
+        prefix = 'ADDR';
+        break;
     }
+
     const suffix: string =
       crypticKeyGenerator({ length: 7 }) + Date.now().toString();
     return `${prefix}${suffix}`;

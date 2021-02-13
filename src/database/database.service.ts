@@ -1,6 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, PoolConfig, QueryResult } from 'pg';
-import { Article, Chat, Drug, Module, User } from '../model/model.service';
+import {
+  Address,
+  Article,
+  Chat,
+  Drug,
+  Module,
+  User,
+} from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
 
 export enum EntryType {
@@ -13,6 +20,7 @@ export enum EntryType {
   ARTICLE,
   USER,
   CHAT,
+  ADDRESS,
 }
 export enum QueryStatus {
   FAILED,
@@ -20,13 +28,17 @@ export enum QueryStatus {
 }
 interface TableDefinitionInterface {
   tableName: string;
-  columnNames: Array<string>;
+  columnNames: string[];
 }
 interface DBReturnInterface {
   status: QueryStatus;
   resultObject?: QueryResult<any>;
   error?: any;
 }
+const ADDRESS_TABLE_DEFINITION: TableDefinitionInterface = {
+  tableName: 'addressledger',
+  columnNames: ['id', 'al1', 'al2', 'al3', 'pincode'],
+};
 const MEMBER_TABLE_DEFINITION: TableDefinitionInterface = {
   tableName: 'MemberLedger',
   columnNames: ['email', 'membership', 'name', 'password', 'phone', 'admin'],
@@ -364,6 +376,40 @@ export class DatabaseService {
       });
     });
   };
+  public addAddress = async (
+    theAddressObject: Address,
+  ): Promise<DBReturnInterface> => {
+    const insertQuerySkeleton = `insert into pharmaschema."${
+      ADDRESS_TABLE_DEFINITION.tableName
+    }"(${ADDRESS_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5)`;
+    const { id, al1, al2, al3, pincode } = theAddressObject;
+    const values = [id, al1, al2, al3, pincode];
+    const query = {
+      text: insertQuerySkeleton,
+      values: values,
+      rowMode: 'array',
+    };
+    console.log(query);
+    return new Promise(resolve => {
+      const returnObject: DBReturnInterface = {
+        status: QueryStatus.SUCCESSFULL,
+      };
+      this.pool.connect(err => {
+        if (err) console.log(err);
+      });
+      this.pool.query(query, (err: Error, result) => {
+        if (err) {
+          returnObject.error = err;
+          returnObject.status = QueryStatus.FAILED;
+        } else {
+          returnObject.resultObject = result;
+        }
+        console.log(`Logging Return Object`)
+        console.log(returnObject);
+        resolve(returnObject);
+      });
+    });
+  };
   public addModule = async (
     theModuleObject: Module,
   ): Promise<DBReturnInterface> => {
@@ -456,6 +502,9 @@ export class DatabaseService {
         break;
       case EntryType.CHAT:
         tblname = CHAT_TABLE_DEFINITION.tableName;
+        break;
+      case EntryType.ADDRESS:
+        tblname = ADDRESS_TABLE_DEFINITION.tableName;
         break;
     }
     return new Promise(resolve => {
