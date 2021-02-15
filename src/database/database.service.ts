@@ -453,7 +453,7 @@ export class DatabaseService {
         status: QueryStatus.SUCCESSFULL,
       };
       this.pool.connect(err => {
-        if (err) console.log(err);
+        if (err) console.log(err);  
       });
       this.pool.query(query, (err: Error, result) => {
         if (err) {
