@@ -2041,8 +2041,13 @@
         "signature": "3e03ea3c4d568a10e41f540bc891c5fb42c036a430187132e599176f7974eaf7",
         "affectsGlobalScope": true
       },
+      "../node_modules/@types/express-rate-limit/index.d.ts": {
+        "version": "089631249f41a9b676622f64514afd9a74fdf50a8cfe98dffaa62ecb9085b27c",
+        "signature": "089631249f41a9b676622f64514afd9a74fdf50a8cfe98dffaa62ecb9085b27c",
+        "affectsGlobalScope": true
+      },
       "../src/main.ts": {
-        "version": "f166e335fc19e45910ad20470cda013f1255b5525ccb5cd0134b3b37f7c3d6f7",
+        "version": "95ead7651e4664fe8f94f1e64d2a2aa1a23756f057e2787282bae5e997cd7e86",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -4108,6 +4113,14 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@types/eslint-visitor-keys/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/express-rate-limit/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -6192,6 +6205,7 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/express-rate-limit/index.d.ts",
         "../node_modules/@types/express-session/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -8186,6 +8200,14 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@types/eslint-visitor-keys/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/express-rate-limit/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
