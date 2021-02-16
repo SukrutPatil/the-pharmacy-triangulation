@@ -6,10 +6,12 @@ import * as Razorpay from 'razorpay';
 @Injectable()
 export class ApiService {
   /** Some Session Vars */
-
+  static callTimes = 0;
   session_address: Address;
   session_product_id: string;
-  constructor(private db: DatabaseService, private ms: ModelService) {}
+  constructor(private readonly db: DatabaseService, private readonly ms: ModelService) {
+    console.debug(`ApiService ${ApiService.callTimes++}`);
+  }
   async getChats(moduleId: string) {
     const { error, resultObject } = await this.db.retrieve(
       EntryType.CHAT,

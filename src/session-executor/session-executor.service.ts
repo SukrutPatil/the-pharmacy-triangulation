@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { Request, Response } from 'express';
 @Injectable()
 export class SessionExecutorService {
+  static callTimes = 0;
+  constructor() {
+    console.debug(`SessionExecutorService ${SessionExecutorService.callTimes++}`)
+  }
   /** Basic User Session Based Function Executor */
   sessionExecutor(
     req: Request,

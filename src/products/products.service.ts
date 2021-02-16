@@ -3,7 +3,10 @@ import { DatabaseService, EntryType } from '../database/database.service';
 
 @Injectable()
 export class ProductsService {
-  constructor(private readonly dbService: DatabaseService) {console.log('ProductsService Initialized')}
+  static callTimes = 0;
+  constructor(private readonly dbService: DatabaseService) {
+    console.debug(`ProductsService ${ProductsService.callTimes++}`);
+  }
   async getAllProducts() {
     const dbReturnObject = await this.dbService.retrieve(EntryType.DRUG);
       if (dbReturnObject.error) {

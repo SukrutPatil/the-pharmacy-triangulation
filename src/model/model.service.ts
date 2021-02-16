@@ -146,8 +146,9 @@ export interface Chat {
  */
 @Injectable()
 export class ModelService {
+  static callTimes = 0;
   constructor(private securityService: SecurityService) {
-    console.log('ModelService Class Initialized');
+    console.debug(`ModelService ${ModelService.callTimes++}`);
   }
 
   public createAddressObject = (

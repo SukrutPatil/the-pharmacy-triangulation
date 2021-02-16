@@ -5,11 +5,14 @@ import { ProductsService } from 'src/products/products.service';
 import * as crypticKeyGenerator from 'crypto-random-string';
 @Injectable()
 export class PaymentService {
+  static callTimes = 0;
   rzp = new Razorpay({
     key_id: process.env.key_id,
     key_secret: process.env.key_secret,
   });
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) {
+    console.debug(`PaymentService ${PaymentService.callTimes++}`);
+  }
   async generateOrderIdForProduct(product_id: string, amt: number) {
     let theOrder;
     await this.rzp.orders.create(

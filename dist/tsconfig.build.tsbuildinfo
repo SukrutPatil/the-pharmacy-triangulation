@@ -1812,7 +1812,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.module.ts": {
-        "version": "ddb7a7feb147399d932c53cd1b3ff2f25d940fd2f5adef4efcfe53452f8c9a2e",
+        "version": "c10e3877c0df6f0b4494c2b34e3ea007b9dbfcc80c3a78bf35e9c39f3f3ea6f1",
         "signature": "482b8f0d35a3d453500a15b6c6057c1e4c40baa4329b39da9e1026d8e1de4329",
         "affectsGlobalScope": false
       },

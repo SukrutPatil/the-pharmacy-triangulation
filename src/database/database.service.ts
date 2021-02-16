@@ -161,8 +161,9 @@ let self: any;
 
 @Injectable()
 export class DatabaseService {
+  static callTimes = 0;
   constructor() {
-    console.log('Database Service Initialized');
+    console.debug(`DatabaseService ${DatabaseService.callTimes++}`);
   }
 
   pool = new Pool(jsonData);
