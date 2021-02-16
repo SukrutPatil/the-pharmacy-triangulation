@@ -9,7 +9,8 @@ declare const module:any;
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useStaticAssets(resolve( './src/'));
+  app.useStaticAssets(resolve('./src/'));
+
   app.setBaseViewsDir(resolve('./src/views'));
   app.setViewEngine('ejs');
   app.enableCors();
