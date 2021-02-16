@@ -6,20 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserModule = void 0;
+exports.ModuleModule = void 0;
 const common_1 = require("@nestjs/common");
 const database_module_1 = require("../database/database.module");
-const module_module_1 = require("../module/module.module");
-const session_executor_module_1 = require("../session-executor/session-executor.module");
-const user_controller_1 = require("./user.controller");
-let UserModule = class UserModule {
+const module_controller_1 = require("./module.controller");
+const module_service_1 = require("./module.service");
+let ModuleModule = class ModuleModule {
 };
-UserModule = __decorate([
+ModuleModule = __decorate([
     common_1.Module({
-        controllers: [user_controller_1.UserController],
-        providers: [],
-        imports: [session_executor_module_1.SessionExecutorModule, module_module_1.ModuleModule, database_module_1.DatabaseModule]
+        exports: [module_service_1.ModuleService],
+        providers: [module_service_1.ModuleService],
+        imports: [database_module_1.DatabaseModule],
+        controllers: [module_controller_1.ModuleController]
     })
-], UserModule);
-exports.UserModule = UserModule;
-//# sourceMappingURL=user.module.js.map
+], ModuleModule);
+exports.ModuleModule = ModuleModule;
+//# sourceMappingURL=module.module.js.map

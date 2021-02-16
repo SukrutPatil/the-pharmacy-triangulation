@@ -14,6 +14,7 @@ let SessionExecutorModule = class SessionExecutorModule {
 SessionExecutorModule = __decorate([
     common_1.Module({
         providers: [session_executor_service_1.SessionExecutorService],
+        exports: [session_executor_service_1.SessionExecutorService]
     })
 ], SessionExecutorModule);
 exports.SessionExecutorModule = SessionExecutorModule;

@@ -29,6 +29,7 @@ const order_module_1 = require("./order/order.module");
 const database_module_1 = require("./database/database.module");
 const api_module_1 = require("./api/api.module");
 const payment_module_1 = require("./payment/payment.module");
+const module_module_1 = require("./module/module.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -47,7 +48,8 @@ AppModule = __decorate([
             order_module_1.OrderModule,
             database_module_1.DatabaseModule,
             api_module_1.ApiModule,
-            payment_module_1.PaymentModule
+            payment_module_1.PaymentModule,
+            module_module_1.ModuleModule
         ],
         controllers: [app_controller_1.AppController, module_controller_1.ModuleController,],
         providers: [app_service_1.AppService, database_service_1.DatabaseService, model_service_1.ModelService, security_service_1.SecurityService, products_service_1.ProductsService, module_service_1.ModuleService, order_service_1.OrderService,],

@@ -1781,9 +1781,9 @@
         "signature": "1c25f2f0598a4de10976ae9ce509926d1239727751d5e92076d16560718cec30",
         "affectsGlobalScope": false
       },
-      "../src/admin/admin.module.ts": {
-        "version": "759e7294531fed736dfc96578bb23f469b0d40ca296039d2bb663fbcf18870bb",
-        "signature": "4cb17d629e7bb0df751ae3e10d78a23d59ea51fc7c02044f9a003ba6f36fedf7",
+      "../src/session-executor/session-executor.module.ts": {
+        "version": "8d4164ff8331954ac6da3b1b13e6899b9bf79efa5d20a9a63803b465538c6dc3",
+        "signature": "0e7fd4cef801d8ad82543d0475e2eb554b747f1f56f508a92f295531f5712a18",
         "affectsGlobalScope": false
       },
       "../src/model/model.module.ts": {
@@ -1791,9 +1791,19 @@
         "signature": "1f317170d28fb299002680af51aff7e4ec6f135a90f0e411522e229667637f40",
         "affectsGlobalScope": false
       },
-      "../src/session-executor/session-executor.module.ts": {
-        "version": "b55ef1aee76c3cfbf669bba2b356700d100699cbc532c6d6a9fd2756c139a62a",
-        "signature": "0e7fd4cef801d8ad82543d0475e2eb554b747f1f56f508a92f295531f5712a18",
+      "../src/module/module.controller.ts": {
+        "version": "98bb4de8d84617f84b27bec8a64ce562e767a8e1cd03ee832cd341b9da8aca74",
+        "signature": "c237e0830308f1c4750bdcc9fb830149e74382e07aae06a6c5a5e82ce3ed9b09",
+        "affectsGlobalScope": false
+      },
+      "../src/module/module.module.ts": {
+        "version": "8d185300ed882f42d736e929dbee61450ca79b33ebfba149f5cf208c669e1880",
+        "signature": "9c892338839078e0239e541a58a80d54ba0bc753f8233db64ebda335047aba60",
+        "affectsGlobalScope": false
+      },
+      "../src/admin/admin.module.ts": {
+        "version": "861ae907d570a4121082a3345b15252972cba2e4a528758695016fc8483bc2ff",
+        "signature": "4cb17d629e7bb0df751ae3e10d78a23d59ea51fc7c02044f9a003ba6f36fedf7",
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
@@ -1802,7 +1812,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.module.ts": {
-        "version": "2bba29c3ed3e12b8e6c8e58e543873849792a218b05074fa377abe6aa714f386",
+        "version": "ddb7a7feb147399d932c53cd1b3ff2f25d940fd2f5adef4efcfe53452f8c9a2e",
         "signature": "482b8f0d35a3d453500a15b6c6057c1e4c40baa4329b39da9e1026d8e1de4329",
         "affectsGlobalScope": false
       },
@@ -1812,13 +1822,8 @@
         "affectsGlobalScope": false
       },
       "../src/products/products.module.ts": {
-        "version": "cbcc7883e40d8441ae98d391acc90637377d14e49132ade73fccb46d65fdaaa3",
+        "version": "c2cd62cea11061cd76a8950af5c49602db99c70d75dbf0e4c3678b251efb7e71",
         "signature": "8857a2a959eb0ee870d0adb812e0d41a0e12796ec0c1d85f8416e82bcf51ca03",
-        "affectsGlobalScope": false
-      },
-      "../src/module/module.controller.ts": {
-        "version": "98bb4de8d84617f84b27bec8a64ce562e767a8e1cd03ee832cd341b9da8aca74",
-        "signature": "c237e0830308f1c4750bdcc9fb830149e74382e07aae06a6c5a5e82ce3ed9b09",
         "affectsGlobalScope": false
       },
       "../src/order/order.service.ts": {
@@ -1842,7 +1847,7 @@
         "affectsGlobalScope": false
       },
       "../src/payment/payment.module.ts": {
-        "version": "cbafbe08e1fe9a829ee52289c3b3883083a6f5083f1169149a1e8177060d8550",
+        "version": "4f9736c66f66bb07b83b377c5dcaeee6d8188120774b0fda21b2d21b0701c30d",
         "signature": "a3684909b502d2414d94ce06228f5d6dae72b658eac3f386843965e540b51834",
         "affectsGlobalScope": false
       },
@@ -1857,12 +1862,12 @@
         "affectsGlobalScope": false
       },
       "../src/api/api.module.ts": {
-        "version": "d8755e6c2cd0742649f600390f265e3647345305667af03371451a1a831296a8",
+        "version": "b0cd2df2269461573e87220ca4eab49f4f35be3cf3e931f18e05f84f13f66b8f",
         "signature": "f31e2438efeae62abb8b2b946f674b164b0b4c1804a5ff9209894b120de2911d",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "14598857b16b80cc7d17a8c220a6dd55c80173ea264ba218f4ba1833eff23a1a",
+        "version": "d6541cefe8d4aa9fd6fa8976cfd603ae8632720dcf72c64de76a0227cd1e448c",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -2047,7 +2052,7 @@
         "affectsGlobalScope": true
       },
       "../src/main.ts": {
-        "version": "330f22a8dcf5deb7478554dfeabdda8918abeb4a358681fc4b784a61a0de3bd7",
+        "version": "6f947020f100bdbef4686514a361ca9dd11b83277b12feff4862ca8a7f023641",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -6051,11 +6056,11 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/admin/admin.controller.ts",
-        "../src/database/database.service.ts",
-        "../src/model/model.service.ts",
-        "../src/module/module.service.ts",
-        "../src/security/security.service.ts",
-        "../src/session-executor/session-executor.service.ts"
+        "../src/database/database.module.ts",
+        "../src/model/model.module.ts",
+        "../src/module/module.module.ts",
+        "../src/security/security.module.ts",
+        "../src/session-executor/session-executor.module.ts"
       ],
       "../src/api/api.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -6127,6 +6132,7 @@
         "../src/model/model.module.ts",
         "../src/model/model.service.ts",
         "../src/module/module.controller.ts",
+        "../src/module/module.module.ts",
         "../src/module/module.service.ts",
         "../src/order/order.module.ts",
         "../src/order/order.service.ts",
@@ -6238,6 +6244,17 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/module/module.service.ts"
+      ],
+      "../src/module/module.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/database/database.module.ts",
+        "../src/module/module.controller.ts",
         "../src/module/module.service.ts"
       ],
       "../src/module/module.service.ts": [
@@ -6374,9 +6391,9 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/database/database.service.ts",
-        "../src/module/module.service.ts",
-        "../src/session-executor/session-executor.service.ts",
+        "../src/database/database.module.ts",
+        "../src/module/module.module.ts",
+        "../src/session-executor/session-executor.module.ts",
         "../src/user/user.controller.ts"
       ]
     },

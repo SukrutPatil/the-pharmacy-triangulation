@@ -10,7 +10,8 @@ import { ApiService } from './api.service';
 
 @Module({
   controllers: [ApiController],
-  providers: [ApiService,PaymentService,ProductsService],
-  imports: [DatabaseModule,ModelModule,PaymentModule,ProductsModule],
+  providers: [ApiService],
+  imports: [DatabaseModule, ModelModule, PaymentModule, ProductsModule],
+  exports:[ApiService]
 })
 export class ApiModule {}

@@ -20,7 +20,7 @@ async function bootstrap() {
         resave: true,
         saveUninitialized: false,
     }));
-    await app.listen(process.env.PORT || 8080);
+    await app.listen(process.env.PORT || 8000);
     if (module.hot) {
         module.hot.accept();
         module.hot.dispose(() => app.close());

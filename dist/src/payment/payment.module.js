@@ -16,8 +16,9 @@ let PaymentModule = class PaymentModule {
 };
 PaymentModule = __decorate([
     common_1.Module({
-        providers: [payment_service_1.PaymentService, products_service_1.ProductsService],
-        imports: [products_module_1.ProductsModule, database_module_1.DatabaseModule]
+        providers: [payment_service_1.PaymentService],
+        imports: [products_module_1.ProductsModule, database_module_1.DatabaseModule],
+        exports: [payment_service_1.PaymentService]
     })
 ], PaymentModule);
 exports.PaymentModule = PaymentModule;

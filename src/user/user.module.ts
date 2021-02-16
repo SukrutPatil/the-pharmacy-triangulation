@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { ModuleService } from '../module/module.service';
-import { SessionExecutorService } from '../session-executor/session-executor.service';
+import { DatabaseModule } from 'src/database/database.module';
+import { ModuleModule } from 'src/module/module.module';
+import { SessionExecutorModule } from 'src/session-executor/session-executor.module';
+
 import { UserController } from './user.controller';
 
 @Module({
   controllers: [UserController],
-  providers: [SessionExecutorService,ModuleService,DatabaseService],
+  providers: [],
+  imports: [SessionExecutorModule,ModuleModule,DatabaseModule]
 })
 export class UserModule {}
