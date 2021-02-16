@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var PaymentService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentService = void 0;
 const common_1 = require("@nestjs/common");
@@ -15,13 +16,14 @@ require('dotenv').config();
 const Razorpay = require("razorpay");
 const products_service_1 = require("../products/products.service");
 const crypticKeyGenerator = require("crypto-random-string");
-let PaymentService = class PaymentService {
+let PaymentService = PaymentService_1 = class PaymentService {
     constructor(productsService) {
         this.productsService = productsService;
         this.rzp = new Razorpay({
             key_id: process.env.key_id,
             key_secret: process.env.key_secret,
         });
+        console.debug(`PaymentService ${PaymentService_1.callTimes++}`);
     }
     async generateOrderIdForProduct(product_id, amt) {
         let theOrder;
@@ -64,7 +66,8 @@ let PaymentService = class PaymentService {
         return `${crypticKeyGenerator({ length: 7 })}${product_id}`;
     }
 };
-PaymentService = __decorate([
+PaymentService.callTimes = 0;
+PaymentService = PaymentService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [products_service_1.ProductsService])
 ], PaymentService);

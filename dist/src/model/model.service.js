@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var ModelService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModelService = exports.ModuleType = void 0;
 const common_1 = require("@nestjs/common");
@@ -38,7 +39,7 @@ var RandomIdType;
     RandomIdType[RandomIdType["CHAT"] = 5] = "CHAT";
     RandomIdType[RandomIdType["ADDRESS"] = 6] = "ADDRESS";
 })(RandomIdType || (RandomIdType = {}));
-let ModelService = class ModelService {
+let ModelService = ModelService_1 = class ModelService {
     constructor(securityService) {
         this.securityService = securityService;
         this.createAddressObject = (al1, al2, al3, pincode) => {
@@ -149,10 +150,11 @@ let ModelService = class ModelService {
             const suffix = crypticKeyGenerator({ length: 7 }) + Date.now().toString();
             return `${prefix}${suffix}`;
         };
-        console.log('ModelService Class Initialized');
+        console.debug(`ModelService ${ModelService_1.callTimes++}`);
     }
 };
-ModelService = __decorate([
+ModelService.callTimes = 0;
+ModelService = ModelService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [security_service_1.SecurityService])
 ], ModelService);

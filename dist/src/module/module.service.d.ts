@@ -7,6 +7,7 @@ export declare enum ModuleCategory {
 }
 export declare class ModuleService {
     private readonly db;
+    static callTimes: number;
     constructor(db: DatabaseService);
     getAllModules(): Promise<any[]>;
     getModulesByCategory(cat: ModuleCategory): Promise<any[]>;

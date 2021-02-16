@@ -1,8 +1,9 @@
 import { DatabaseService } from 'src/database/database.service';
 import { ModelService, Address } from '../model/model.service';
 export declare class ApiService {
-    private db;
-    private ms;
+    private readonly db;
+    private readonly ms;
+    static callTimes: number;
     session_address: Address;
     session_product_id: string;
     constructor(db: DatabaseService, ms: ModelService);

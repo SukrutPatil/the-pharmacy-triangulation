@@ -8,14 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var ProductsService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
 const common_1 = require("@nestjs/common");
 const database_service_1 = require("../database/database.service");
-let ProductsService = class ProductsService {
+let ProductsService = ProductsService_1 = class ProductsService {
     constructor(dbService) {
         this.dbService = dbService;
-        console.log('ProductsService Initialized');
+        console.debug(`ProductsService ${ProductsService_1.callTimes++}`);
     }
     async getAllProducts() {
         const dbReturnObject = await this.dbService.retrieve(database_service_1.EntryType.DRUG);
@@ -36,7 +37,8 @@ let ProductsService = class ProductsService {
         return theProduct ? theProduct : null;
     }
 };
-ProductsService = __decorate([
+ProductsService.callTimes = 0;
+ProductsService = ProductsService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [database_service_1.DatabaseService])
 ], ProductsService);

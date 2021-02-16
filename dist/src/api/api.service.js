@@ -8,15 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var ApiService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApiService = void 0;
 const common_1 = require("@nestjs/common");
 const database_service_1 = require("../database/database.service");
 const model_service_1 = require("../model/model.service");
-let ApiService = class ApiService {
+let ApiService = ApiService_1 = class ApiService {
     constructor(db, ms) {
         this.db = db;
         this.ms = ms;
+        console.debug(`ApiService ${ApiService_1.callTimes++}`);
     }
     async getChats(moduleId) {
         const { error, resultObject } = await this.db.retrieve(database_service_1.EntryType.CHAT, `where moduleid = '${moduleId}'`);
@@ -41,7 +43,8 @@ let ApiService = class ApiService {
         return error ? false : true;
     }
 };
-ApiService = __decorate([
+ApiService.callTimes = 0;
+ApiService = ApiService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [database_service_1.DatabaseService, model_service_1.ModelService])
 ], ApiService);
