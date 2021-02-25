@@ -508,7 +508,7 @@ export class DatabaseService {
         tblname = ADDRESS_TABLE_DEFINITION.tableName;
         break;
     }
-    return new Promise(resolve => {
+    return new Promise(async resolve => {
       const objectToResolve: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
@@ -517,7 +517,8 @@ export class DatabaseService {
       this.pool.connect(err => {
         if (err) console.log(err);
       });
-      this.pool.query(theQuery, (err, result) => {
+      console.log('Here Too')
+      await this.pool.query(theQuery, (err, result) => {
         if (err) {
           console.log('Query Callback Error');
           objectToResolve.error = err;

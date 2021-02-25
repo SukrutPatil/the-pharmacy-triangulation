@@ -24,6 +24,7 @@ let AppController = class AppController {
         this.as = as;
     }
     async getHomePage(req, res) {
+        console.log(`Entering HomePage`);
         let allModules = await this.as.getRandomArrayOfModules();
         const theDBReturnObject = await this.db.retrieve(database_service_1.EntryType.DRUG);
         const prod_id = [];

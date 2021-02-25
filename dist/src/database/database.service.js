@@ -376,7 +376,7 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                     tblname = ADDRESS_TABLE_DEFINITION.tableName;
                     break;
             }
-            return new Promise(resolve => {
+            return new Promise(async (resolve) => {
                 const objectToResolve = {
                     status: QueryStatus.SUCCESSFULL,
                 };
@@ -386,7 +386,8 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                     if (err)
                         console.log(err);
                 });
-                this.pool.query(theQuery, (err, result) => {
+                console.log('Here Too');
+                await this.pool.query(theQuery, (err, result) => {
                     if (err) {
                         console.log('Query Callback Error');
                         objectToResolve.error = err;

@@ -24,10 +24,6 @@ async function bootstrap() {
         saveUninitialized: false,
     }));
     await app.listen(process.env.PORT || 8000);
-    if (module.hot) {
-        module.hot.accept();
-        module.hot.dispose(() => app.close());
-    }
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

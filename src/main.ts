@@ -4,9 +4,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { resolve } from 'path';
 import * as session from 'express-session';
 import * as express from 'express';
-import { start } from 'repl';
+
 import * as rateLimit from 'express-rate-limit';
-declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -32,9 +31,6 @@ async function bootstrap() {
   );
 
   await app.listen(process.env.PORT || 8000);
-  if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => app.close());
-  }
+  
 }
 bootstrap();
