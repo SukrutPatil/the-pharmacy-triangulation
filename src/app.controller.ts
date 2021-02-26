@@ -29,7 +29,7 @@ export class AppController {
       const { id, brandname, mrp, imgaddress } = productEntry;
       prod_id.push(id);
       prod_name.push(brandname);
-      prod_price.push(mrp);
+    prod_price.push(mrp);
       prod_img.push(imgaddress);
     });
     return {

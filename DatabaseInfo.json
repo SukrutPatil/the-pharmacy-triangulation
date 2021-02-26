@@ -1,8 +1,12 @@
 {
     "user":"postgres",
-    "host":"localhost",
+    "host":"database-1.cebfk17vw9sb.ap-south-1.rds.amazonaws.com",
     "database":"pharmadb",
+<<<<<<< HEAD
     "password":"195357195",
+=======
+    "password":"password",
+>>>>>>> 7b00bae77b8032fb8e1fa4c641f52a50aa1d30b4
     "port":5432
     
 }

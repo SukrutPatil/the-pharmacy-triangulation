@@ -1,0 +1,7 @@
+{
+    "user": "postgres",
+    "host": "database-1.cebfk17vw9sb.ap-south-1.rds.amazonaws.com",
+    "database": "pharmadb",
+    "password": "password",
+    "port": 5432
+}

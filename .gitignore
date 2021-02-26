@@ -1,8 +1,7 @@
 #database
-DatabaseInfo.json
 
 # compiled output
-/dist
+
 /node_modules
 #DatabaseInfo.json
 # Logs
@@ -29,7 +28,7 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
-DatabaseInfo.json
+
 
 # IDE - VSCode
 .vscode/*
@@ -37,4 +36,3 @@ DatabaseInfo.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-DatabaseInfo.json

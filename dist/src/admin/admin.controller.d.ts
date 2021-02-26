@@ -1,0 +1,31 @@
+import { SessionExecutorService } from './../session-executor/session-executor.service';
+import { Request, Response } from 'express';
+import { ModelService } from '../model/model.service';
+import { DatabaseService } from '../database/database.service';
+import { ModuleService } from '../module/module.service';
+export declare class AdminController {
+    private readonly se;
+    private readonly mg;
+    private readonly db;
+    private readonly ms;
+    constructor(se: SessionExecutorService, mg: ModelService, db: DatabaseService, ms: ModuleService);
+    getAdminLogin(): any;
+    adminLoginAction(req: Request, res: Response): Promise<any>;
+    getProducts(req: Request, res: Response): any;
+    getNewProductPage(req: Request, res: Response): any;
+    createNewProduct(req: Request, res: Response): Promise<any>;
+    getAllArticles(req: Request, res: Response): any;
+    getNewArticlePage(req: Request, res: Response): any;
+    createNewArticle(req: Request, res: Response): any;
+    getAllModule(req: Request, res: Response): Promise<any>;
+    getNewModulePage(req: Request, res: Response): any;
+    createNewModule(req: Request, res: Response): any;
+    getAllSessions(req: Request, res: Response): any;
+    getUpdateProductPage(req: Request, res: Response): any;
+    updateNewProduct(req: Request, res: Response): any;
+    getUpdateArticlePage(req: Request, res: Response): any;
+    updateNewArticle(req: Request, res: Response): any;
+    getUpdateModulePage(req: Request, res: Response): any;
+    updateNewModule(req: Request, res: Response): any;
+    deleteItem(req: Request, res: Response): any;
+}
