@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var SecurityService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SecurityService = void 0;
 const common_1 = require("@nestjs/common");
 const crypto = require("crypto");
-let SecurityService = class SecurityService {
+let SecurityService = SecurityService_1 = class SecurityService {
     constructor() {
         this.secureData = (key, value) => {
             const cipher = crypto.createCipher('aes128', key);
@@ -24,10 +25,11 @@ let SecurityService = class SecurityService {
             const decrypted = decipher.update(value, 'hex', 'utf8') + decipher.final('utf8');
             return decrypted;
         };
-        console.log("Security Service Called");
+        console.debug(`SecurityService ${SecurityService_1.callTimes++}`);
     }
 };
-SecurityService = __decorate([
+SecurityService.callTimes = 0;
+SecurityService = SecurityService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [])
 ], SecurityService);

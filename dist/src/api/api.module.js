@@ -21,8 +21,9 @@ let ApiModule = class ApiModule {
 ApiModule = __decorate([
     common_1.Module({
         controllers: [api_controller_1.ApiController],
-        providers: [api_service_1.ApiService, payment_service_1.PaymentService, products_service_1.ProductsService],
+        providers: [api_service_1.ApiService],
         imports: [database_module_1.DatabaseModule, model_module_1.ModelModule, payment_module_1.PaymentModule, products_module_1.ProductsModule],
+        exports: [api_service_1.ApiService]
     })
 ], ApiModule);
 exports.ApiModule = ApiModule;

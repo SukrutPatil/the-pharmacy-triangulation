@@ -26,6 +26,7 @@ interface DBReturnInterface {
     error?: any;
 }
 export declare class DatabaseService {
+    static callTimes: number;
     constructor();
     pool: Pool;
     self: this;

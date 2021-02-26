@@ -5,8 +5,9 @@ import { ProductsService } from 'src/products/products.service';
 import { PaymentService } from './payment.service';
 
 @Module({
-  providers: [PaymentService, ProductsService],
-  imports:[ProductsModule,DatabaseModule]
+  providers: [PaymentService],
+  imports: [ProductsModule, DatabaseModule],
+  exports:[PaymentService]
 
 })
 export class PaymentModule {}

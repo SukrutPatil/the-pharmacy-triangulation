@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var ModuleService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModuleService = exports.ModuleCategory = void 0;
 const common_1 = require("@nestjs/common");
@@ -19,9 +20,10 @@ var ModuleCategory;
     ModuleCategory["CAREER"] = "Career Counseling";
     ModuleCategory["ENTREPRENEURSHIP"] = "Entrepreneurship Counseling";
 })(ModuleCategory = exports.ModuleCategory || (exports.ModuleCategory = {}));
-let ModuleService = class ModuleService {
+let ModuleService = ModuleService_1 = class ModuleService {
     constructor(db) {
         this.db = db;
+        console.debug(`ModuleService ${ModuleService_1.callTimes++}`);
     }
     async getAllModules() {
         const dbReturnObject = await this.db.retrieve(database_service_1.EntryType.MODULE);
@@ -54,7 +56,8 @@ let ModuleService = class ModuleService {
         return theAuthorName;
     }
 };
-ModuleService = __decorate([
+ModuleService.callTimes = 0;
+ModuleService = ModuleService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [database_service_1.DatabaseService])
 ], ModuleService);

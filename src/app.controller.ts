@@ -14,6 +14,7 @@ export class AppController {
   @Get()
   @Render('Homepage.ejs')
   async getHomePage(@Req() req: Request, @Res() res: Response): Promise<any> {
+    console.log(`Entering HomePage`)
     let allModules = await this.as.getRandomArrayOfModules();
     //Fetch products Data
     const theDBReturnObject = await this.db.retrieve(EntryType.DRUG);

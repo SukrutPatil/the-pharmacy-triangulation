@@ -8,7 +8,10 @@ export enum ModuleCategory {
 }
 @Injectable()
 export class ModuleService {
-    constructor(private readonly db: DatabaseService) { }
+    static callTimes = 0;
+    constructor(private readonly db: DatabaseService) { 
+        console.debug(`ModuleService ${ModuleService.callTimes++}`);
+    }
    async  getAllModules() {
        const dbReturnObject = await this.db.retrieve(EntryType.MODULE);
        if (dbReturnObject.error) {

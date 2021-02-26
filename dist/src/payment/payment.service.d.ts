@@ -1,6 +1,7 @@
 import { ProductsService } from 'src/products/products.service';
 export declare class PaymentService {
     private readonly productsService;
+    static callTimes: number;
     rzp: any;
     constructor(productsService: ProductsService);
     generateOrderIdForProduct(product_id: string, amt: number): Promise<any>;

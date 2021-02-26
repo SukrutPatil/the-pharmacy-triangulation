@@ -98,6 +98,7 @@ export interface Chat {
 }
 export declare class ModelService {
     private securityService;
+    static callTimes: number;
     constructor(securityService: SecurityService);
     createAddressObject: (al1: string, al2: string, al3: string, pincode: string) => Address;
     createArticleObject: (name: string, publisher: string, about: string, admin: string, thumbnail: string, otherimages: string) => Article;

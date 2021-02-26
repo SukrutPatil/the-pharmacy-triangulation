@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var DatabaseService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseService = exports.QueryStatus = exports.EntryType = void 0;
 const common_1 = require("@nestjs/common");
@@ -144,7 +145,7 @@ const ARTICLE_TABLE_DEFINITION = {
     ],
 };
 let self;
-let DatabaseService = class DatabaseService {
+let DatabaseService = DatabaseService_1 = class DatabaseService {
     constructor() {
         this.pool = new pg_1.Pool(jsonData);
         this.self = this;
@@ -375,7 +376,7 @@ let DatabaseService = class DatabaseService {
                     tblname = ADDRESS_TABLE_DEFINITION.tableName;
                     break;
             }
-            return new Promise(resolve => {
+            return new Promise(async (resolve) => {
                 const objectToResolve = {
                     status: QueryStatus.SUCCESSFULL,
                 };
@@ -385,7 +386,8 @@ let DatabaseService = class DatabaseService {
                     if (err)
                         console.log(err);
                 });
-                this.pool.query(theQuery, (err, result) => {
+                console.log('Here Too');
+                await this.pool.query(theQuery, (err, result) => {
                     if (err) {
                         console.log('Query Callback Error');
                         objectToResolve.error = err;
@@ -406,10 +408,11 @@ let DatabaseService = class DatabaseService {
         this.getEntryType = () => {
             return EntryType;
         };
-        console.log('Database Service Initialized');
+        console.debug(`DatabaseService ${DatabaseService_1.callTimes++}`);
     }
 };
-DatabaseService = __decorate([
+DatabaseService.callTimes = 0;
+DatabaseService = DatabaseService_1 = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [])
 ], DatabaseService);
