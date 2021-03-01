@@ -18,15 +18,16 @@ let AppService = class AppService {
     }
     async getRandomArrayOfModules() {
         let modulesQueryReturn = await this.dbService.retrieve(database_service_1.EntryType.MODULE);
+        console.log(modulesQueryReturn);
         if (modulesQueryReturn.error) {
             console.log(modulesQueryReturn.error);
             return null;
         }
-        if (modulesQueryReturn.resultObject.rows.length == 0) {
+        if (modulesQueryReturn.resultObject.length == 0) {
             console.log('No Modules Available Yet!');
             return [];
         }
-        return this.shuffle(modulesQueryReturn.resultObject.rows);
+        return this.shuffle(modulesQueryReturn.resultObject);
     }
     shuffle(arr) {
         return arr.sort(() => Math.random() - 0.5);

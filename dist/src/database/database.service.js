@@ -12,7 +12,7 @@ var DatabaseService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseService = exports.QueryStatus = exports.EntryType = void 0;
 const common_1 = require("@nestjs/common");
-const pg_1 = require("pg");
+const pgp = require("pg-promise");
 const jsonData = require("../../DatabaseInfo.json");
 var EntryType;
 (function (EntryType) {
@@ -147,37 +147,18 @@ const ARTICLE_TABLE_DEFINITION = {
 let self;
 let DatabaseService = DatabaseService_1 = class DatabaseService {
     constructor() {
-        this.pool = new pg_1.Pool(jsonData);
+        this.db = pgp({})(jsonData);
         this.self = this;
         this.addUser = async (userObject) => { };
         this.addChat = async (chatObject) => {
             const insertQuerySkeleton = `insert into pharmaschema."${CHAT_TABLE_DEFINITION.tableName}"(${CHAT_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4)`;
             const { moduleid, sender, chat, chatid } = chatObject;
             const values = [moduleid, sender, chat, chatid];
-            const query = {
-                text: insertQuerySkeleton,
-                values: values,
-                rowMode: 'array',
+            const returnObject = {
+                status: QueryStatus.SUCCESSFULL,
             };
-            return new Promise(resolve => {
-                const returnObject = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                this.pool.query(query, (err, result) => {
-                    if (err) {
-                        returnObject.error = err;
-                        returnObject.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        returnObject.resultObject = result;
-                    }
-                    resolve(returnObject);
-                });
-            });
+            returnObject.resultObject = await this.db.any(insertQuerySkeleton, values);
+            return returnObject;
         };
         this.addDrug = async (drugObject) => {
             const insertQuerySkeleton = `insert into pharmaschema."${DRUG_TABLE_DEFINITION.tableName}"(${DRUG_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22)`;
@@ -206,30 +187,11 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                 adminemail,
                 name,
             ];
-            const query = {
-                text: insertQuerySkeleton,
-                values: values,
-                rowMode: 'array',
+            const returnObject = {
+                status: QueryStatus.SUCCESSFULL,
             };
-            return new Promise(resolve => {
-                const returnObject = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                this.pool.query(query, (err, result) => {
-                    if (err) {
-                        returnObject.error = err;
-                        returnObject.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        returnObject.resultObject = result;
-                    }
-                    resolve(returnObject);
-                });
-            });
+            returnObject.resultObject = await this.db.any(insertQuerySkeleton, values);
+            return returnObject;
         };
         this.addArticle = async (articleObject) => {
             const insertQuerySkeleton = `insert into pharmaschema."${ARTICLE_TABLE_DEFINITION.tableName}"(${ARTICLE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8)`;
@@ -244,30 +206,11 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                 otherimages,
                 dop,
             ];
-            const query = {
-                text: insertQuerySkeleton,
-                values: values,
-                rowMode: 'array',
+            const returnObject = {
+                status: QueryStatus.SUCCESSFULL,
             };
-            return new Promise(resolve => {
-                const returnObject = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                this.pool.query(query, (err, result) => {
-                    if (err) {
-                        returnObject.error = err;
-                        returnObject.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        returnObject.resultObject = result;
-                    }
-                    resolve(returnObject);
-                });
-            });
+            returnObject.resultObject = await this.db.any(insertQuerySkeleton, values);
+            return returnObject;
         };
         this.addAddress = async (theAddressObject) => {
             const insertQuerySkeleton = `insert into pharmaschema."${ADDRESS_TABLE_DEFINITION.tableName}"(${ADDRESS_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5)`;
@@ -279,27 +222,11 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                 rowMode: 'array',
             };
             console.log(query);
-            return new Promise(resolve => {
-                const returnObject = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                this.pool.query(query, (err, result) => {
-                    if (err) {
-                        returnObject.error = err;
-                        returnObject.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        returnObject.resultObject = result;
-                    }
-                    console.log(`Logging Return Object`);
-                    console.log(returnObject);
-                    resolve(returnObject);
-                });
-            });
+            const returnObject = {
+                status: QueryStatus.SUCCESSFULL,
+            };
+            returnObject.resultObject = await this.db.any(insertQuerySkeleton, values);
+            return returnObject;
         };
         this.addModule = async (theModuleObject) => {
             const insertQuerySkeleton = `insert into pharmaschema."${MODULE_TABLE_DEFINITION.tableName}"(${MODULE_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
@@ -322,26 +249,11 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                 values: values,
                 rowMode: 'array',
             };
-            console.log(query);
-            return new Promise(resolve => {
-                const returnObject = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                this.pool.query(query, (err, result) => {
-                    if (err) {
-                        returnObject.error = err;
-                        returnObject.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        returnObject.resultObject = result;
-                    }
-                    resolve(returnObject);
-                });
-            });
+            const returnObject = {
+                status: QueryStatus.SUCCESSFULL,
+            };
+            returnObject.resultObject = this.db.any(insertQuerySkeleton, values);
+            return returnObject;
         };
         this.retrieve = async (etype, optionalWhereClause = '') => {
             let tblname;
@@ -376,30 +288,13 @@ let DatabaseService = DatabaseService_1 = class DatabaseService {
                     tblname = ADDRESS_TABLE_DEFINITION.tableName;
                     break;
             }
-            return new Promise(async (resolve) => {
-                const objectToResolve = {
-                    status: QueryStatus.SUCCESSFULL,
-                };
-                const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
-                console.log(theQuery);
-                this.pool.connect(err => {
-                    if (err)
-                        console.log(err);
-                });
-                console.log('Here Too');
-                await this.pool.query(theQuery, (err, result) => {
-                    if (err) {
-                        console.log('Query Callback Error');
-                        objectToResolve.error = err;
-                        objectToResolve.status = QueryStatus.FAILED;
-                    }
-                    else {
-                        console.log('Query Callback no Error');
-                        objectToResolve.resultObject = result;
-                    }
-                    resolve(objectToResolve);
-                });
-            });
+            const objectToResolve = {
+                status: QueryStatus.SUCCESSFULL,
+            };
+            const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
+            console.log(theQuery);
+            objectToResolve.resultObject = await this.db.any(theQuery);
+            return objectToResolve;
         };
         this.generateInsertQuerySkeleton = (tableDefinition) => {
             const theQuery = `insert into pharmaschema."${tableDefinition.tableName}"(${tableDefinition.columnNames.toString()}) VALUES ?`;

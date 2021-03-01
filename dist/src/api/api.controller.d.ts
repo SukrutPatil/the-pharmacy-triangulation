@@ -10,7 +10,7 @@ export declare class ApiController {
     private readonly db;
     constructor(apiService: ApiService, paymentService: PaymentService, ms: ModelService, db: DatabaseService);
     fetchCurrentChat(moduleId: string): Promise<{
-        chats: any[];
+        chats: any;
     }>;
     updateChat(body: any, req: Request): Promise<{
         done: boolean;

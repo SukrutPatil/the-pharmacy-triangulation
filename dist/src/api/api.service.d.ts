@@ -7,7 +7,7 @@ export declare class ApiService {
     session_address: Address;
     session_product_id: string;
     constructor(db: DatabaseService, ms: ModelService);
-    getChats(moduleId: string): Promise<any[]>;
+    getChats(moduleId: string): Promise<any>;
     updateChat(moduleId: string, chatter: string, chat: string): Promise<boolean>;
     newMember({ name, email, phone, password, type }: {
         name: any;

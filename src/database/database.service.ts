@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Pool, PoolConfig, QueryResult } from 'pg';
+import * as pgp from 'pg-promise';
+
 import {
   Address,
   Article,
@@ -9,6 +11,7 @@ import {
   User,
 } from '../model/model.service';
 import * as jsonData from '../../DatabaseInfo.json';
+import { json } from 'express';
 
 export enum EntryType {
   PRODUCT,
@@ -32,7 +35,7 @@ interface TableDefinitionInterface {
 }
 interface DBReturnInterface {
   status: QueryStatus;
-  resultObject?: QueryResult<any>;
+  resultObject?: any;
   error?: any;
 }
 const ADDRESS_TABLE_DEFINITION: TableDefinitionInterface = {
@@ -165,63 +168,9 @@ export class DatabaseService {
   constructor() {
     console.debug(`DatabaseService ${DatabaseService.callTimes++}`);
   }
-
-  pool = new Pool(jsonData);
+  db = pgp({})(jsonData);
   self = this;
-  /*** INSERT QUERY */
-  /**
-   *Generically accepts objects defined in Model Service Class
-   *
-   * @memberof DatabaseService
-   */
-  // public add = async <T>(
-  //   etype: EntryType,
-  //   obj: T,
-  // ): Promise<DBReturnInterface> => {
-  //   let insertQuery: string;
-  //   const values: Array<any> = Object.keys(obj).map(key => obj[key]);
-
-  //   switch (etype) {
-  //     case EntryType.MEMBER:
-  //       insertQuery = this.generateInsertQuerySkeleton(MEMBER_TABLE_DEFINITION);
-  //       break;
-  //     case EntryType.PRODUCT:
-  //       insertQuery = this.generateInsertQuerySkeleton(
-  //         PRODUCT_TABLE_DEFINITION,
-  //       );
-  //       break;
-  //     case EntryType.TRANSACTION:
-  //       insertQuery = this.generateInsertQuerySkeleton(
-  //         TRANSACTION_TABLE_DEFINITION,
-  //       );
-  //       break;
-  //     case EntryType.MODULE:
-  //       insertQuery = this.generateInsertQuerySkeleton(MODULE_TABLE_DEFINITION);
-  //       break;
-  //     case EntryType.SESSION:
-  //       insertQuery = this.generateInsertQuerySkeleton(
-  //         SESSION_TABLE_DEFINITION,
-  //       );
-  //       break;
-  //     case EntryType.DRUG:
-  //       insertQuery = this.generateInsertQuerySkeleton(DRUG_TABLE_DEFINITION);
-  //       break;
-  //   }
-
-  //   return new Promise(resolve => {
-  //     const objectToResolve:DBReturnInterface = {status:QueryStatus.SUCCESSFULL};
-
-  //     console.log("Entering Query Callback: "+insertQuery)
-  //     console.log(values)
-  //     this.pool.query(insertQuery, values, (err, result) => {
-  //       if (err) {
-  //         objectToResolve.error = err;
-  //         objectToResolve.status = QueryStatus.FAILED;
-  //       } else objectToResolve.resultObject = result;
-  //       resolve(objectToResolve);
-  //     });
-  //   });
-  // };
+    
   public addUser = async (userObject: User): Promise<any> => {};
   public addChat = async (chatObject: Chat): Promise<DBReturnInterface> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
@@ -229,28 +178,11 @@ export class DatabaseService {
     }"(${CHAT_TABLE_DEFINITION.columnNames.toString()}) values ($1,$2,$3,$4)`;
     const { moduleid, sender, chat, chatid } = chatObject;
     const values = [moduleid, sender, chat, chatid];
-    const query = {
-      text: insertQuerySkeleton,
-      values: values,
-      rowMode: 'array',
-    };
-    return new Promise(resolve => {
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect(err => {
-        if (err) console.log(err);
-      });
-      this.pool.query(query, (err: Error, result) => {
-        if (err) {
-          returnObject.error = err;
-          returnObject.status = QueryStatus.FAILED;
-        } else {
-          returnObject.resultObject = result;
-        }
-        resolve(returnObject);
-      });
-    });
+     returnObject.resultObject = await this.db.any(insertQuerySkeleton,values);
+      return returnObject;
   };
   public addDrug = async (drugObject: Drug): Promise<any> => {
     const insertQuerySkeleton = `insert into pharmaschema."${
@@ -304,28 +236,13 @@ export class DatabaseService {
       adminemail,
       name,
     ];
-    const query = {
-      text: insertQuerySkeleton,
-      values: values,
-      rowMode: 'array',
-    };
-    return new Promise(resolve => {
+
+
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect(err => {
-        if (err) console.log(err);
-      });
-      this.pool.query(query, (err: Error, result) => {
-        if (err) {
-          returnObject.error = err;
-          returnObject.status = QueryStatus.FAILED;
-        } else {
-          returnObject.resultObject = result;
-        }
-        resolve(returnObject);
-      });
-    });
+      returnObject.resultObject=await this.db.any(insertQuerySkeleton,values);
+      return returnObject;
   };
   public addArticle = async (
     articleObject: Article,
@@ -353,29 +270,13 @@ export class DatabaseService {
       otherimages,
       dop,
     ];
-
-    const query = {
-      text: insertQuerySkeleton,
-      values: values,
-      rowMode: 'array',
-    };
-    return new Promise(resolve => {
-      const returnObject: DBReturnInterface = {
+          const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect(err => {
-        if (err) console.log(err);
-      });
-      this.pool.query(query, (err: Error, result) => {
-        if (err) {
-          returnObject.error = err;
-          returnObject.status = QueryStatus.FAILED;
-        } else {
-          returnObject.resultObject = result;
-        }
-        resolve(returnObject);
-      });
-    });
+    
+
+    returnObject.resultObject = await this.db.any(insertQuerySkeleton,values);
+    return returnObject;
   };
   public addAddress = async (
     theAddressObject: Address,
@@ -391,25 +292,12 @@ export class DatabaseService {
       rowMode: 'array',
     };
     console.log(query);
-    return new Promise(resolve => {
+   
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect(err => {
-        if (err) console.log(err);
-      });
-      this.pool.query(query, (err: Error, result) => {
-        if (err) {
-          returnObject.error = err;
-          returnObject.status = QueryStatus.FAILED;
-        } else {
-          returnObject.resultObject = result;
-        }
-        console.log(`Logging Return Object`)
-        console.log(returnObject);
-        resolve(returnObject);
-      });
-    });
+   returnObject.resultObject = await this.db.any(insertQuerySkeleton,values);
+   return returnObject;   
   };
   public addModule = async (
     theModuleObject: Module,
@@ -448,24 +336,13 @@ export class DatabaseService {
       values: values,
       rowMode: 'array',
     };
-    console.log(query);
-    return new Promise(resolve => {
+
+
       const returnObject: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
-      this.pool.connect(err => {
-        if (err) console.log(err);  
-      });
-      this.pool.query(query, (err: Error, result) => {
-        if (err) {
-          returnObject.error = err;
-          returnObject.status = QueryStatus.FAILED;
-        } else {
-          returnObject.resultObject = result;
-        }
-        resolve(returnObject);
-      });
-    });
+      returnObject.resultObject=this.db.any(insertQuerySkeleton,values);
+      return returnObject;
   };
   /*** UPDATE QUERIES */
 
@@ -508,28 +385,15 @@ export class DatabaseService {
         tblname = ADDRESS_TABLE_DEFINITION.tableName;
         break;
     }
-    return new Promise(async resolve => {
+     
       const objectToResolve: DBReturnInterface = {
         status: QueryStatus.SUCCESSFULL,
       };
       const theQuery = `select * from pharmaschema."${tblname}" ${optionalWhereClause};`;
       console.log(theQuery);
-      this.pool.connect(err => {
-        if (err) console.log(err);
-      });
-      console.log('Here Too')
-      await this.pool.query(theQuery, (err, result) => {
-        if (err) {
-          console.log('Query Callback Error');
-          objectToResolve.error = err;
-          objectToResolve.status = QueryStatus.FAILED;
-        } else {
-          console.log('Query Callback no Error');
-          objectToResolve.resultObject = result;
-        }
-        resolve(objectToResolve);
-      });
-    });
+      objectToResolve.resultObject=await this.db.any(theQuery);
+      return objectToResolve;
+      
   };
   /*** Skeletons */
   public generateInsertQuerySkeleton = (

@@ -1,4 +1,4 @@
-import { Pool, QueryResult } from 'pg';
+import * as pgp from 'pg-promise';
 import { Address, Article, Chat, Drug, Module, User } from '../model/model.service';
 export declare enum EntryType {
     PRODUCT = 0,
@@ -22,13 +22,13 @@ interface TableDefinitionInterface {
 }
 interface DBReturnInterface {
     status: QueryStatus;
-    resultObject?: QueryResult<any>;
+    resultObject?: any;
     error?: any;
 }
 export declare class DatabaseService {
     static callTimes: number;
     constructor();
-    pool: Pool;
+    db: pgp.IDatabase<{}, import("pg-promise/typescript/pg-subset").IClient>;
     self: this;
     addUser: (userObject: User) => Promise<any>;
     addChat: (chatObject: Chat) => Promise<DBReturnInterface>;

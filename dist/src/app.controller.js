@@ -26,6 +26,7 @@ let AppController = class AppController {
     async getHomePage(req, res) {
         console.log(`Entering HomePage`);
         let allModules = await this.as.getRandomArrayOfModules();
+        console.log(allModules);
         const theDBReturnObject = await this.db.retrieve(database_service_1.EntryType.DRUG);
         const prod_id = [];
         const prod_name = [];
@@ -35,7 +36,7 @@ let AppController = class AppController {
             console.debug(`Error Here`);
             res.status(501);
         }
-        theDBReturnObject.resultObject.rows.forEach(productEntry => {
+        theDBReturnObject.resultObject.forEach(productEntry => {
             const { id, brandname, mrp, imgaddress } = productEntry;
             prod_id.push(id);
             prod_name.push(brandname);

@@ -9,7 +9,7 @@ export declare class ModuleService {
     private readonly db;
     static callTimes: number;
     constructor(db: DatabaseService);
-    getAllModules(): Promise<any[]>;
+    getAllModules(): Promise<any>;
     getModulesByCategory(cat: ModuleCategory): Promise<any[]>;
     getModuleById(id: string): Promise<any>;
     getModuleAuthorName(id: string): Promise<string>;
