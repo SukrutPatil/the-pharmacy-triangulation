@@ -31,7 +31,7 @@ let ModuleService = ModuleService_1 = class ModuleService {
             console.error(dbReturnObject.error);
             return null;
         }
-        const allRows = dbReturnObject.resultObject.rows;
+        const allRows = dbReturnObject.resultObject;
         return allRows;
     }
     async getModulesByCategory(cat) {
@@ -51,7 +51,7 @@ let ModuleService = ModuleService_1 = class ModuleService {
     }
     async getModuleAuthorName(id) {
         const { adminemail } = await this.getModuleById(id);
-        const members = (await this.db.retrieve(database_service_1.EntryType.MEMBER)).resultObject.rows;
+        const members = (await this.db.retrieve(database_service_1.EntryType.MEMBER)).resultObject;
         const theAuthorName = members.find(m => m.email === adminemail).name;
         return theAuthorName;
     }

@@ -24,7 +24,7 @@ let ApiService = ApiService_1 = class ApiService {
         const { error, resultObject } = await this.db.retrieve(database_service_1.EntryType.CHAT, `where moduleid = '${moduleId}'`);
         if (error)
             return null;
-        return resultObject.rows;
+        return resultObject;
     }
     async updateChat(moduleId, chatter, chat) {
         const chatObject = this.ms.createChatObject(moduleId, chatter, chat);

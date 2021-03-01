@@ -47,7 +47,7 @@ let AuthController = class AuthController {
             }
             else if (theResultObject.rowCount == 1) {
                 console.log('One');
-                req.session.loggedInUser = theResultObject.rows[0].name;
+                req.session.loggedInUser = theResultObject[0].name;
                 res.redirect('../');
             }
             else {

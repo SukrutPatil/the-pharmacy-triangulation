@@ -23,7 +23,7 @@ let ProductsService = ProductsService_1 = class ProductsService {
         if (dbReturnObject.error) {
             return null;
         }
-        const allRows = dbReturnObject.resultObject.rows;
+        const allRows = dbReturnObject.resultObject;
         return allRows;
     }
     async getParticularProduct(id) {

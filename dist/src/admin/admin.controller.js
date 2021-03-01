@@ -89,14 +89,13 @@ let AdminController = class AdminController {
         }
         else {
             req.session.loggedInUser =
-                theDatabaseReturnObject.resultObject.rows[0].name;
+                theDatabaseReturnObject.resultObject[0].name;
             req.session.adminEmail = adminEmail;
             res.redirect('products');
         }
     }
     getProducts(req, res) {
         this.se.adminSessionExecutor(req, res, async () => {
-            var _a;
             const { adminEmail } = req.session;
             const theDBReturnObject = await this.db.retrieve(database_service_1.EntryType.DRUG, `where adminemail = '${adminEmail}'`);
             if (theDBReturnObject.error) {
@@ -104,7 +103,7 @@ let AdminController = class AdminController {
                 res.status(501).redirect('../');
             }
             else {
-                const allRows = (_a = theDBReturnObject === null || theDBReturnObject === void 0 ? void 0 : theDBReturnObject.resultObject) === null || _a === void 0 ? void 0 : _a.rows;
+                const allRows = theDBReturnObject === null || theDBReturnObject === void 0 ? void 0 : theDBReturnObject.resultObject;
                 const arrayOfProductIds = [];
                 const arrayOfImageAddresses = [];
                 const arrayOfRegularPrices = [];
@@ -164,7 +163,7 @@ let AdminController = class AdminController {
                 const artNameArray = [];
                 const artPublisherArray = [];
                 const artDopArray = [];
-                theDBReturnObject.resultObject.rows.forEach(row => {
+                theDBReturnObject.resultObject.forEach(row => {
                     artThumbnailArray.push(row.thumbnail);
                     artNameArray.push(row.name);
                     artPublisherArray.push(row.publisher);

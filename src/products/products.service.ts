@@ -13,7 +13,7 @@ export class ProductsService {
       
           return null;
       }
-      const allRows = dbReturnObject.resultObject.rows;
+      const allRows = dbReturnObject.resultObject;
       
       return allRows;
   }

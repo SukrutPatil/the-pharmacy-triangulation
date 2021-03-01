@@ -104,7 +104,7 @@ export class AdminController {
     } else {
       /*** Everyting is Good Here */
       req.session.loggedInUser =
-        theDatabaseReturnObject.resultObject.rows[0].name;
+        theDatabaseReturnObject.resultObject[0].name;
       req.session.adminEmail = adminEmail;
       res.redirect('products');
     }
@@ -140,7 +140,7 @@ export class AdminController {
           console.debug(theDBReturnObject.error);
           res.status(501).redirect('../');
         } else {
-          const allRows = theDBReturnObject?.resultObject?.rows;
+          const allRows = theDBReturnObject?.resultObject;
           const arrayOfProductIds = [];
           const arrayOfImageAddresses = [];
           const arrayOfRegularPrices = [];
@@ -274,7 +274,7 @@ export class AdminController {
           const artNameArray = [];
           const artPublisherArray = [];
           const artDopArray = [];
-          theDBReturnObject.resultObject.rows.forEach(row => {
+          theDBReturnObject.resultObject.forEach(row => {
             artThumbnailArray.push(row.thumbnail);
             artNameArray.push(row.name);
             artPublisherArray.push(row.publisher);

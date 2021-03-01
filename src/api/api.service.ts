@@ -18,7 +18,7 @@ export class ApiService {
       `where moduleid = '${moduleId}'`,
     );
     if (error) return null;
-    return resultObject.rows;
+    return resultObject;
   }
   async updateChat(
     moduleId: string,

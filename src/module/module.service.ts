@@ -18,7 +18,7 @@ export class ModuleService {
            console.error(dbReturnObject.error);
            return null;
        }
-       const allRows = dbReturnObject.resultObject.rows;
+       const allRows = dbReturnObject.resultObject;
        return allRows;
    }
     async getModulesByCategory(cat:ModuleCategory) {
@@ -41,7 +41,7 @@ export class ModuleService {
     }
     async getModuleAuthorName(id: string): Promise<string> {
         const {adminemail} = await this.getModuleById(id);
-        const members =  (await this.db.retrieve(EntryType.MEMBER)).resultObject.rows;
+        const members =  (await this.db.retrieve(EntryType.MEMBER)).resultObject;
         const theAuthorName = members.find(m => m.email === adminemail).name;
         return theAuthorName;
     }

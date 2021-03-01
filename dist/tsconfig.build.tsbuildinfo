@@ -1667,7 +1667,7 @@
         "affectsGlobalScope": false
       },
       "../src/products/products.service.ts": {
-        "version": "5c093ca3cb0527aaba896b9c805377b0aeb2e8b9558297111706cfc28d08b19d",
+        "version": "fee51edaddcd9e864799d95b8c75c9a0efa42afacf20535aba5875749469dee0",
         "signature": "1b95cd7ce247ae991481cf181fc93f39895d83e7b5478a8c0a284adf185e1e76",
         "affectsGlobalScope": false
       },
@@ -1682,7 +1682,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "c6454cd8672e817a2051ccfcb3d87a443c9c43f43920c6cfc4d3f070c3ea7af1",
+        "version": "0a24929aa713a4bbeac8288e2d5eba551d7bcb62f63e3d09be481319929277f6",
         "signature": "7575643f8a812df612a5720daa6a49ec76fee146f22d0f8680ef335aeca11279",
         "affectsGlobalScope": false
       },
@@ -1792,12 +1792,12 @@
         "affectsGlobalScope": true
       },
       "../src/module/module.service.ts": {
-        "version": "f258601605154974f88c67548a2c95b1c36c24a75aa4cffffbdc93938faf62a0",
+        "version": "a8dc46c431f0fda39c8e4d810612b9993f19753dcbfc47eeab201443112f36ee",
         "signature": "a4ab492417b92a6324ed53406c876ce52b0df6035d63406e446dc971b8077704",
         "affectsGlobalScope": false
       },
       "../src/admin/admin.controller.ts": {
-        "version": "1f21034e992b0429b443f5af3026ed68ad5993d506ab017bdff0d63547167677",
+        "version": "608b8c67c68cc8cb4f745132b385e955bef801beec38b8ed47f3e781a082f433",
         "signature": "9838a976fb29c03ee43a7699ffe41593dd0351a0afb31bdf14c52f2bcba8df35",
         "affectsGlobalScope": false
       },
@@ -1862,7 +1862,7 @@
         "affectsGlobalScope": false
       },
       "../src/api/api.service.ts": {
-        "version": "eb08f5125d73d615bd70e09e7f73cada1d6cc8c4eef3e611f6ed40ad544d0bdc",
+        "version": "d1822b52632f6a78352a7964db28efa069f73be844694ffb1c35c0c8d66f9c70",
         "signature": "603c113625785c5db53394d08613649dd39792a84a277e8565d172e39b29c3ad",
         "affectsGlobalScope": false
       },
