@@ -81,10 +81,10 @@ let AdminController = class AdminController {
         if (theDatabaseReturnObject.error) {
             console.debug(theDatabaseReturnObject.error);
         }
-        if (theDatabaseReturnObject.resultObject.rowCount == 0) {
+        if (theDatabaseReturnObject.resultObject.length == 0) {
             console.debug(`No Admin Found`);
         }
-        else if (theDatabaseReturnObject.resultObject.rowCount != 1) {
+        else if (theDatabaseReturnObject.resultObject.length != 1) {
             console.debug(`Internal Error: 501`);
         }
         else {

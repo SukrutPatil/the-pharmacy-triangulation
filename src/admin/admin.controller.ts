@@ -96,9 +96,9 @@ export class AdminController {
       console.debug(theDatabaseReturnObject.error);
     }
     /*** If there is no admin with these credentials*/
-    if (theDatabaseReturnObject.resultObject.rowCount == 0) {
+    if (theDatabaseReturnObject.resultObject.length == 0) {
       console.debug(`No Admin Found`);
-    } else if (theDatabaseReturnObject.resultObject.rowCount != 1) {
+    } else if (theDatabaseReturnObject.resultObject.length != 1) {
       /*** If there are multiple admins with these credentials i.e. a logical error in database */
       console.debug(`Internal Error: 501`);
     } else {

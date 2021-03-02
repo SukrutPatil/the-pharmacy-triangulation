@@ -34,7 +34,7 @@ export class AuthController {
       const theResultObject = theResultSet.resultObject;
       // The ResultObject is basically array(row) of objects(values)
       // If no rows are found, it means user not exists
-      if (theResultObject.rowCount == 0) {
+      if (theResultObject.length == 0) {
         console.log('Zero');
         // Render the login page again,but with additional info warning
         res.render(
@@ -47,7 +47,7 @@ export class AuthController {
         );
       }
       //If there is only one row, it means the user has been found
-      else if (theResultObject.rowCount == 1) {
+      else if (theResultObject.length == 1) {
         console.log('One');
         // First write the session object
         req.session.loggedInUser = theResultObject[0].name; // The Name of User

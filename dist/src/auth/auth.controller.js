@@ -36,7 +36,7 @@ let AuthController = class AuthController {
         }
         else {
             const theResultObject = theResultSet.resultObject;
-            if (theResultObject.rowCount == 0) {
+            if (theResultObject.length == 0) {
                 console.log('Zero');
                 res.render('Login', { userNotFound: true }, (err, html) => {
                     if (err)
@@ -45,7 +45,7 @@ let AuthController = class AuthController {
                         res.send(html);
                 });
             }
-            else if (theResultObject.rowCount == 1) {
+            else if (theResultObject.length == 1) {
                 console.log('One');
                 req.session.loggedInUser = theResultObject[0].name;
                 res.redirect('../');
