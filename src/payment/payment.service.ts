@@ -63,4 +63,23 @@ export class PaymentService {
   private generateRecieptId(product_id: string) {
     return `${crypticKeyGenerator({ length: 7 })}${product_id}`;
   }
+
+  private generateRecieptIdForMembership() {
+
+
+
+
+
+  }
+
+
+  private getCheckoutOptionsForMembership() {
+
+
+
+
+    
+  }
+
+
 }

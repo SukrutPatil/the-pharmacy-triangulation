@@ -65,6 +65,10 @@ let PaymentService = PaymentService_1 = class PaymentService {
     generateRecieptId(product_id) {
         return `${crypticKeyGenerator({ length: 7 })}${product_id}`;
     }
+    generateRecieptIdForMembership() {
+    }
+    getCheckoutOptionsForMembership() {
+    }
 };
 PaymentService.callTimes = 0;
 PaymentService = PaymentService_1 = __decorate([

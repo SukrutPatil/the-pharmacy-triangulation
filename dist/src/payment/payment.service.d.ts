@@ -22,4 +22,6 @@ export declare class PaymentService {
     }>;
     private getProductPrice;
     private generateRecieptId;
+    private generateRecieptIdForMembership;
+    private getCheckoutOptionsForMembership;
 }
