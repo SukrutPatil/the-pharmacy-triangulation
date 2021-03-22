@@ -1,0 +1,204 @@
+@media screen and(max-width: 1600px) and (min-width:801px){
+    .products{
+        background: url(../assets/backgroundProducts.png);
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        h1{
+            font-size: 50px;
+            color: #054A29;
+        }
+        h2{
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        } 
+        .pro-crousel{
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            .your-class{
+                width: 100%;
+               a{
+                   text-decoration:none;
+                   color: black;
+               }
+                .card{
+                    width: 80%;
+                    height: 300px;
+                    background: white;
+                    margin: auto;
+                    border: none;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    position: relative;
+                    
+                    img{
+                        height: 60%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                   .desc{
+                       display: flex;
+                       height:30%;
+                       padding: 5px;
+                       justify-content: space-around;
+                       align-items: center;
+                   } 
+                   button{
+                       width: 100%;
+                   }
+                   h2{
+                    height:10%;
+                    padding: 5px 0px;
+                    font-family: 'Roboto', sans-serif;
+                    background: #D9ECDD;
+                    display: block;
+                    text-align: center;
+                   }
+                }
+            }
+
+        }
+
+    }
+}
+
+@media screen and(max-width: 800px){
+    .products{
+        background: url(../assets/backgroundProducts.png);
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        
+        h1{
+            font-size: 50px;
+            color: #054A29;
+        }
+        h2{
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        } 
+        .pro-crousel{
+            margin-top: 20px;
+           
+            .your-class{
+                .card{
+                    width: 80%;
+                    height: 300px;
+                    background: white;
+                    margin: auto;
+                    border: none;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    position: relative;
+                    
+                    img{
+                        height: 60%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                   .desc{
+                       display: flex;
+                       height:30%;
+                       padding: 5px;
+                       justify-content: space-around;
+                       align-items: center;
+                   } 
+                   button{
+                       width: 100%;
+                   }
+                   h2{
+                    height:10%;
+                    padding: 5px 0px;
+                    font-family: 'Roboto', sans-serif;
+                    background: #D9ECDD;
+                    display: block;
+                    text-align: center;
+                   }
+                }
+            }
+
+        }
+        .allProducts{
+            background: white;
+            color: #054A29;
+            padding: 5px;
+            font-size: 20px;
+            margin: auto;
+            text-align: center;
+        }
+
+    }
+}
+@media (min-width: 1600px){
+    .products{
+        max-width: 1400px;
+        margin: auto;
+        background: url(../assets/backgroundProducts.png);
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        h1{
+            font-size: 50px;
+            color: #054A29;
+        }
+        h2{
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        } 
+        .pro-crousel{
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            .your-class{
+                width: 100%;
+               
+                .card{
+                    width: 80%;
+                    height: 300px;
+                    background: white;
+                    margin: auto;
+                    border: none;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    position: relative;
+                    
+                    img{
+                        height: 60%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                   .desc{
+                       display: flex;
+                       height:30%;
+                       padding: 5px;
+                       justify-content: space-around;
+                       align-items: center;
+                   } 
+                   button{
+                       width: 100%;
+                       
+                   }
+                   h2{
+                    height:10%;
+                    padding: 5px 0px;
+                    font-family: 'Roboto', sans-serif;
+                    background: #D9ECDD;
+                    display: block;
+                    text-align: center;
+                   }
+                }
+            }
+
+        }
+
+    }
+}

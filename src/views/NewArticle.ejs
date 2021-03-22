@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/css/NewModule.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="nav-container">
+      <nav>
+        <div class="logo"></div>
+        <div class="nav-links">
+          <ul>
+            <div class="dropdown">
+              <button class="dropbtn">Articles</button>
+              <div class="dropdown-content">
+                <a href="/admin/articles">My Articles</a>
+                <a href="/admin/createNewArticle">Write New Article</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">Modules</button>
+              <div class="dropdown-content">
+                <a href="/admin/modules">All Modules</a>
+                <a href="/admin/createNewModule">New Module</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">Products</button>
+              <div class="dropdown-content">
+                <a href="/admin/products">All Products</a>
+                <a href="/admin/createNewProduct">New Products</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">Sessions</button>
+              <div class="dropdown-content">
+                <a href="/admin/sessions">All Sessions</a>
+              </div>
+            </div>
+            <div class="logoutBtn">
+              <a href="">
+                <img
+                  src="../public/assets/logOut.png"
+                  alt=""
+                  style="height: 30px; margin: 5px;"
+                />
+              </a>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <section>
+      <h1>Add New Article</h1>
+      <div class="main">
+        <form action="newArticle" method="POST" enctype="multipart/form-data" id="articleForm">
+          <div class="column1">
+            <div class="field">
+              <p>Name</p>
+              <input type="text" name="article_name" />
+            </div>
+            <div class="field">
+              <p>Publisher's Name</p>
+              <input type="text" name="article_publisher_name" />
+            </div>
+            <div class="field">
+              <p>About Article</p>
+              <input type="text" name="article_about" />
+            </div>
+            <div class="field-th">
+              <p>Upload Thumbnail</p>
+              <div id="drop-area">
+                <input
+                  type="file"
+                  max-size="2000"
+                  id="fileElem"
+                  multiple
+                  accept="image/*"
+                  onchange="handleFiles(this.files)"
+                  name = "article_thumbnail"
+                />
+                <div id="gallery"></div>
+                <div class="pbb">
+                  <progress id="progress-bar" max="100" value="0"></progress>
+                  <label class="button" for="fileElem">Select some files</label>
+                </div>
+              </div>
+            </div>
+            <div class="field-th">
+              <p>Upload Other Images</p>
+              <div id="drop-area-img">
+                <input
+                  type="file"
+                  id="fileElem-img"
+                  multiple
+                  max-size="10000"
+                  accept="image/*"
+                  name = "article_otherimages[]"
+                  onchange="handleFilesImg(this.files)"
+                />
+                <div id="gallery-img"></div>
+                <div class="pbb">
+                  <progress
+                    id="progress-bar-img"
+                    max="100"
+                    value="0"
+                  ></progress>
+                  <label class="button" for="fileElem-img"
+                    >Select some files</label
+                  >
+                </div>
+              </div>
+            </div>
+            <button class="save" type="submit">Save</button>
+          </div>
+          <div class="column2">
+            <div class="field">
+              <p>Article</p>
+              <textarea
+                rows="70"
+                cols="50"
+                name = "article_article"
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="../public/js/dropbox.js"></script>
+  </body>
+</html>

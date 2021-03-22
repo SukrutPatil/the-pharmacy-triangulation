@@ -1,0 +1,425 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Baloo Tammudu 2', cursive;
+}
+
+section {
+  height: 100vh;
+  background: url(../assets/Background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+section h1 {
+  color: white;
+  text-align: center;
+  font-weight: 800;
+  font-size: 100px;
+  padding-top: 50px;
+}
+
+section .loginContainer {
+  background: white;
+  height: 350px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+section .loginContainer .emailField {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+}
+
+section .loginContainer .emailField p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+section .loginContainer .emailField input {
+  margin-left: 20px;
+  padding-top: 3px;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  background: #D9ECDD;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  padding-left: 10px;
+}
+
+section .loginContainer .passwordField {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px;
+}
+
+section .loginContainer .passwordField p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+section .loginContainer .passwordField input {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 20px;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  padding-top: 3px;
+  background: #D9ECDD;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  padding-left: 10px;
+}
+
+section .loginContainer button {
+  display: block;
+  padding-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 20px;
+  color: #054A29;
+  background: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: 5px 10px 18px #888888;
+          box-shadow: 5px 10px 18px #888888;
+}
+
+section .loginContainer .forgot {
+  display: block;
+  color: #b10000;
+  text-decoration: none;
+  margin-left: 39%;
+  margin-top: 10px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+section .loginContainer .forgot:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+section .loginContainer .adminLogin {
+  background: #054A29;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  bottom: 15px;
+  padding: 5px;
+  border-radius: 10px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+section .loginContainer .adminLogin:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+section .pageShift {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top-left-radius: 25px;
+  height: 163px;
+  width: 320px;
+  color: white;
+  background: #054A29;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+section .pageShift p {
+  font-size: 20px;
+}
+
+section .pageShift button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+  background: white;
+  border-radius: 10px;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+section .pageShift button p {
+  font-size: 18px;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+section .pageShift button img {
+  height: 30px;
+}
+
+section .pageShift button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media screen and (max-width: 1312px) {
+  section .loginContainer {
+    width: 85%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Baloo Tammudu 2', cursive;
+  scroll-behavior: smooth;
+}
+
+.nav-container {
+  position: fixed;
+  width: 100%;
+  margin: auto;
+  background: #054A29;
+  z-index: 10;
+}
+
+.nav-container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 8vh;
+  background-color: #054A29;
+}
+
+.nav-container nav .logo {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-container nav .logo h1 {
+  font-size: 12px;
+  font-weight: bolder;
+  letter-spacing: 5px;
+}
+
+.nav-container nav .logo img {
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.nav-container nav .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.nav-container nav .nav-links li {
+  list-style: none;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  text-align: center;
+  line-height: 15px;
+}
+
+.nav-container nav .nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-container nav .burger {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-container nav .burger div {
+  width: 25px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: white;
+  margin: 5px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1312px) {
+  * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .nav-container {
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    background: #054A29;
+    z-index: 10;
+  }
+  .nav-container nav .nav-links {
+    position: absolute;
+    right: 0;
+    height: 97vh;
+    top: 7.4vh;
+    background-color: #054A29;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 50%;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    transition: -webkit-transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+  }
+  .nav-container nav .nav-links .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .nav-container nav .nav-links .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  .nav-container nav .nav-links .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .nav-container nav .nav-links li {
+    opacity: 0;
+  }
+  .nav-container nav .nav-links li a {
+    color: white;
+  }
+  .nav-container nav .burger {
+    display: block;
+  }
+  .nav-container nav .nav-active {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  .nav-container nav .nav-passiv {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  @-webkit-keyframes navLinkFade {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(50px);
+              transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+    }
+  }
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(50px);
+              transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+    }
+  }
+  .nav-container nav .toggle .line1 {
+    -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+            transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .nav-container nav .toggle .line2 {
+    opacity: 0;
+  }
+  .nav-container nav .toggle .line3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -6px);
+            transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+/*# sourceMappingURL=login.css.map */

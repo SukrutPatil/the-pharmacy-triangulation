@@ -1,0 +1,44 @@
+@import 'adminNav';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+section{
+    padding: 50px 200px;
+    h1{
+        padding-top: 50px;
+        font-size: 30px;
+    }
+    .field{
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+       label{
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 5px;
+        font-weight: bolder;
+       }
+       input{
+        font-family: 'Roboto', sans-serif;
+        padding:5px;
+       }
+       Textarea{
+        font-family: 'Roboto', sans-serif;
+        padding:5px;
+       }
+       
+    }
+    button{
+        width: 100%;
+        font-size: 20px;
+        background: #054A29;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        padding-top: 10px;
+    }
+}

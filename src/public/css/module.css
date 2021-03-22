@@ -1,0 +1,276 @@
+.head {
+  width: 100%;
+  height: 350px;
+  position: relative;
+}
+
+.head img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.head .title {
+  position: absolute;
+  padding: 5px 20px;
+  bottom: 10px;
+  font-size: 35px;
+}
+
+.vp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 50px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+.vp .video-area {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-bottom: 50px;
+}
+
+.vp .video-area video {
+  margin-top: 10px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.vp .video-area h1 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+.vp .video-area p {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  text-align: justify;
+  width: 90%;
+}
+
+.vp .video-area h2 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.vp .discussion-box {
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.vp .discussion-box h1 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+.vp .discussion-box .message-area {
+  padding: 30px;
+  border: black 2px solid;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.vp .discussion-box .message-area .box {
+  height: 400px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.vp .discussion-box .message-area .opinion p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.vp .discussion-box .message-area .opinion h2 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+}
+
+.vp .discussion-box .message-area form {
+  width: 100%;
+}
+
+.vp .discussion-box .message-area form #post {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.vp .discussion-box .message-area form #postBtn {
+  font-family: 'Roboto', sans-serif;
+  background: #44B54F;
+  color: white;
+  padding: 10px;
+  width: 20%;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+}
+
+.article-section {
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.article-section .article {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.article-section .article p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  text-align: justify;
+  width: 95%;
+}
+
+.article-section .images {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.article-section .images img {
+  display: block;
+  margin: 50px auto;
+}
+
+@media screen and (max-width: 800px) {
+  .vp {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 20px;
+  }
+  .vp .video-area {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .vp .video-area video {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .vp .discussion-box {
+    height: 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .vp .discussion-box h1 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+    font-weight: bolder;
+  }
+  .vp .discussion-box .message-area {
+    padding: 15px;
+    border: black 2px solid;
+    border-radius: 20px;
+    margin: auto;
+    overflow-y: scroll;
+  }
+  .vp .discussion-box .message-area .opinion p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .vp .discussion-box .message-area .opinion h2 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+  }
+  .vp .discussion-box .message-area form {
+    width: 100%;
+  }
+  .vp .discussion-box .message-area form textarea {
+    width: 90%;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    border: solid black 1px;
+    outline: #44B54F;
+  }
+  .vp .discussion-box .message-area form button {
+    font-family: 'Roboto', sans-serif;
+    background: #44B54F;
+    color: white;
+    padding: 10px;
+    width: 25%;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+  }
+  .article-section {
+    padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .article-section .article {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .article-section .article p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: justify;
+    width: 95%;
+  }
+  .article-section .images {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-bottom: 180px;
+  }
+  .article-section .images img {
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+@media screen and (min-width: 2900px) {
+  .vp {
+    margin: auto;
+    max-width: 1400px;
+  }
+  .head {
+    margin: auto;
+    max-width: 1400px;
+  }
+  .article-section {
+    margin: auto;
+    max-width: 1400px;
+  }
+}
+/*# sourceMappingURL=module.css.map */

@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+section{
+    padding: 50px;
+    form{
+        display: grid;
+        grid-template-columns:50% 50%;
+        font-family: 'Roboto', sans-serif;
+        .column1{
+            height: 100vh;
+            padding: 10px;
+
+            .field{
+                width: 100%;
+                padding: 5px;
+
+                input{
+                    width: 80%;
+                    border-radius: 10px;
+                    border: solid black 2px;
+                    outline: none;
+                    padding:10px ;
+                    font-family: 'Roboto', sans-serif;
+                }
+                select{
+                    border-radius: 10px;
+                    border: solid black 2px;
+                    outline: none;
+                    padding:10px ;
+                    font-family: 'Roboto', sans-serif;
+                }
+            }
+            .field-th{
+                width: 100%;
+                margin-top: 50px;
+                padding: 5px;
+            }
+            
+            
+
+        }
+        .column2{
+            padding: 10px;
+            .field{
+                width: 100%;
+                padding: 5px;
+                
+                input{
+                    width: 80%;
+                    border-radius: 10px;
+                    border: solid black 2px;
+                    outline: none;
+                    padding:10px ;
+                    font-family: 'Roboto', sans-serif;
+                }
+                textarea{
+                    width: 100%;
+                    border-radius: 10px;
+                    border: solid black 2px;
+                    outline: none;
+                    padding:10px ;
+                    font-family: 'Roboto', sans-serif;
+                }
+            }
+            .field-th{
+                width: 100%;
+                margin-top: 0px;
+                padding: 5px;
+            }
+           
+        }
+        .save{
+            background: #14213D;
+            padding-left: 55px;
+            padding-right: 55px;
+            padding-top: 5px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 15%;
+            margin-right: 5%;
+            margin-top: 30px;
+            margin-top: 30px;
+            cursor: pointer;
+
+        }
+        .delete{
+            background: #8B0000;
+            padding-left: 55px;
+            padding-right: 55px;
+            padding-top: 5px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+    }
+}
+@import 'adminNav';
+@import 'dropbox';

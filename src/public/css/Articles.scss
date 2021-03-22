@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media screen and(max-width:1600px){
+    .heading{
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{
+            
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+    }
+    .inputFields{
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        p{
+            margin-right: 20px;
+            font-size: 20px;
+            padding-top: 10px;
+            line-height: 25px;
+        }
+        input{
+            font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                    width: 55%;
+                    text-align: justify;
+                    background: #D9ECDD;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    padding-left: 20px;   
+        }
+    }
+}
+
+@import 'nav';
+@import 'footer';

@@ -1,0 +1,218 @@
+.footer{
+    background: url(../assets/footerBg.png);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 85% 15%;
+
+    h1{
+        color: white;
+        font-size: 26px;
+    }
+    p{
+        font-family: 'Roboto', sans-serif;
+        font-size:19px;
+        font-weight: bolder;
+        line-height: 30px;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        font-size:19px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bolder;
+    }
+    a:hover{
+        color: white;
+    }
+    
+    .address{
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+   
+    }
+    .contact{
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+     
+    }
+    .services{
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+      
+        ul{
+            li{
+                list-style: none;
+            }
+            
+        }
+    }
+    .workhours{
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+
+    }
+    .socials{
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+        .facebook{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            img{
+                margin-right: 20px;
+            }
+        }
+        .twitter{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            img{
+                margin-right: 20px;
+            }
+        }
+        .youtube{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            img{
+                margin-right: 20px;
+            }
+        }
+    }
+    .credits{
+        grid-column-start: 1; 
+        grid-column-end: 6; 
+        background: black;
+        text-align: right;
+        padding: 15px;
+        color: white;
+    }
+}
+@media screen and(max-width:800px){
+    .footer{
+        display: flex;
+   
+        flex-direction: column;
+        padding: 0;
+        .credits{
+            grid-column-start: 1; 
+            grid-column-end: 6; 
+            background: black;
+            text-align: right;
+            color: white;
+        }
+    }
+}
+@media screen and(min-width:1600px){
+    .footer{
+        margin: auto;
+        max-width: 2900px;
+        
+        background: url(../assets/footerBg.png);
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        grid-template-rows: 85% 15%;
+    
+        h1{
+            color: white;
+            font-size: 26px;
+        }
+        p{
+            font-family: 'Roboto', sans-serif;
+            font-size:19px;
+            font-weight: bolder;
+            line-height: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size:19px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bolder;
+        }
+        a:hover{
+            color: white;
+        }
+        
+        .address{
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+       
+        }
+        .contact{
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+         
+        }
+        .services{
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+          
+            ul{
+                li{
+                    list-style: none;
+                }
+                
+            }
+        }
+        .workhours{
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+    
+        }
+        .socials{
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            .facebook{
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                img{
+                    margin-right: 20px;
+                }
+            }
+            .twitter{
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                img{
+                    margin-right: 20px;
+                }
+            }
+            .youtube{
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                img{
+                    margin-right: 20px;
+                }
+            }
+        }
+        .credits{
+            grid-column-start: 1; 
+            grid-column-end: 6; 
+            background: black;
+            text-align: right;
+            padding: 15px;
+            color: white;
+        }
+    }
+}

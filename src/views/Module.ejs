@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module</title>
+    <link rel="stylesheet" href="../public/css/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/module.css">
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="/">
+                <div class="logo"><img src="" alt="">
+                    <h1>LOGO</h1>
+                </div>
+                </a>
+            <ul class="nav-links">
+                <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
+                <li><a href="/user/EntrepreneurshipCounseling">Entrepreneurship counseling</a></li>
+                <li><a href="/user/CareerCounseling">Career counseling</a></li>
+                <li><a href="/user/DietCounseling">Diet counseling</a></li>
+                <li><a href="/user/Products">Products</a></li>
+                <li><a href="/user/Articles">Articles</a></li>
+                <li><a href="/user/Articles">Dashboard</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="head">
+        <img src="../uploads/modules/thumbnail/<%= theModule.thumbnail %>" alt="">
+        <h1 class="title"><%= theModule.name %> | <%= theModule.category %></h1>
+    </div>
+    <div class="vp">
+        <div class="video-area">
+            <video controls>
+                <source src="../uploads/modules/video/<%= theModule.video %>" type="video/mp4">
+            </video>
+            <h1><%= theModule.articletitle %></h1>
+            <h2> <%= theModule.dop %>| By <%=theAuthor %></h2>
+            <p>
+             <%= theModule.description %>
+
+            </p>
+
+        </div>
+        
+
+        <div class="discussion-box">
+            <div class="message-area" id = "message-area">
+                <h1>Discussion Box</h1>
+                <div class="box" id = "message-area-box">
+                <!-- JQUERY INSERT-->
+                </div>
+            
+                
+                    <textarea name="post" id="post" rows="5" style=" width: 100%;
+                    font-family: 'Roboto', sans-serif;
+                    padding: 10px;
+                    font-size: 16px;"></textarea><br>
+                    <button id = "postBtn" style=" font-family: 'Roboto', sans-serif;
+                    background: #44B54F;
+                    color: white;
+                    padding: 10px;
+                    width: 20%;
+                    font-size: 20px;
+                    border: none;
+                    outline: none;
+                    border-radius: 20px;">Post</button>
+                </div>  
+            </div>
+            
+     
+           
+        </div>
+    </div>
+
+    <div class="article-section">
+        <div class="article">
+            <p>
+            <%=theModule.article %>
+            </p>
+        </div>
+        <div class="images">
+            <img src="../public/assets/counsiling.png" alt="">
+            <img src="../public/assets/counsiling.png" alt="">
+        </div>
+    </div>
+
+    <section class="footer" >
+        <div class="address">
+            <h1>Address</h1>
+            <p>Pushp Vihar, Sector 3 MB Road, New Delhi 110017</p>
+        </div>
+        <div class="contact">
+            <h1>Contacts</h1>
+            <p>Mobile: +91 9416508383</p>
+            <a href="">Email : abc@gmail.com</a>
+        </div>
+        <div class="services">
+            <h1>Services</h1>
+            <ul>
+                <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
+                <li><a href="/user/EntrepreneurshipCounseling">Entrepreneurship counseling</a></li>
+                <li><a href="/user/CareerCounseling">Career counseling</a></li>
+                <li><a href="/user/DietCounseling">Diet counseling</a></li>
+                <li><a href="/user/Products">Products</a></li>
+                <li><a href="/user/Articles">Articles</a></li>
+
+            </ul>
+
+        </div>
+        <div class="workhours">
+            <h1>Work hours</h1>
+            <p>Mon-Sat : 9:00 AM To 6:00 PM</p>
+            <p>Sun : 10:00 AM To 2:00 PM</p>
+        </div>
+        <div class="socials">
+            <h1>Socials</h1>
+            <div class="facebook">
+                <img src="../public/assets/icons8-facebook-50.png" alt="">
+                <a href="">Facebook</a>
+            </div>
+            <div class="twitter">
+                <img src="../public/assets/icons8-twitter-50.png" alt="">
+                <a href="">Twitter</a>
+            </div>
+            <div class="youtube">
+                <img src="../public/assets/icons8-play-button-50.png" alt="">
+                <a href="">YouTube</a>
+            </div>
+        </div>
+        <div class="credits">
+            Made in India | Designed and Developed in By Sukrut, Jaskirat & Sumit
+        </div>
+    </section>
+</body>
+<script src="../public/js/nav.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+const user = "<%= loggedInUser %>";
+let last=0;
+const theModuleId = "<%= id %>";
+const theMessageArea = $("#message-area-box");
+const retrieveInitialChat =()=>{
+    console.log('hi There');
+$.get(`/api/fetchChat/${theModuleId}`,({chats})=>{
+    if (chats.length==last) return;
+    last = chats.length;
+    chats.forEach(({sender,chat})=>{
+        addNewChat(chat,sender);
+    });
+})
+}
+const sendCurrentChat =(chat) => {
+    console.log('sendCurrentChat');
+    let res;
+$.post('/api/updateChat',{chat,theModuleId},(response)=>{
+    console.log(response);
+    res = response.done
+});
+return res;
+}
+const thePostButton = $("#postBtn");
+const addNewChat = (chat,chatter)=>{
+ const newChat =    $(`<div class="opinion">
+                    <p>${chat}</p>
+                    <h2>- ${chatter}</h2>
+                </div>`);
+ theMessageArea.append(newChat);
+}
+thePostButton.on('click', ()=>{
+   console.log('Clicked Post');
+    const theCurrentChat = $("#post").val();
+    const res = sendCurrentChat(theCurrentChat);
+    
+     addNewChat(theCurrentChat,user);
+
+});
+callAfterEveryFiveSeconds = ()=>{
+    setInterval(retrieveInitialChat,10000);
+}
+$(callAfterEveryFiveSeconds);
+
+
+</script>
+</html> 

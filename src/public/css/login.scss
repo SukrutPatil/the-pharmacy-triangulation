@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+
+section{
+    height: 100vh;
+    background: url(../assets/Background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow-y: hidden;
+    
+    h1{
+        color: white;
+        text-align: center;
+        font-weight: 800;
+        font-size: 100px;
+        padding-top: 50px;
+
+    }
+    .loginContainer{
+        background: white;
+        height: 350px;
+        width: 40%;
+        margin-left: auto;
+        margin-right:auto;
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+            .emailField{
+                display: flex;
+                justify-content: space-between;
+                padding: 15px;
+                p{
+                    flex: 1;
+                }
+                input{
+                    margin-left: 20px;
+                    padding-top:3px;
+                    flex: 3;
+                    background: #D9ECDD;
+                    border-radius: 10px;
+                    border: none;
+                    font-size: 16px;
+                    outline: none;
+                    padding-left:10px ;
+                }
+
+            }
+            .passwordField{
+                display: flex;
+                justify-content: center;
+                
+                padding: 15px;
+                p{
+                    flex: 1;
+                    
+                }
+                input{
+                    font-family:  'Roboto', sans-serif;
+                    margin-left: 20px;
+                    flex: 3;
+                    padding-top:3px;
+                    background: #D9ECDD;
+                    border-radius: 10px;
+                    border: none;
+                    font-size: 16px;
+                    outline: none;
+                    padding-left:10px ;
+                }
+            }
+            button{
+                display: block;
+                padding-top:5px ;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                width: 100%;
+                font-size: 20px;
+                color: #054A29;
+                background: white;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transition: all 0.3s ease;
+                box-shadow: 5px 10px 18px #888888;
+            }
+            .forgot{
+                display: block;
+                color: rgb(177, 0, 0);
+                text-decoration: none;
+                margin-left: 39%;
+                margin-top: 10px;
+                transition: all 0.3s ease;
+            }
+            .forgot:hover{
+                transform: scale(1.2);
+            }
+            .adminLogin{
+                background: #054A29;
+                width: fit-content;
+                position: absolute;
+                bottom: 15px;
+                padding: 5px;
+                border-radius: 10px;
+                transition: all 0.3s ease;
+                
+            }
+            .adminLogin:hover{
+                transform: scale(1.1);
+            }
+    }
+    .pageShift{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 25px;
+        height: 163px;
+        width: 320px;
+        color: white;
+        background: #054A29;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        
+        p{
+            font-size: 20px;
+        }
+        button{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            background: white;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            p{
+                font-size: 18px;
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right:5px ;
+            }
+            img{
+                height: 30px;
+            }
+            
+        }
+        button:hover{
+           
+            transform: scale(1.1);
+        }
+    }
+}
+@media screen and(max-width:1312px){
+    section{
+        
+        .loginContainer{
+            width: 85%;
+        }
+    }
+}
+
+@import 'nav';

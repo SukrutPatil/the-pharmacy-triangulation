@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/CouncilingForm.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+          <div class="logo"></div>
+          <div class="nav-links">
+            <ul>
+              <div class="dropdown">
+                <button class="dropbtn">Articles</button>
+                <div class="dropdown-content">
+                  <a href="/admin/articles">My Articles</a>
+                  <a href="/admin/createNewArticle">Write New Article</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Modules</button>
+                <div class="dropdown-content">
+                  <a href="/admin/modules">All Modules</a>
+                  <a href="/admin/createNewModule">New Module</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Products</button>
+                <div class="dropdown-content">
+                  <a href="/admin/products">All Products</a>
+                  <a href="/admin/createNewProduct">New Products</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn">Sessions</button>
+                <div class="dropdown-content">
+                  <a href="/admin/sessions">All Sessions</a>
+                </div>
+              </div>
+              <div class="logoutBtn">
+                <a href="/auth/signout">
+                  <img
+                    src="../public/assets/logOut.png"
+                    alt=""
+                    style="height: 30px; margin: 5px;"
+                  />
+                </a>
+              </div>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <section>
+          <h1>Part 1 (Mandatory)</h1>
+          <form action="">
+              <div class="field">
+                  <label for="subjective">Subjective</label>
+                  <input type="text" name="subjective" required>
+              </div>
+              <div class="field">
+                <label for="objective">Objective</label>
+                <input type="text" name="objective" required>
+            </div>
+            <div class="field">
+                <label for="findings">Findings</label>
+                <input type="text" name="findings" required>
+            </div>
+            <div class="field">
+                <label for="pc">Provisional Conclusion</label>
+                <input type="text" name="pc" required>
+            </div>
+            <div class="field">
+                <label for="subjective">Follow Up</label>
+                <Textarea name="followup1"></Textarea>
+            </div>
+           <h1>Part 2 (Optional)</h1>
+           <h2>Disease Considerations</h2>
+           <div class="field">
+                <label for="cs">Current Status</label>
+                <input type="text" name="cs" required>
+            </div>
+            <div class="field">
+              <label for="drc">Disease Related Considerations </label>
+              <input type="text" name="drc" required>
+            </div>
+            <div class="field">
+              <label for="mrc">Medication related Considerations</label>
+              <input type="text" name="mrc" required>
+            </div>
+            <div class="field">
+              <label for="ddi">Drug Drug Interactions</label>      
+              <input type="text" name="ddi" required>
+            </div>
+            <div class="field">
+              <label for="fdi">Food Drug Interaction</label>
+              <input type="text" name="fdi" required>
+            </div>
+            <div class="field">
+              <label for="contraindications">Contraindications</label>
+              <input type="text" name="contraindications" required>
+            </div>
+            <div class="field">
+              <label for="followup2">Follow Up</label>
+              <Textarea name="followup2"></Textarea>
+            </div>  
+            <h1>Part 3 (Optional)</h1>
+            <h2>Nutritional Considerations</h2>
+            <div class="field">
+              <label for="cns">Current Nutritional Status</label>
+              <input type="text" name="cns" required>
+            </div>
+            <div class="field">
+              <label for="bmi">BMI</label>
+              <input type="text" name="bmi" required>
+            </div>
+            <h3>Diet Related Considerations</h3>
+            <div class="field">
+              <label for="fruits">Fruits</label>
+              <input type="text" name="fruits" required>
+            </div>
+            <div class="field">
+              <label for="vegetables">Vegetables</label>
+              <input type="text" name="vegetables" required>
+            </div>
+            <div class="field">
+              <label for="salad">Salad</label>
+              <input type="text" name="salad" required>
+            </div>
+            <div class="field">
+              <label for="wheat">Wheat</label>
+              <input type="text" name="wheat" required>
+            </div>
+            <div class="field">
+              <label for="pulses">Pulses</label>
+              <input type="text" name="pulses" required>
+            </div>
+            <div class="field">
+              <label for="dairy">Dairy and Products</label>
+              <input type="text" name="dairy" required>
+            </div>
+            <div class="field">
+              <label for="dryfruits">Dry Fruits and Nuts</label>
+              <input type="text" name="dryfruits" required>
+            </div>
+            <div class="field">
+              <label for="nonveg">Non-veg</label>
+              <input type="text" name="nonveg" required>
+            </div>
+            <div class="field">
+              <label for="bakery">Bakery Products</label>
+              <input type="text" name="bakery" required>
+            </div>
+            <div class="field">
+              <label for="rte">Ready to Eat (RTE) Segment</label>
+              <input type="text" name="rte" required>
+            </div>
+            <div class="field">
+              <label for="ddsc">Diet-Disease Specific Considerations</label>
+              <input type="text" name="ddsc" required>
+            </div>
+            <div class="field">
+              <label for="followup3">Follow Up</label>
+              <Textarea name="followup3"></Textarea>
+            </div> 
+            <button>Submit</button>
+          </form>
+      </section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media screen and(max-width:1600px){
+    .heading{
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{
+            
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+    }
+    .dashboard{
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        a{
+            text-decoration:none;
+            color: black;
+        }
+        .card{
+            width: 300px;
+            height:500px;
+            box-shadow: 15px 15px 15px grey;
+            margin: 20px;
+
+            img{
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
+            }
+            h1{
+                text-align: center;
+            }
+            
+        }
+
+    }
+    
+}
+@media screen and(max-width:800px){
+    
+}
+@media screen and(min-width:1600px){
+    
+    .heading{
+        margin: auto;
+        min-width: 1400px;
+        height: 150px;
+        width: 100%;
+        background: url(../assets/headingBg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        h1{
+            
+            color: white;
+            font-size: 70px;
+            text-align: center;
+            
+        }
+
+    }
+    .dashboard{
+        margin: auto;
+        min-width: 1400px;
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        a{
+            text-decoration:none;
+            color: black;
+        }
+        .card{
+            width: 300px;
+            height:500px;
+            box-shadow: 15px 15px 15px grey;
+            margin: 20px;
+
+            img{
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
+            }
+            h1{
+                text-align: center;
+            }
+            
+        }
+    }
+  
+}
+@import 'nav';
+@import 'footer';

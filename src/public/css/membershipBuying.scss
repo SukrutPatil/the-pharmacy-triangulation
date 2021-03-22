@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Tammudu 2', cursive;
+}
+section{
+    height: 100vh;
+    background: url(../assets/Background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow-y: hidden;
+
+    h1{
+        color: white;
+        font-size: 100px;
+        text-align: center;
+        padding-top: 10%;
+       
+        line-height: 100px;
+    }
+
+    .block{
+        width: fit-content;
+        height: fit-content;
+        padding: 20px;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        margin-bottom: 50px;
+
+        .field{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            
+            padding-bottom: 10px;
+
+            p{
+                padding-right: 10px;
+            }
+            input{
+                font-family:  'Roboto', sans-serif;
+                padding-left:20px ;
+                background: #D9ECDD;
+                border-radius: 10px;
+                border: none;
+                width: 300px;
+                font-size: 16px;
+                outline: none;
+            }
+            select{
+                padding-left:20px ;
+                background: #D9ECDD;
+                border-radius: 10px;
+                border: none;
+                font-size: 13px;
+                padding-top: 5px;
+                outline: none;
+            }
+        }
+        button{
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-shadow: 5px 5px 10px 5px grey;
+            background: white;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+           
+            cursor: pointer;
+            p{
+                font-size: 18px;
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right:5px ;
+            }
+            img{
+                height: 30px;
+            }
+            
+        }
+     a{
+         
+         
+     }
+      
+    }
+}
+@media screen and(max-width:1312px){
+    section{
+        height: 100%;
+        h1{
+            font-size: 40px;
+            padding-top: 20%;
+        }
+        .block{
+            .field{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                input{
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+@import 'nav';

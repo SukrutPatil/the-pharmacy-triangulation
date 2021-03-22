@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/product.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../public/css/slick/slick-theme.css"/>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="logo"><img src="" alt=""> <h1>LOGO</h1></div>
+            <ul class="nav-links">
+                <li><a href="/user/MedicationCounseling">Medication counseling</a></li>
+                <li><a href="/user/EntrepreneurshipCounseling">Entrepreneurship counseling</a></li>
+                <li><a href="/user/CareerCounseling">Career counseling</a></li>
+                <li><a href="/user/DietCounseling">Diet counseling</a></li>
+                <li><a href="/user/Products">Products</a></li>
+                <li><a href="/user/Articles">Articles</a></li>
+                <li><a href="/user/Articles">Dashboard</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <div class="heading">
+            <h1><%= product.brandname %></h1>
+            <div class="product">
+                <div class="image">
+                    <img src="../public/assets/DemoProduct.png" alt="">
+                </div>
+                <div class="info">
+                    <h2><%= product.brandname%></h2>
+                    <h3><%= product.rate %></h3>
+                    <div class="buttons">
+                        <button>Add to Cart</button>
+                        <button class="buy">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+<script src="../public/js/nav.js"></script>
+</body>
+</html>
